@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    private let loginButton = PrimaryButton(title: "Entrar", weight: .bold)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -40,7 +42,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: ViewCode {
     
     func setupViewHierarchy() {
-        self.view.addSubviews([logoImageView, emailField, passwordField])
+        self.view.addSubviews([logoImageView, emailField, passwordField, loginButton])
     }
     
     func setupConstraints() {
@@ -68,6 +70,14 @@ extension LoginViewController: ViewCode {
             self.passwordField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
             self.passwordField.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 16),
             self.passwordField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        // loginButton
+        NSLayoutConstraint.activate([
+            self.loginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            self.loginButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 32),
+            self.loginButton.heightAnchor.constraint(equalToConstant: 55),
+            self.loginButton.widthAnchor.constraint(equalToConstant: 240)
         ])
     }
     

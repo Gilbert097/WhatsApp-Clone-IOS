@@ -10,4 +10,5 @@ import UIKit
 
 public struct Color {
     public static let primary = UIColor(hex: "#0B6156")
+    public static let secondary = UIColor(hex: "#023933")
 }
