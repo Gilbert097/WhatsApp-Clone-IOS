@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3A62A82BC320044D13D /* AppDelegate.swift */; };
 		D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3A82A82BC320044D13D /* SceneDelegate.swift */; };
-		D406A3AB2A82BC320044D13D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3AA2A82BC320044D13D /* ViewController.swift */; };
 		D406A3B02A82BC320044D13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D406A3AF2A82BC320044D13D /* Assets.xcassets */; };
 		D406A3B32A82BC320044D13D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D406A3B12A82BC320044D13D /* LaunchScreen.storyboard */; };
+		D406A3BD2A82C2610044D13D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3BC2A82C2610044D13D /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D406A3A32A82BC320044D13D /* WhatsAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D406A3A62A82BC320044D13D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D406A3A82A82BC320044D13D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D406A3AA2A82BC320044D13D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D406A3AF2A82BC320044D13D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D406A3B22A82BC320044D13D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D406A3B42A82BC320044D13D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D406A3BC2A82C2610044D13D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +54,30 @@
 		D406A3A52A82BC320044D13D /* WhatsAppClone */ = {
 			isa = PBXGroup;
 			children = (
+				D406A3BA2A82C23D0044D13D /* Screens */,
 				D406A3A62A82BC320044D13D /* AppDelegate.swift */,
 				D406A3A82A82BC320044D13D /* SceneDelegate.swift */,
-				D406A3AA2A82BC320044D13D /* ViewController.swift */,
 				D406A3AF2A82BC320044D13D /* Assets.xcassets */,
 				D406A3B12A82BC320044D13D /* LaunchScreen.storyboard */,
 				D406A3B42A82BC320044D13D /* Info.plist */,
 			);
 			path = WhatsAppClone;
+			sourceTree = "<group>";
+		};
+		D406A3BA2A82C23D0044D13D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D406A3BB2A82C2470044D13D /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		D406A3BB2A82C2470044D13D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D406A3BC2A82C2610044D13D /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D406A3AB2A82BC320044D13D /* ViewController.swift in Sources */,
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
+				D406A3BD2A82C2610044D13D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +296,7 @@
 				INFOPLIST_FILE = WhatsAppClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -308,7 +324,7 @@
 				INFOPLIST_FILE = WhatsAppClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
