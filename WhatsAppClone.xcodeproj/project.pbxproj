@@ -16,6 +16,7 @@
 		D406A3C32A82C7A90044D13D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3C22A82C7A90044D13D /* Color.swift */; };
 		D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3C52A82F3AB0044D13D /* ViewCode.swift */; };
 		D406A3C82A82F4940044D13D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3C72A82F4940044D13D /* View+.swift */; };
+		D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3CA2A82F6920044D13D /* PrimaryTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D406A3C22A82C7A90044D13D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D406A3C52A82F3AB0044D13D /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		D406A3C72A82F4940044D13D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		D406A3CA2A82F6920044D13D /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		D406A3A52A82BC320044D13D /* WhatsAppClone */ = {
 			isa = PBXGroup;
 			children = (
+				D406A3C92A82F6680044D13D /* Components */,
 				D406A3C42A82F3A30044D13D /* Protocols */,
 				D406A3BE2A82C7720044D13D /* Helpers */,
 				D406A3BA2A82C23D0044D13D /* Screens */,
@@ -106,6 +109,14 @@
 				D406A3C52A82F3AB0044D13D /* ViewCode.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D406A3C92A82F6680044D13D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D406A3CA2A82F6920044D13D /* PrimaryTextField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
+				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
