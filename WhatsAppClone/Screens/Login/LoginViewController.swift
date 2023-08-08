@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
         super.loadView()
         self.view = self.loginView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

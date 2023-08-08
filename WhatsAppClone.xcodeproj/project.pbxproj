@@ -72,17 +72,17 @@
 		D406A3BA2A82C23D0044D13D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D406A3BB2A82C2470044D13D /* Home */,
+				D406A3BB2A82C2470044D13D /* Login */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		D406A3BB2A82C2470044D13D /* Home */ = {
+		D406A3BB2A82C2470044D13D /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				D406A3BC2A82C2610044D13D /* LoginViewController.swift */,
 			);
-			path = Home;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		D406A3BE2A82C7720044D13D /* Helpers */ = {
