@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LoginViewControllerImpl.swift
 //  WhatsAppClone
 //
 //  Created by Gilberto Silva on 08/08/23.
@@ -7,7 +7,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+public protocol LoginViewController where Self: UIViewController {
+    
+}
+
+class LoginViewControllerImpl: UIViewController {
     
     private let logoImageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "logo"))
@@ -33,14 +37,30 @@ class LoginViewController: UIViewController {
     private let loginButton = PrimaryButton(title: "Entrar", weight: .bold)
     private let linkButton = TextButton(title: "Não tem conta? Cadastre-se")
     
+    public var presenter: LoginPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        configure()
+    }
+    
+    private func configure() {
+        self.linkButton.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func linkButtonTapped() {
+        self.presenter.signUpButtonAction()
     }
 }
 
+// MARK: - LoginViewController
+extension LoginViewControllerImpl: LoginViewController {
+    
+}
+
 // MARK: - ViewCode
-extension LoginViewController: ViewCode {
+extension LoginViewControllerImpl: ViewCode {
     
     func setupViewHierarchy() {
         self.view.addSubviews([logoImageView, emailField, passwordField, loginButton, linkButton])

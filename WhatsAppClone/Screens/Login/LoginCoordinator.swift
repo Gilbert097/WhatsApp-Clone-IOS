@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-public class LoginCoordinator: Coordinator {
+public protocol LoginCoordinator: Coordinator {
+    func showSignUp()
+}
+
+public class LoginCoordinatorImpl: LoginCoordinator  {
     
     private let navigation: UINavigationController
     
@@ -16,8 +20,12 @@ public class LoginCoordinator: Coordinator {
         self.navigation = navigation
     }
     
-    public func start() {
-        let viewController = LoginViewController()
+    public func showSignUp() {
+        
+    }
+    
+    public func show() {
+        let viewController = LoginFactory.build(coordinator: self)
         self.navigation.pushViewController(viewController, animated: true)
     }
 }
