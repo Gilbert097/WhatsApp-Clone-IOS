@@ -40,8 +40,6 @@ public final class NavigationController: UINavigationController {
         navBarAppearance.backgroundColor = Color.primary
         self.navigationBar.standardAppearance = navBarAppearance
         self.navigationBar.scrollEdgeAppearance = navBarAppearance
-        
-        
     }
     
     public func setRootViewController(_ viewController: UIViewController) {
