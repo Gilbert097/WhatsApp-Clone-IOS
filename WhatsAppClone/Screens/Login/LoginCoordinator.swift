@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class LoginCoordinator {
+public class LoginCoordinator: Coordinator {
     
     private let navigation: UINavigationController
     
