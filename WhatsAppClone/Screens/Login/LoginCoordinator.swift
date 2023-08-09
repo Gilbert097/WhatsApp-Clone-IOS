@@ -14,18 +14,19 @@ public protocol LoginCoordinator: Coordinator {
 
 public class LoginCoordinatorImpl: LoginCoordinator  {
     
-    private let navigation: UINavigationController
+    private let navigation: NavigationController
     
-    public init(navigation: UINavigationController) {
+    public init(navigation: NavigationController) {
         self.navigation = navigation
     }
     
     public func showSignUp() {
-        
+        let coordinator = SignUpCoordinatorImpl(navigation: self.navigation)
+        coordinator.show()
     }
     
     public func show() {
         let viewController = LoginFactory.build(coordinator: self)
-        self.navigation.pushViewController(viewController, animated: true)
+        self.navigation.setRootViewController(viewController)
     }
 }

@@ -39,6 +39,11 @@ class LoginViewControllerImpl: UIViewController {
     
     public var presenter: LoginPresenter!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()

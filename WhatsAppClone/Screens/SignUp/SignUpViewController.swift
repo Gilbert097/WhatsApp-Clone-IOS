@@ -7,7 +7,11 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+public protocol SignUpViewController where Self: UIViewController {
+    
+}
+
+class SignUpViewControllerImpl: UIViewController {
     
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -60,14 +64,22 @@ class SignUpViewController: UIViewController {
     
     private let signUpButton = PrimaryButton(title: "Cadastrar", weight: .bold)
     
+    public var presenter: SignUpPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Cadastro"
         setupView()
     }
 }
 
+// MARK: - SignUpViewController
+extension SignUpViewControllerImpl: SignUpViewController {
+    
+}
+
 // MARK: - ViewCode
-extension SignUpViewController: ViewCode {
+extension SignUpViewControllerImpl: ViewCode {
     
     func setupViewHierarchy() {
         
@@ -101,7 +113,7 @@ extension SignUpViewController: ViewCode {
         
         // logoImageView
         NSLayoutConstraint.activate([
-            self.logoImageView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 110),
+            self.logoImageView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 30),
             self.logoImageView.centerXAnchor.constraint(equalTo: self.mainView.centerXAnchor),
             self.logoImageView.heightAnchor.constraint(equalToConstant: 200),
             self.logoImageView.widthAnchor.constraint(equalToConstant: 240)

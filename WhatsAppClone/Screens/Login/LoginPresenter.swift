@@ -14,14 +14,14 @@ public protocol LoginPresenter {
 public class LoginPresenterImpl: LoginPresenter {
    
     private weak var view: LoginViewController?
-    private weak var coodinator: LoginCoordinator?
+    private let coodinator: LoginCoordinator
     
-    public init(view: LoginViewController?, coodinator: LoginCoordinator?) {
+    public init(view: LoginViewController?, coodinator: LoginCoordinator) {
         self.view = view
         self.coodinator = coodinator
     }
     
     public func signUpButtonAction() {
-        self.coodinator?.showSignUp()
+        self.coodinator.showSignUp()
     }
 }

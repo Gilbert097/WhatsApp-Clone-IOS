@@ -24,6 +24,10 @@
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
 		D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AD2A83D9D1006B16A9 /* LoginPresenter.swift */; };
 		D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AF2A84174F006B16A9 /* LoginFactory.swift */; };
+		D46359B22A84276C006B16A9 /* SignUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359B12A84276C006B16A9 /* SignUpFactory.swift */; };
+		D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359B32A84277B006B16A9 /* SignUpPresenter.swift */; };
+		D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359B52A8427E4006B16A9 /* SignUpCoordinator.swift */; };
+		D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359B72A843B5B006B16A9 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D46359AD2A83D9D1006B16A9 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		D46359AF2A84174F006B16A9 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
+		D46359B12A84276C006B16A9 /* SignUpFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFactory.swift; sourceTree = "<group>"; };
+		D46359B32A84277B006B16A9 /* SignUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		D46359B52A8427E4006B16A9 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		D46359B72A843B5B006B16A9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,7 @@
 				D406A3CA2A82F6920044D13D /* PrimaryTextField.swift */,
 				D406A3CC2A82FD8D0044D13D /* PrimaryButton.swift */,
 				D406A3CE2A8304CC0044D13D /* TextButton.swift */,
+				D46359B72A843B5B006B16A9 /* NavigationController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -143,7 +152,10 @@
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				D46359B12A84276C006B16A9 /* SignUpFactory.swift */,
 				D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */,
+				D46359B32A84277B006B16A9 /* SignUpPresenter.swift */,
+				D46359B52A8427E4006B16A9 /* SignUpCoordinator.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -219,17 +231,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */,
+				D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */,
 				D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */,
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
 				D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */,
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
 				D406A3C12A82C7890044D13D /* UIColor+.swift in Sources */,
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
+				D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */,
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
 				D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
+				D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
+				D46359B22A84276C006B16A9 /* SignUpFactory.swift in Sources */,
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
 				D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */,
