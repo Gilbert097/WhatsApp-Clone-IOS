@@ -12,7 +12,10 @@ public final class SignUpFactory {
     
     public static func build(coordinator: SignUpCoordinator) -> SignUpViewController {
         let viewController = SignUpViewControllerImpl()
-        let presenter = SignUpPresenterImpl(view: viewController, coodinator: coordinator)
+        let authService = AuthenticationServiceImpl()
+        let presenter = SignUpPresenterImpl(view: viewController,
+                                            coodinator: coordinator,
+                                            authService: authService)
         viewController.presenter = presenter
         return viewController
     }

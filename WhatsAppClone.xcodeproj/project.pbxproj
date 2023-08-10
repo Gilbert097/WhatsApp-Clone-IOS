@@ -29,6 +29,15 @@
 		D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359B52A8427E4006B16A9 /* SignUpCoordinator.swift */; };
 		D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359B72A843B5B006B16A9 /* NavigationController.swift */; };
 		D46359BA2A844669006B16A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D46359B92A844669006B16A9 /* GoogleService-Info.plist */; };
+		D46359BD2A8515EE006B16A9 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359BC2A8515EE006B16A9 /* AuthenticationService.swift */; };
+		D46359C02A851897006B16A9 /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359BF2A851897006B16A9 /* AuthenticationError.swift */; };
+		D46359C22A8518B4006B16A9 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359C12A8518B4006B16A9 /* AuthRequest.swift */; };
+		D46359C42A8518CE006B16A9 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359C32A8518CE006B16A9 /* AuthResponse.swift */; };
+		D46359C62A8519FF006B16A9 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359C52A8519FF006B16A9 /* SignUpRequest.swift */; };
+		D46359CA2A85A668006B16A9 /* ScreenLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359C92A85A668006B16A9 /* ScreenLoadingView.swift */; };
+		D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CB2A85A720006B16A9 /* LoadingView.swift */; };
+		D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CD2A85A7C0006B16A9 /* AlertView.swift */; };
+		D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CF2A85A824006B16A9 /* AlertFactory.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +69,15 @@
 		D46359B52A8427E4006B16A9 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		D46359B72A843B5B006B16A9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		D46359B92A844669006B16A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D46359BC2A8515EE006B16A9 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		D46359BF2A851897006B16A9 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		D46359C12A8518B4006B16A9 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		D46359C32A8518CE006B16A9 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		D46359C52A8519FF006B16A9 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
+		D46359C92A85A668006B16A9 /* ScreenLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLoadingView.swift; sourceTree = "<group>"; };
+		D46359CB2A85A720006B16A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D46359CD2A85A7C0006B16A9 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		D46359CF2A85A824006B16A9 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +122,8 @@
 		D406A3A52A82BC320044D13D /* WhatsAppClone */ = {
 			isa = PBXGroup;
 			children = (
-				D406A3C92A82F6680044D13D /* Components */,
-				D406A3C42A82F3A30044D13D /* Protocols */,
-				D406A3BE2A82C7720044D13D /* Helpers */,
-				D406A3BA2A82C23D0044D13D /* Screens */,
+				D46359BB2A8515D3006B16A9 /* Services */,
+				D406A3BA2A82C23D0044D13D /* UI */,
 				D406A3A62A82BC320044D13D /* AppDelegate.swift */,
 				D406A3A82A82BC320044D13D /* SceneDelegate.swift */,
 				D406A3AF2A82BC320044D13D /* Assets.xcassets */,
@@ -118,13 +134,16 @@
 			path = WhatsAppClone;
 			sourceTree = "<group>";
 		};
-		D406A3BA2A82C23D0044D13D /* Screens */ = {
+		D406A3BA2A82C23D0044D13D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				D46359A62A83CCEC006B16A9 /* SignUp */,
-				D406A3BB2A82C2470044D13D /* Login */,
+				D406A3C42A82F3A30044D13D /* Protocols */,
+				D46359C72A851C7A006B16A9 /* Alert */,
+				D406A3BE2A82C7720044D13D /* Helpers */,
+				D406A3C92A82F6680044D13D /* Components */,
+				D46359C82A85A636006B16A9 /* Screens */,
 			);
-			path = Screens;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		D406A3BB2A82C2470044D13D /* Login */ = {
@@ -153,6 +172,8 @@
 			children = (
 				D406A3C52A82F3AB0044D13D /* ViewCode.swift */,
 				D46359AB2A83D8E7006B16A9 /* Coordinator.swift */,
+				D46359CB2A85A720006B16A9 /* LoadingView.swift */,
+				D46359CD2A85A7C0006B16A9 /* AlertView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -164,6 +185,7 @@
 				D406A3CC2A82FD8D0044D13D /* PrimaryButton.swift */,
 				D406A3CE2A8304CC0044D13D /* TextButton.swift */,
 				D46359B72A843B5B006B16A9 /* NavigationController.swift */,
+				D46359C92A85A668006B16A9 /* ScreenLoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -175,8 +197,45 @@
 				D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */,
 				D46359B32A84277B006B16A9 /* SignUpPresenter.swift */,
 				D46359B52A8427E4006B16A9 /* SignUpCoordinator.swift */,
+				D46359C52A8519FF006B16A9 /* SignUpRequest.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		D46359BB2A8515D3006B16A9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D46359BE2A851888006B16A9 /* Autentication */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D46359BE2A851888006B16A9 /* Autentication */ = {
+			isa = PBXGroup;
+			children = (
+				D46359BC2A8515EE006B16A9 /* AuthenticationService.swift */,
+				D46359BF2A851897006B16A9 /* AuthenticationError.swift */,
+				D46359C12A8518B4006B16A9 /* AuthRequest.swift */,
+				D46359C32A8518CE006B16A9 /* AuthResponse.swift */,
+			);
+			path = Autentication;
+			sourceTree = "<group>";
+		};
+		D46359C72A851C7A006B16A9 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				D46359CF2A85A824006B16A9 /* AlertFactory.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		D46359C82A85A636006B16A9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D46359A62A83CCEC006B16A9 /* SignUp */,
+				D406A3BB2A82C2470044D13D /* Login */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
@@ -303,16 +362,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */,
+				D46359C22A8518B4006B16A9 /* AuthRequest.swift in Sources */,
+				D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */,
 				D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */,
 				D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */,
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
+				D46359C62A8519FF006B16A9 /* SignUpRequest.swift in Sources */,
 				D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */,
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
 				D406A3C12A82C7890044D13D /* UIColor+.swift in Sources */,
+				D46359C02A851897006B16A9 /* AuthenticationError.swift in Sources */,
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
+				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
 				D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */,
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
 				D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */,
+				D46359CA2A85A668006B16A9 /* ScreenLoadingView.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
 				D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,
@@ -321,6 +386,9 @@
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
 				D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */,
+				D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */,
+				D46359C42A8518CE006B16A9 /* AuthResponse.swift in Sources */,
+				D46359BD2A8515EE006B16A9 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

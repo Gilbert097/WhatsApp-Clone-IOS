@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol SignUpViewController where Self: UIViewController {
+public protocol SignUpViewController: LoadingView, AlertView where Self: UIViewController {
     
 }
 
@@ -62,6 +62,7 @@ class SignUpViewControllerImpl: UIViewController {
         return view
     }()
     
+    private let loadingView = ScreenLoadingView()
     private let signUpButton = PrimaryButton(title: "Cadastrar", weight: .bold)
     
     public var presenter: SignUpPresenter!
@@ -70,11 +71,34 @@ class SignUpViewControllerImpl: UIViewController {
         super.viewDidLoad()
         self.title = "Cadastro"
         setupView()
+        configure()
+    }
+    
+    private func configure() {
+        self.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func signUpButtonTapped() {
+        let request = SignUpRequest(name: nameField.text!,
+                                    email: emailField.text!,
+                                    password: passwordField.text!)
+        self.presenter.signUp(request: request)
     }
 }
 
 // MARK: - SignUpViewController
 extension SignUpViewControllerImpl: SignUpViewController {
+    
+    public func display(viewModel: LoadingViewModel) {
+        self.loadingView.isHidden = !viewModel.isLoading
+        self.loadingView.display(viewModel: viewModel)
+    }
+    
+    
+    public func showMessage(viewModel: AlertViewModel) {
+        let alert = AlertFactory.build(viewModel: viewModel)
+        present(alert, animated: true)
+    }
     
 }
 
@@ -86,7 +110,7 @@ extension SignUpViewControllerImpl: ViewCode {
         formStack.addArrangedSubviews([nameField,
                                        emailField,
                                        passwordField])
-        mainView.addSubviews([logoImageView, formStack, signUpButton])
+        mainView.addSubviews([logoImageView, formStack, signUpButton, loadingView])
         scrollView.addSubview(mainView)
         self.view.addSubview(scrollView)
     }
@@ -142,9 +166,18 @@ extension SignUpViewControllerImpl: ViewCode {
             self.signUpButton.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: -32)
         ])
         
+        // loadingView
+        NSLayoutConstraint.activate([
+            self.loadingView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.loadingView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.loadingView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.loadingView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
     }
     
     func setupAdditionalConfiguration() {
         self.view.backgroundColor = Color.primary
+        self.loadingView.isHidden = true
     }
 }
+
