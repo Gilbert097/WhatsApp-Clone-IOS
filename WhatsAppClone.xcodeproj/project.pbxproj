@@ -38,6 +38,7 @@
 		D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CB2A85A720006B16A9 /* LoadingView.swift */; };
 		D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CD2A85A7C0006B16A9 /* AlertView.swift */; };
 		D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CF2A85A824006B16A9 /* AlertFactory.swift */; };
+		D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359D12A85AD5E006B16A9 /* LoginRequest.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		D46359CB2A85A720006B16A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D46359CD2A85A7C0006B16A9 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		D46359CF2A85A824006B16A9 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		D46359D12A85AD5E006B16A9 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		D406A3BB2A82C2470044D13D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D46359D12A85AD5E006B16A9 /* LoginRequest.swift */,
 				D406A3BC2A82C2610044D13D /* LoginViewController.swift */,
 				D46359A92A83D811006B16A9 /* LoginCoordinator.swift */,
 				D46359AD2A83D9D1006B16A9 /* LoginPresenter.swift */,
@@ -386,6 +389,7 @@
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
 				D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */,
+				D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */,
 				D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */,
 				D46359C42A8518CE006B16A9 /* AuthResponse.swift in Sources */,
 				D46359BD2A8515EE006B16A9 /* AuthenticationService.swift in Sources */,

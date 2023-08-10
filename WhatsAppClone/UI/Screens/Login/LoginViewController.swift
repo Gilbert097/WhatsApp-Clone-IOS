@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol LoginViewController where Self: UIViewController {
+public protocol LoginViewController: LoadingView, AlertView where Self: UIViewController {
     
 }
 
@@ -24,6 +24,7 @@ class LoginViewControllerImpl: UIViewController {
         let view = PrimaryTextField()
         view.placeholder = "Digite seu e-mail"
         view.keyboardType = .emailAddress
+        view.autocapitalizationType = .none
         return view
     }()
     
@@ -34,6 +35,7 @@ class LoginViewControllerImpl: UIViewController {
         return view
     }()
     
+    private let loadingView = ScreenLoadingView()
     private let loginButton = PrimaryButton(title: "Entrar", weight: .bold)
     private let linkButton = TextButton(title: "Não tem conta? Cadastre-se")
     
@@ -52,23 +54,37 @@ class LoginViewControllerImpl: UIViewController {
     
     private func configure() {
         self.linkButton.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
+        self.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
     @objc private func linkButtonTapped() {
-        self.presenter.signUpButtonAction()
+        self.presenter.linkButtonAction()
+    }
+    
+    @objc private func loginButtonTapped() {
+        self.presenter.loginButtonAction(request: .init(email: self.emailField.text!, password: self.passwordField.text!))
     }
 }
 
 // MARK: - LoginViewController
 extension LoginViewControllerImpl: LoginViewController {
     
+    public func display(viewModel: LoadingViewModel) {
+        self.loadingView.isHidden = !viewModel.isLoading
+        self.loadingView.display(viewModel: viewModel)
+    }
+    
+    public func showMessage(viewModel: AlertViewModel) {
+        let alert = AlertFactory.build(viewModel: viewModel)
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - ViewCode
 extension LoginViewControllerImpl: ViewCode {
     
     func setupViewHierarchy() {
-        self.view.addSubviews([logoImageView, emailField, passwordField, loginButton, linkButton])
+        self.view.addSubviews([logoImageView, emailField, passwordField, loginButton, linkButton, loadingView])
     }
     
     func setupConstraints() {
@@ -113,9 +129,18 @@ extension LoginViewControllerImpl: ViewCode {
             self.linkButton.heightAnchor.constraint(equalToConstant: 30),
             self.linkButton.widthAnchor.constraint(equalToConstant: 240)
         ])
+        
+        // loadingView
+        NSLayoutConstraint.activate([
+            self.loadingView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.loadingView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.loadingView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.loadingView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
     }
     
     func setupAdditionalConfiguration() {
         self.view.backgroundColor = Color.primary
+        self.loadingView.isHidden = true
     }
 }

@@ -52,6 +52,7 @@ class SignUpViewControllerImpl: UIViewController {
         let view = PrimaryTextField()
         view.placeholder = "Digite seu e-mail"
         view.keyboardType = .emailAddress
+        view.autocapitalizationType = .none
         return view
     }()
     

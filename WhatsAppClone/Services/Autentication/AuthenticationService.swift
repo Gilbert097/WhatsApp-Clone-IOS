@@ -10,6 +10,7 @@ import FirebaseAuth
 
 public protocol AuthenticationService {
     func createAuth(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void)
+    func signIn(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void)
 }
 
 public typealias AutenticationResult = Swift.Result<AuthResponse, AuthenticationError>
@@ -18,6 +19,13 @@ public class AuthenticationServiceImpl: AuthenticationService {
     
     public func createAuth(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void) {
         Auth.auth().createUser(withEmail: request.email, password: request.password) { [weak self] result, error in
+            guard let self = self else { return }
+            self.handleAutenticationResult(result, error, completion)
+        }
+    }
+    
+    public func signIn(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void) {
+        Auth.auth().signIn(withEmail: request.email, password: request.password) { [weak self] result, error in
             guard let self = self else { return }
             self.handleAutenticationResult(result, error, completion)
         }
