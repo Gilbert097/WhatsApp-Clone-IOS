@@ -25,6 +25,7 @@ class LoginViewControllerImpl: UIViewController {
         view.placeholder = "Digite seu e-mail"
         view.keyboardType = .emailAddress
         view.autocapitalizationType = .none
+        view.text = "gilberto.silva@gmail.com"
         return view
     }()
     

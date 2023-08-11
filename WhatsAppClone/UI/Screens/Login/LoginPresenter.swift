@@ -34,8 +34,8 @@ public class LoginPresenterImpl: LoginPresenter {
             guard let self = self else { return }
             self.view?.display(viewModel: .init(isLoading: false))
             switch authResult {
-            case .success(let response):
-                self.view?.showMessage(viewModel: .init(title: "Sucesso", message: "Usuário logado com sucesso!\n \(response.uid)", buttons: [.init(title: "Ok")]))
+            case .success:
+                self.coodinator.showMain()
             case .failure:
                 self.view?.showMessage(viewModel: .init(title: "Error", message: "Erro ao tentar logar!", buttons: [.init(title: "Ok")]))
             }

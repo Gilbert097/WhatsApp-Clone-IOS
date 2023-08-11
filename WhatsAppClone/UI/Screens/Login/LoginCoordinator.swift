@@ -10,6 +10,7 @@ import UIKit
 
 public protocol LoginCoordinator: Coordinator {
     func showSignUp()
+    func showMain()
 }
 
 public class LoginCoordinatorImpl: LoginCoordinator  {
@@ -22,6 +23,11 @@ public class LoginCoordinatorImpl: LoginCoordinator  {
     
     public func showSignUp() {
         let coordinator = SignUpCoordinatorImpl(navigation: self.navigation)
+        coordinator.show()
+    }
+    
+    public func showMain() {
+        let coordinator = MainTabBarCoordinatorImpl(navigation: self.navigation)
         coordinator.show()
     }
     

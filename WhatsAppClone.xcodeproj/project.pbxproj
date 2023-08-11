@@ -39,6 +39,10 @@
 		D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CD2A85A7C0006B16A9 /* AlertView.swift */; };
 		D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359CF2A85A824006B16A9 /* AlertFactory.swift */; };
 		D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359D12A85AD5E006B16A9 /* LoginRequest.swift */; };
+		D46359D52A85B92F006B16A9 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359D42A85B92F006B16A9 /* MainTabBarCoordinator.swift */; };
+		D46359D92A85BC9F006B16A9 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359D82A85BC9F006B16A9 /* ConversationsViewController.swift */; };
+		D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359DA2A85BCD8006B16A9 /* ContactsViewController.swift */; };
+		D46359DD2A85BFE3006B16A9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359DC2A85BFE3006B16A9 /* MainTabBarController.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +84,10 @@
 		D46359CD2A85A7C0006B16A9 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		D46359CF2A85A824006B16A9 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		D46359D12A85AD5E006B16A9 /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		D46359D42A85B92F006B16A9 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		D46359D82A85BC9F006B16A9 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		D46359DA2A85BCD8006B16A9 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		D46359DC2A85BFE3006B16A9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,10 +243,38 @@
 		D46359C82A85A636006B16A9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D46359D72A85B9D4006B16A9 /* Contacts */,
+				D46359D62A85B9BD006B16A9 /* Conversations */,
+				D46359D32A85B921006B16A9 /* Main */,
 				D46359A62A83CCEC006B16A9 /* SignUp */,
 				D406A3BB2A82C2470044D13D /* Login */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		D46359D32A85B921006B16A9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D46359D42A85B92F006B16A9 /* MainTabBarCoordinator.swift */,
+				D46359DC2A85BFE3006B16A9 /* MainTabBarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D46359D62A85B9BD006B16A9 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				D46359D82A85BC9F006B16A9 /* ConversationsViewController.swift */,
+			);
+			path = Conversations;
+			sourceTree = "<group>";
+		};
+		D46359D72A85B9D4006B16A9 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				D46359DA2A85BCD8006B16A9 /* ContactsViewController.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
@@ -367,6 +403,7 @@
 				D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */,
 				D46359C22A8518B4006B16A9 /* AuthRequest.swift in Sources */,
 				D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */,
+				D46359DD2A85BFE3006B16A9 /* MainTabBarController.swift in Sources */,
 				D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */,
 				D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */,
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
@@ -377,12 +414,15 @@
 				D46359C02A851897006B16A9 /* AuthenticationError.swift in Sources */,
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
 				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
+				D46359D92A85BC9F006B16A9 /* ConversationsViewController.swift in Sources */,
 				D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */,
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
+				D46359D52A85B92F006B16A9 /* MainTabBarCoordinator.swift in Sources */,
 				D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */,
 				D46359CA2A85A668006B16A9 /* ScreenLoadingView.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
 				D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */,
+				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
 				D46359B22A84276C006B16A9 /* SignUpFactory.swift in Sources */,
