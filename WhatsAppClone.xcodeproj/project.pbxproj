@@ -356,6 +356,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3AE5665884269CAFCA363309 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -373,6 +374,7 @@
 		};
 		B38BD4D24AC70C6483B2AABD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
