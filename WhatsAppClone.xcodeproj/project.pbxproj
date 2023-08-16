@@ -19,6 +19,7 @@
 		D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3CA2A82F6920044D13D /* PrimaryTextField.swift */; };
 		D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3CC2A82FD8D0044D13D /* PrimaryButton.swift */; };
 		D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3CE2A8304CC0044D13D /* TextButton.swift */; };
+		D422A08E2A8D527E00CFE3C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -64,6 +65,7 @@
 		D406A3CA2A82F6920044D13D /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		D406A3CC2A82FD8D0044D13D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		D406A3CE2A8304CC0044D13D /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -201,6 +203,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		D422A08C2A8D526400CFE3C5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +253,7 @@
 		D46359C82A85A636006B16A9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D422A08C2A8D526400CFE3C5 /* Settings */,
 				D46359D72A85B9D4006B16A9 /* Contacts */,
 				D46359D62A85B9BD006B16A9 /* Conversations */,
 				D46359D32A85B921006B16A9 /* Main */,
@@ -431,6 +442,7 @@
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
 				D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */,
+				D422A08E2A8D527E00CFE3C5 /* SettingsViewController.swift in Sources */,
 				D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */,
 				D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */,
 				D46359C42A8518CE006B16A9 /* AuthResponse.swift in Sources */,

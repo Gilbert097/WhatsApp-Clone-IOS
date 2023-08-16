@@ -18,9 +18,10 @@ public class MainTabBarCoordinatorImpl: Coordinator {
     
     public func show() {
         let tabBarViewController = MainTabBarController()
-        let conversationsViewController = makeConversationsViewController()
-        let contactsViewController = makeContactsViewController()
-        tabBarViewController.setViewControllers([conversationsViewController, contactsViewController], animated: true)
+        let conversations = makeConversationsViewController()
+        let contacts = makeContactsViewController()
+        let settings = makeSettingsViewController()
+        tabBarViewController.setViewControllers([conversations, contacts, settings], animated: true)
         self.navigation.pushViewController(tabBarViewController)
     }
     
@@ -35,6 +36,13 @@ public class MainTabBarCoordinatorImpl: Coordinator {
         let viewController = ContactsViewController()
         viewController.tabBarItem.image = UIImage(named: "contatos")
         viewController.title = "Contatos"
+        return viewController
+    }
+    
+    private func makeSettingsViewController() -> SettingsViewController {
+        let viewController = SettingsViewController()
+        viewController.tabBarItem.image = UIImage(named: "ajustes")
+        viewController.title = "Ajustes"
         return viewController
     }
 }
