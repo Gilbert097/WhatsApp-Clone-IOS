@@ -10,12 +10,14 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     private lazy var logoutButtonItem: UIBarButtonItem = {
-        UIBarButtonItem(
+      let item = UIBarButtonItem(
             title: "Deslogar",
             style: .plain,
             target: self,
             action: #selector(logoutButtonTapped)
         )
+        item.tintColor = .systemRed
+        return item
     }()
     
     override func viewDidLoad() {
