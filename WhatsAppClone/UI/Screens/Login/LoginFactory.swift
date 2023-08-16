@@ -13,7 +13,11 @@ public final class LoginFactory {
     public static func build(coordinator: LoginCoordinator) -> LoginViewController {
         let viewController = LoginViewControllerImpl()
         let authService = AuthenticationServiceImpl()
-        let presenter = LoginPresenterImpl(view: viewController, coodinator: coordinator, authService: authService)
+        let authStateService = AuthenticationStateServiceImpl()
+        let presenter = LoginPresenterImpl(view: viewController,
+                                           coodinator: coordinator,
+                                           authService: authService,
+                                           authStateService: authStateService)
         viewController.presenter = presenter
         return viewController
     }

@@ -51,6 +51,12 @@ class LoginViewControllerImpl: UIViewController {
         super.viewDidLoad()
         setupView()
         configure()
+        self.presenter.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.presenter.stop()
     }
     
     private func configure() {
