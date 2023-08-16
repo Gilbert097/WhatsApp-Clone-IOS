@@ -11,8 +11,7 @@ class ContactsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarItem.image = UIImage(named: "contatos")
-        self.title = "Contatos"
+        self.view.backgroundColor = .yellow
     }
     
 
