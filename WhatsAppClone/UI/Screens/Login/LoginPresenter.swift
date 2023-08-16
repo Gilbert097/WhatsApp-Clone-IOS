@@ -38,6 +38,7 @@ public class LoginPresenterImpl: LoginPresenter {
             guard let self = self else { return }
             if let _ = userId {
                 LogUtils.printMessage(tag: self.TAG, message: "Logado")
+                self.coodinator.showMain()
             } else {
                 LogUtils.printMessage(tag: self.TAG, message: "Deslogado")
             }
