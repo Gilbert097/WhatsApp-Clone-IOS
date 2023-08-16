@@ -12,9 +12,13 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .orange
-        // Do any additional setup after loading the view.
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.parent?.title = "Ajustes"
+    }
 
     /*
     // MARK: - Navigation

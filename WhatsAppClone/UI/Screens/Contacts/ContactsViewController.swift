@@ -14,6 +14,10 @@ class ContactsViewController: UIViewController {
         self.view.backgroundColor = .yellow
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.parent?.title = "Contatos"
+    }
 
     /*
     // MARK: - Navigation

@@ -15,4 +15,8 @@ class ConversationsViewController: UIViewController {
         self.view.backgroundColor = .red
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.parent?.title = "Conversas"
+    }
 }
