@@ -11,7 +11,8 @@ public final class SettingsFactory {
     
     public static func build(navigation: NavigationController) -> SettingsViewController {
         let viewController = SettingsViewControllerImpl()
-        let authService = AuthenticationServiceImpl()
+        let firebaseAuth = FirebaseAuthentication()
+        let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
         let coordinator = SettingsCoordinatorImpl(navigation: navigation)
         let presenter = SettingsPresenterImpl(view: viewController,
                                               authService: authService,

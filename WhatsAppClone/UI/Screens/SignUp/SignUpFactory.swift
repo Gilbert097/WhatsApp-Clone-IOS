@@ -12,7 +12,8 @@ public final class SignUpFactory {
     
     public static func build(coordinator: SignUpCoordinator) -> SignUpViewController {
         let viewController = SignUpViewControllerImpl()
-        let authService = AuthenticationServiceImpl()
+        let firebaseAuth = FirebaseAuthentication()
+        let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
         let presenter = SignUpPresenterImpl(view: viewController,
                                             coodinator: coordinator,
                                             authService: authService)

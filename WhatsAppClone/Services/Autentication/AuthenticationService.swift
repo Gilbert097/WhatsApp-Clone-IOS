@@ -6,87 +6,47 @@
 //
 
 import Foundation
-import FirebaseAuth
+
+public typealias AutenticationResult = Swift.Result<AuthResponse, AuthenticationError>
 
 public protocol AuthenticationService {
-    func createAuth(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void)
-    func signIn(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void)
+    func createAuth(model: AuthModel, completion: @escaping (AutenticationResult) -> Void)
+    func signIn(model: AuthModel, completion: @escaping (AutenticationResult) -> Void)
     func signOut(completion: @escaping (Bool) -> Void)
 }
 
-public typealias AutenticationResult = Swift.Result<AuthResponse, AuthenticationError>
 public class AuthenticationServiceImpl: AuthenticationService {
     
     private var TAG: String { String(describing: AuthenticationServiceImpl.self) }
     
-    public func createAuth(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void) {
-        Auth.auth().createUser(withEmail: request.email, password: request.password) { [weak self] result, error in
-            guard let self = self else { return }
-            self.handleAutenticationResult(result, error, completion)
+    private let authClient: AutenticationClient
+    
+    public init(authClient: AutenticationClient) {
+        self.authClient = authClient
+    }
+    
+    public func createAuth(model: AuthModel, completion: @escaping (AutenticationResult) -> Void) {
+        self.authClient.createAuth(request: .init(email: model.email, password: model.password)) { [weak self] in
+            self?.handleAuthenticationClientResult(result: $0, completion: completion)
         }
     }
     
-    public func signIn(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void) {
-        Auth.auth().signIn(withEmail: request.email, password: request.password) { [weak self] result, error in
-            guard let self = self else { return }
-            self.handleAutenticationResult(result, error, completion)
+    public func signIn(model: AuthModel, completion: @escaping (AutenticationResult) -> Void) {
+        self.authClient.signIn(request: .init(email: model.email, password: model.password)) { [weak self] in
+            self?.handleAuthenticationClientResult(result: $0, completion: completion)
         }
     }
     
     public func signOut(completion: @escaping (Bool) -> Void) {
-        do {
-            try Auth.auth().signOut()
-            completion(true)
-        } catch {
-            LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
-            completion(false)
-        }
+        self.authClient.signOut(completion: completion)
     }
     
-    private func handleAutenticationResult(_ result: AuthDataResult?,
-                                           _ error: Error?,
-                                           _ completion: @escaping (AutenticationResult) -> Void) {
-        if let result = result {
-            let userModel = AuthResponse(user: result.user)
-            completion(.success(userModel))
-        } else if let error = error {
-            guard
-                let errorParse = error as NSError?,
-                let code = AuthErrorCode.Code(rawValue: errorParse.code)
-            else { return completion(.failure(.internalError)) }
-            
-            switch code {
-            case .networkError:
-                completion(.failure(.networkError))
-            case .userNotFound:
-                completion(.failure(.userNotFound))
-            case .userTokenExpired:
-                completion(.failure(.userTokenExpired))
-            case .tooManyRequests:
-                completion(.failure(.tooManyRequests))
-            case .invalidAPIKey:
-                completion(.failure(.invalidAPIKey))
-            case .appNotAuthorized:
-                completion(.failure(.appNotAuthorized))
-            case .keychainError:
-                completion(.failure(.keychainError))
-            case .internalError:
-                completion(.failure(.internalError))
-            case .invalidUserToken:
-                completion(.failure(.invalidUserToken))
-            case .userDisabled:
-                completion(.failure(.userDisabled))
-            default:
-                completion(.failure(.internalError))
-            }
+    private func handleAuthenticationClientResult(result: AutenticationClientResult, completion: @escaping (AutenticationResult) -> Void) {
+        switch result {
+        case .success(let response):
+            completion(.success(.init(uid: response.uid)))
+        case .failure:
+            completion(.failure(.unexpected))
         }
-    }
-}
-
-private extension AuthResponse {
-    init(user: User) {
-        self.uid = user.uid
-        self.email = user.email ?? .init()
-        self.name = user.displayName ?? .init()
     }
 }

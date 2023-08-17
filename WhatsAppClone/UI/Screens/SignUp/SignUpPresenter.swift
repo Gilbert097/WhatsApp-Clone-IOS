@@ -27,7 +27,7 @@ public class SignUpPresenterImpl: SignUpPresenter {
     
     public func signUp(request: SignUpRequest) {
         self.view?.display(viewModel: .init(isLoading: true))
-        self.authService.createAuth(request: .init(email: request.email, password: request.password)) { [weak self] authResult in
+        self.authService.createAuth(model: .init(email: request.email, password: request.password)) { [weak self] authResult in
             guard let self = self else { return }
             self.view?.display(viewModel: .init(isLoading: false))
             switch authResult {

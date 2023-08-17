@@ -55,7 +55,7 @@ public class LoginPresenterImpl: LoginPresenter {
     
     public func loginButtonAction(request: LoginRequest) {
         self.view?.display(viewModel: .init(isLoading: true))
-        self.authService.signIn(request: .init(email: request.email, password: request.password)) { [weak self] authResult in
+        self.authService.signIn(model: .init(email: request.email, password: request.password)) { [weak self] authResult in
             guard let self = self else { return }
             self.view?.display(viewModel: .init(isLoading: false))
             
