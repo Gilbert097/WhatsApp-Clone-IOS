@@ -22,6 +22,9 @@
 		D422A08E2A8D527E00CFE3C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */; };
 		D422A0912A8D655300CFE3C5 /* AutenticationStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0902A8D655300CFE3C5 /* AutenticationStateService.swift */; };
 		D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */; };
+		D422A0962A8E6CBB00CFE3C5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0952A8E6CBB00CFE3C5 /* SettingsPresenter.swift */; };
+		D422A0982A8E6E7800CFE3C5 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0972A8E6E7800CFE3C5 /* SettingsCoordinator.swift */; };
+		D422A09A2A8E6F5500CFE3C5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0992A8E6F5500CFE3C5 /* SettingsFactory.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -70,6 +73,9 @@
 		D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D422A0902A8D655300CFE3C5 /* AutenticationStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationStateService.swift; sourceTree = "<group>"; };
 		D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtils.swift; sourceTree = "<group>"; };
+		D422A0952A8E6CBB00CFE3C5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		D422A0972A8E6E7800CFE3C5 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		D422A0992A8E6F5500CFE3C5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */,
+				D422A0952A8E6CBB00CFE3C5 /* SettingsPresenter.swift */,
+				D422A0972A8E6E7800CFE3C5 /* SettingsCoordinator.swift */,
+				D422A0992A8E6F5500CFE3C5 /* SettingsFactory.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -451,6 +460,7 @@
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
 				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
 				D46359D92A85BC9F006B16A9 /* ConversationsViewController.swift in Sources */,
+				D422A0962A8E6CBB00CFE3C5 /* SettingsPresenter.swift in Sources */,
 				D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */,
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
 				D46359D52A85B92F006B16A9 /* MainTabBarCoordinator.swift in Sources */,
@@ -465,6 +475,8 @@
 				D46359B22A84276C006B16A9 /* SignUpFactory.swift in Sources */,
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
+				D422A09A2A8E6F5500CFE3C5 /* SettingsFactory.swift in Sources */,
+				D422A0982A8E6E7800CFE3C5 /* SettingsCoordinator.swift in Sources */,
 				D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */,
 				D422A08E2A8D527E00CFE3C5 /* SettingsViewController.swift in Sources */,
 				D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */,

@@ -11,11 +11,13 @@ import FirebaseAuth
 public protocol AuthenticationService {
     func createAuth(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void)
     func signIn(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void)
+    func signOut(completion: @escaping (Bool) -> Void)
 }
 
 public typealias AutenticationResult = Swift.Result<AuthResponse, AuthenticationError>
 public class AuthenticationServiceImpl: AuthenticationService {
-   
+    
+    private var TAG: String { String(describing: AuthenticationServiceImpl.self) }
     
     public func createAuth(request: AuthRequest, completion: @escaping (AutenticationResult) -> Void) {
         Auth.auth().createUser(withEmail: request.email, password: request.password) { [weak self] result, error in
@@ -28,6 +30,16 @@ public class AuthenticationServiceImpl: AuthenticationService {
         Auth.auth().signIn(withEmail: request.email, password: request.password) { [weak self] result, error in
             guard let self = self else { return }
             self.handleAutenticationResult(result, error, completion)
+        }
+    }
+    
+    public func signOut(completion: @escaping (Bool) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(true)
+        } catch {
+            LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
+            completion(false)
         }
     }
     

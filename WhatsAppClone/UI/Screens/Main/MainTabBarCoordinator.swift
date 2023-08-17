@@ -40,7 +40,7 @@ public class MainTabBarCoordinatorImpl: Coordinator {
     }
     
     private func makeSettingsViewController() -> SettingsViewController {
-        let viewController = SettingsViewController()
+        let viewController = SettingsFactory.build(navigation: self.navigation)
         viewController.tabBarItem.image = UIImage(named: "ajustes")
         viewController.title = "Ajustes"
         return viewController

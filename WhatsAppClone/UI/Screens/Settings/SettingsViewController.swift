@@ -7,7 +7,11 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+public protocol SettingsViewController where Self: UIViewController {
+    
+}
+
+class SettingsViewControllerImpl: UIViewController, SettingsViewController {
     
     private lazy var logoutButtonItem: UIBarButtonItem = {
       let item = UIBarButtonItem(
@@ -19,6 +23,8 @@ class SettingsViewController: UIViewController {
         item.tintColor = .systemRed
         return item
     }()
+    
+    public var presenter: SettingsPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +43,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func logoutButtonTapped() {
-        LogUtils.printMessage(tag: "SettingsViewController", message: "---> logoutButtonTapped")
+        self.presenter.logoutButtonAction()
     }
     
     /*
