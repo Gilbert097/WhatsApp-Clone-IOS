@@ -36,6 +36,22 @@ public class FirebaseAuthentication: AutenticationClient {
         }
     }
     
+    public func registerStateChangeListener(completion: @escaping AuthStateChangeClientListener) -> AuthListenerHandler {
+        let handler = Auth.auth().addStateDidChangeListener { (firAuth, user) in
+            if let user = user, let email = user.email {
+                completion(.init(name: user.uid, email: email))
+            } else {
+                completion(nil)
+            }
+        }
+        return FirebaseAuthListenerHandler(firebaseHandler: handler)
+    }
+    
+    public func removeStateChangeListener(handler: AuthListenerHandler) {
+        guard let handler = handler as? FirebaseAuthListenerHandler else { return }
+        Auth.auth().removeStateDidChangeListener(handler.firebaseHandler)
+    }
+    
     private func handleAutenticationResult(_ result: AuthDataResult?,
                                            _ error: Error?,
                                            _ completion: @escaping (AutenticationClientResult) -> Void) {

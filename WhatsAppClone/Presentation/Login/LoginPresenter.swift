@@ -34,9 +34,9 @@ public class LoginPresenterImpl: LoginPresenter {
     }
     
     public func start() {
-        authStateManager.registerStateDidChangeListener { [weak self] userId in
+        authStateManager.registerStateChangeListener { [weak self] isLogged in
             guard let self = self else { return }
-            if let _ = userId {
+            if isLogged {
                 LogUtils.printMessage(tag: self.TAG, message: "Logado")
                 self.coodinator.showMain()
             } else {
@@ -46,7 +46,7 @@ public class LoginPresenterImpl: LoginPresenter {
     }
     
     public func stop() {
-        authStateManager.removeStateDidChangeListener()
+        authStateManager.removeStateChangeListener()
     }
     
     public func linkButtonAction() {

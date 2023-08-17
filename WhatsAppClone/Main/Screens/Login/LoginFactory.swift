@@ -14,7 +14,7 @@ public final class LoginFactory {
         let viewController = LoginViewControllerImpl()
         let firebaseAuth = FirebaseAuthentication()
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
-        let authStateManager = AuthenticationStateManagerImpl()
+        let authStateManager = AuthenticationStateManagerImpl(authClient: firebaseAuth)
         let presenter = LoginPresenterImpl(view: viewController,
                                            coodinator: coordinator,
                                            authService: authService,
