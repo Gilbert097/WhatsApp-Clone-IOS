@@ -8,31 +8,31 @@
 import Foundation
 
 public protocol SignUpPresenter {
-    func signUp(request: SignUpRequest)
+    func signUpButtonAction(request: SignUpRequest)
 }
 
 public class SignUpPresenterImpl: SignUpPresenter {
    
     private weak var view: SignUpViewController?
     private let coodinator: SignUpCoordinator
-    private let authService: AuthenticationService
+    private let business: SignUpBusiness
     
     public init(view: SignUpViewController?,
                 coodinator: SignUpCoordinator,
-                authService: AuthenticationService) {
+                business: SignUpBusiness) {
         self.view = view
         self.coodinator = coodinator
-        self.authService = authService
+        self.business = business
     }
     
-    public func signUp(request: SignUpRequest) {
+    public func signUpButtonAction(request: SignUpRequest) {
         self.view?.display(viewModel: .init(isLoading: true))
-        self.authService.createAuth(model: .init(email: request.email, password: request.password)) { [weak self] authResult in
+        self.business.signUp(request: request) { [weak self] authResult in
             guard let self = self else { return }
             self.view?.display(viewModel: .init(isLoading: false))
             switch authResult {
-            case .success(let response):
-                self.view?.showMessage(viewModel: .init(title: "Sucesso", message: "Usuário cadastrado com sucesso!\n \(response.uid)", buttons: [.init(title: "Ok")]))
+            case .success():
+                self.view?.showMessage(viewModel: .init(title: "Sucesso", message: "Usuário cadastrado com sucesso!", buttons: [.init(title: "Ok")]))
             case .failure:
                 self.view?.showMessage(viewModel: .init(title: "Error", message: "Erro ao tentar cadastro!", buttons: [.init(title: "Ok")]))
             }

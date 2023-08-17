@@ -83,7 +83,7 @@ class SignUpViewControllerImpl: UIViewController {
         let request = SignUpRequest(name: nameField.text!,
                                     email: emailField.text!,
                                     password: passwordField.text!)
-        self.presenter.signUp(request: request)
+        self.presenter.signUpButtonAction(request: request)
     }
 }
 
