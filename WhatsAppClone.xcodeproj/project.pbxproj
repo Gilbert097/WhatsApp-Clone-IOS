@@ -35,6 +35,7 @@
 		D422A0BF2A8EBEB100CFE3C5 /* AuthListenerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0BE2A8EBEB100CFE3C5 /* AuthListenerHandler.swift */; };
 		D422A0C12A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C02A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift */; };
 		D422A0C32A8EC00200CFE3C5 /* UserAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C22A8EC00200CFE3C5 /* UserAuthClient.swift */; };
+		D422A0C52A8EC5AB00CFE3C5 /* MainTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -96,6 +97,7 @@
 		D422A0BE2A8EBEB100CFE3C5 /* AuthListenerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthListenerHandler.swift; sourceTree = "<group>"; };
 		D422A0C02A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthListenerHandler.swift; sourceTree = "<group>"; };
 		D422A0C22A8EC00200CFE3C5 /* UserAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthClient.swift; sourceTree = "<group>"; };
+		D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFactory.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				D422A0B42A8EBA1B00CFE3C5 /* Settings */,
 				D46359D42A85B92F006B16A9 /* MainTabBarCoordinator.swift */,
+				D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				D422A0AC2A8EB08000CFE3C5 /* AuthenticationError.swift in Sources */,
 				D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */,
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
+				D422A0C52A8EC5AB00CFE3C5 /* MainTabBarFactory.swift in Sources */,
 				D406A3C12A82C7890044D13D /* UIColor+.swift in Sources */,
 				D46359C02A851897006B16A9 /* AuthenticationClientError.swift in Sources */,
 				D422A0BD2A8EBCF000CFE3C5 /* SignUpError.swift in Sources */,
