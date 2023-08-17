@@ -9,12 +9,6 @@ import Foundation
 
 public typealias SignUpResult = Swift.Result<Void, SignUpError>
 
-public enum SignUpError: Error {
-    case createAuth
-    case createUser
-    case unexpected
-}
-
 public protocol SignUpBusiness {
     func signUp(request: SignUpRequest, completion: @escaping (SignUpResult) -> Void)
 }
@@ -37,5 +31,4 @@ class SignUpBusinessImpl: SignUpBusiness {
             }
         }
     }
-    
 }
