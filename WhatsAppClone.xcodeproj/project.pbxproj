@@ -467,12 +467,9 @@
 		D46359C82A85A636006B16A9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D422A08C2A8D526400CFE3C5 /* Settings */,
-				D46359D72A85B9D4006B16A9 /* Contacts */,
-				D46359D62A85B9BD006B16A9 /* Conversations */,
-				D46359D32A85B921006B16A9 /* MainTabBar */,
-				D46359A62A83CCEC006B16A9 /* SignUp */,
 				D406A3BB2A82C2470044D13D /* Login */,
+				D46359A62A83CCEC006B16A9 /* SignUp */,
+				D46359D32A85B921006B16A9 /* MainTabBar */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -480,6 +477,9 @@
 		D46359D32A85B921006B16A9 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				D422A08C2A8D526400CFE3C5 /* Settings */,
+				D46359D72A85B9D4006B16A9 /* Contacts */,
+				D46359D62A85B9BD006B16A9 /* Conversations */,
 				D46359DC2A85BFE3006B16A9 /* MainTabBarController.swift */,
 			);
 			path = MainTabBar;
