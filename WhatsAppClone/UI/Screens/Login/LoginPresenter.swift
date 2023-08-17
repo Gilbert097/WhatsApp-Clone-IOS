@@ -58,10 +58,8 @@ public class LoginPresenterImpl: LoginPresenter {
         self.authService.signIn(request: .init(email: request.email, password: request.password)) { [weak self] authResult in
             guard let self = self else { return }
             self.view?.display(viewModel: .init(isLoading: false))
-            switch authResult {
-            case .success:
-                self.coodinator.showMain()
-            case .failure:
+            
+            if case .failure = authResult {
                 self.view?.showMessage(viewModel: .init(title: "Error", message: "Erro ao tentar logar!", buttons: [.init(title: "Ok")]))
             }
         }
