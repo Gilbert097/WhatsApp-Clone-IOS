@@ -20,11 +20,11 @@
 		D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3CC2A82FD8D0044D13D /* PrimaryButton.swift */; };
 		D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406A3CE2A8304CC0044D13D /* TextButton.swift */; };
 		D422A08E2A8D527E00CFE3C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */; };
-		D422A0912A8D655300CFE3C5 /* AutenticationStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0902A8D655300CFE3C5 /* AutenticationStateService.swift */; };
 		D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */; };
 		D422A0962A8E6CBB00CFE3C5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0952A8E6CBB00CFE3C5 /* SettingsPresenter.swift */; };
 		D422A0982A8E6E7800CFE3C5 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0972A8E6E7800CFE3C5 /* SettingsCoordinator.swift */; };
 		D422A09A2A8E6F5500CFE3C5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0992A8E6F5500CFE3C5 /* SettingsFactory.swift */; };
+		D422A09D2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A09C2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -71,11 +71,11 @@
 		D406A3CC2A82FD8D0044D13D /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		D406A3CE2A8304CC0044D13D /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D422A0902A8D655300CFE3C5 /* AutenticationStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationStateService.swift; sourceTree = "<group>"; };
 		D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtils.swift; sourceTree = "<group>"; };
 		D422A0952A8E6CBB00CFE3C5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		D422A0972A8E6E7800CFE3C5 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		D422A0992A8E6F5500CFE3C5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		D422A09C2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStateManager.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -144,6 +144,7 @@
 		D406A3A52A82BC320044D13D /* WhatsAppClone */ = {
 			isa = PBXGroup;
 			children = (
+				D422A09B2A8EA29800CFE3C5 /* Managers */,
 				D422A0922A8D669F00CFE3C5 /* Utils */,
 				D46359BB2A8515D3006B16A9 /* Services */,
 				D406A3BA2A82C23D0044D13D /* UI */,
@@ -228,7 +229,7 @@
 		D422A08F2A8D653800CFE3C5 /* AutenticationState */ = {
 			isa = PBXGroup;
 			children = (
-				D422A0902A8D655300CFE3C5 /* AutenticationStateService.swift */,
+				D422A09C2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift */,
 			);
 			path = AutenticationState;
 			sourceTree = "<group>";
@@ -239,6 +240,14 @@
 				D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		D422A09B2A8EA29800CFE3C5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D422A08F2A8D653800CFE3C5 /* AutenticationState */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {
@@ -256,7 +265,6 @@
 		D46359BB2A8515D3006B16A9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D422A08F2A8D653800CFE3C5 /* AutenticationState */,
 				D46359BE2A851888006B16A9 /* Autentication */,
 			);
 			path = Services;
@@ -446,10 +454,10 @@
 			files = (
 				D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */,
 				D46359C22A8518B4006B16A9 /* AuthRequest.swift in Sources */,
-				D422A0912A8D655300CFE3C5 /* AutenticationStateService.swift in Sources */,
 				D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */,
 				D46359DD2A85BFE3006B16A9 /* MainTabBarController.swift in Sources */,
 				D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */,
+				D422A09D2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift in Sources */,
 				D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */,
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
 				D46359C62A8519FF006B16A9 /* SignUpRequest.swift in Sources */,

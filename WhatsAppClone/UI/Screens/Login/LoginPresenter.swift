@@ -21,20 +21,20 @@ public class LoginPresenterImpl: LoginPresenter {
     private weak var view: LoginViewController?
     private let coodinator: LoginCoordinator
     private let authService: AuthenticationService
-    private let authStateService: AuthenticationStateService
+    private let authStateManager: AuthenticationStateManager
     
     public init(view: LoginViewController?,
                 coodinator: LoginCoordinator,
                 authService: AuthenticationService,
-                authStateService: AuthenticationStateService) {
+                authStateManager: AuthenticationStateManager) {
         self.view = view
         self.coodinator = coodinator
         self.authService = authService
-        self.authStateService = authStateService
+        self.authStateManager = authStateManager
     }
     
     public func start() {
-        authStateService.registerStateDidChangeListener { [weak self] userId in
+        authStateManager.registerStateDidChangeListener { [weak self] userId in
             guard let self = self else { return }
             if let _ = userId {
                 LogUtils.printMessage(tag: self.TAG, message: "Logado")
@@ -46,7 +46,7 @@ public class LoginPresenterImpl: LoginPresenter {
     }
     
     public func stop() {
-        authStateService.removeStateDidChangeListener()
+        authStateManager.removeStateDidChangeListener()
     }
     
     public func linkButtonAction() {

@@ -1,23 +1,26 @@
 //
-//  AutenticationStateService.swift
+//  AuthenticationStateManager.swift
 //  WhatsAppClone
 //
-//  Created by Gilberto Silva on 16/08/23.
+//  Created by Gilberto Silva on 17/08/23.
 //
+
+import Foundation
+
 
 import Foundation
 import FirebaseAuth
 
 public typealias AuthStateListener = (String?) -> Void
 
-public protocol AuthenticationStateService {
+public protocol AuthenticationStateManager {
     func registerStateDidChangeListener(completion: @escaping AuthStateListener)
     func removeStateDidChangeListener()
 }
 
-public class AuthenticationStateServiceImpl: AuthenticationStateService {
+public class AuthenticationStateManagerImpl: AuthenticationStateManager {
     
-    private var TAG: String { String(describing: AuthenticationStateServiceImpl.self) }
+    private var TAG: String { String(describing: AuthenticationStateManagerImpl.self) }
     private var handler: AuthStateDidChangeListenerHandle?
     
     public func registerStateDidChangeListener(completion: @escaping AuthStateListener) {
