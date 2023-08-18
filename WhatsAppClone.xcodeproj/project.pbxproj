@@ -259,9 +259,9 @@
 		D422A08C2A8D526400CFE3C5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D422A0DB2A8FBFFA00CFE3C5 /* LinesTextView.swift */,
 				D422A0D92A8FB5CA00CFE3C5 /* HeaderInfoView.swift */,
 				D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */,
-				D422A0DB2A8FBFFA00CFE3C5 /* LinesTextView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
