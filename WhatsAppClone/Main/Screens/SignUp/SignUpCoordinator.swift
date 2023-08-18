@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 public protocol SignUpCoordinator: Coordinator {
+    func showMain()
 }
 
 public class SignUpCoordinatorImpl: SignUpCoordinator  {
@@ -17,6 +18,11 @@ public class SignUpCoordinatorImpl: SignUpCoordinator  {
     
     public init(navigation: NavigationController) {
         self.navigation = navigation
+    }
+    
+    public func showMain() {
+        let coordinator = MainTabBarCoordinatorImpl(navigation: self.navigation)
+        coordinator.show()
     }
     
     public func show() {

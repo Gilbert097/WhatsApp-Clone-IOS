@@ -32,7 +32,7 @@ public class SignUpPresenterImpl: SignUpPresenter {
             self.view?.display(viewModel: .init(isLoading: false))
             switch authResult {
             case .success():
-                self.view?.showMessage(viewModel: .init(title: "Sucesso", message: "Usuário cadastrado com sucesso!", buttons: [.init(title: "Ok")]))
+                self.coodinator.showMain()
             case .failure:
                 self.view?.showMessage(viewModel: .init(title: "Error", message: "Erro ao tentar cadastro!", buttons: [.init(title: "Ok")]))
             }
