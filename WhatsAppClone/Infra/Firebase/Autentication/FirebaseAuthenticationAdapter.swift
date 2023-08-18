@@ -1,5 +1,5 @@
 //
-//  FirebaseAuthentication.swift
+//  FirebaseAuthenticationAdapter.swift
 //  WhatsAppClone
 //
 //  Created by Gilberto Silva on 17/08/23.
@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-public class FirebaseAuthentication: AutenticationClient {
+public class FirebaseAuthenticationAdapter: AutenticationClient {
     
     private var TAG: String { String(describing: AuthenticationServiceImpl.self) }
     

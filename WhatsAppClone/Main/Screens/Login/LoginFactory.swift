@@ -12,7 +12,7 @@ public final class LoginFactory {
     
     public static func build(coordinator: LoginCoordinator) -> LoginViewController {
         let viewController = LoginViewControllerImpl()
-        let firebaseAuth = FirebaseAuthentication()
+        let firebaseAuth = FirebaseAuthenticationAdapter()
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
         let authStateManager = AuthenticationStateManagerImpl(authClient: firebaseAuth)
         let presenter = LoginPresenterImpl(view: viewController,

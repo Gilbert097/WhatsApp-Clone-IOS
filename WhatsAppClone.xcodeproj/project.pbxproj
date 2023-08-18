@@ -27,7 +27,7 @@
 		D422A09D2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A09C2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift */; };
 		D422A0A02A8EA42500CFE3C5 /* AutenticationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A09F2A8EA42500CFE3C5 /* AutenticationClient.swift */; };
 		D422A0A22A8EAA6E00CFE3C5 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0A12A8EAA6E00CFE3C5 /* AuthModel.swift */; };
-		D422A0A82A8EAC9400CFE3C5 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0A72A8EAC9400CFE3C5 /* FirebaseAuthentication.swift */; };
+		D422A0A82A8EAC9400CFE3C5 /* FirebaseAuthenticationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0A72A8EAC9400CFE3C5 /* FirebaseAuthenticationAdapter.swift */; };
 		D422A0AA2A8EB01900CFE3C5 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0A92A8EB01900CFE3C5 /* AuthResponse.swift */; };
 		D422A0AC2A8EB08000CFE3C5 /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0AB2A8EB08000CFE3C5 /* AuthenticationError.swift */; };
 		D422A0AE2A8EB4B800CFE3C5 /* SignUpBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0AD2A8EB4B800CFE3C5 /* SignUpBusiness.swift */; };
@@ -36,6 +36,7 @@
 		D422A0C12A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C02A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift */; };
 		D422A0C32A8EC00200CFE3C5 /* UserAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C22A8EC00200CFE3C5 /* UserAuthClient.swift */; };
 		D422A0C52A8EC5AB00CFE3C5 /* MainTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */; };
+		D422A0C92A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -89,7 +90,7 @@
 		D422A09C2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStateManager.swift; sourceTree = "<group>"; };
 		D422A09F2A8EA42500CFE3C5 /* AutenticationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticationClient.swift; sourceTree = "<group>"; };
 		D422A0A12A8EAA6E00CFE3C5 /* AuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		D422A0A72A8EAC9400CFE3C5 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
+		D422A0A72A8EAC9400CFE3C5 /* FirebaseAuthenticationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationAdapter.swift; sourceTree = "<group>"; };
 		D422A0A92A8EB01900CFE3C5 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		D422A0AB2A8EB08000CFE3C5 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		D422A0AD2A8EB4B800CFE3C5 /* SignUpBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBusiness.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		D422A0C02A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthListenerHandler.swift; sourceTree = "<group>"; };
 		D422A0C22A8EC00200CFE3C5 /* UserAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthClient.swift; sourceTree = "<group>"; };
 		D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFactory.swift; sourceTree = "<group>"; };
+		D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreAdapter.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -309,8 +311,8 @@
 		D422A0A62A8EAC8600CFE3C5 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				D422A0A72A8EAC9400CFE3C5 /* FirebaseAuthentication.swift */,
-				D422A0C02A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift */,
+				D422A0C72A8EFDB900CFE3C5 /* Firestore */,
+				D422A0C62A8EFDAD00CFE3C5 /* Autentication */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -430,6 +432,23 @@
 				D46359AB2A83D8E7006B16A9 /* Coordinator.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D422A0C62A8EFDAD00CFE3C5 /* Autentication */ = {
+			isa = PBXGroup;
+			children = (
+				D422A0A72A8EAC9400CFE3C5 /* FirebaseAuthenticationAdapter.swift */,
+				D422A0C02A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift */,
+			);
+			path = Autentication;
+			sourceTree = "<group>";
+		};
+		D422A0C72A8EFDB900CFE3C5 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */,
+			);
+			path = Firestore;
 			sourceTree = "<group>";
 		};
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {
@@ -649,6 +668,7 @@
 				D46359C02A851897006B16A9 /* AuthenticationClientError.swift in Sources */,
 				D422A0BD2A8EBCF000CFE3C5 /* SignUpError.swift in Sources */,
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
+				D422A0C92A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift in Sources */,
 				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
 				D46359D92A85BC9F006B16A9 /* ConversationsViewController.swift in Sources */,
 				D422A0962A8E6CBB00CFE3C5 /* SettingsPresenter.swift in Sources */,
@@ -661,7 +681,7 @@
 				D46359CA2A85A668006B16A9 /* ScreenLoadingView.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
 				D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */,
-				D422A0A82A8EAC9400CFE3C5 /* FirebaseAuthentication.swift in Sources */,
+				D422A0A82A8EAC9400CFE3C5 /* FirebaseAuthenticationAdapter.swift in Sources */,
 				D422A0C32A8EC00200CFE3C5 /* UserAuthClient.swift in Sources */,
 				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
 				D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */,
