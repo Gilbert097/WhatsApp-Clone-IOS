@@ -24,11 +24,14 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
         return item
     }()
     
+    private let headerView = HeaderInfoView()
+    
     public var presenter: SettingsPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .orange
+        
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,15 +48,24 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
     @objc private func logoutButtonTapped() {
         self.presenter.logoutButtonAction()
     }
+}
+
+// MARK: - ViewCode
+extension SettingsViewControllerImpl: ViewCode {
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func setupViewHierarchy() {
+        self.view.addSubviews([headerView])
+    }
     
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+    }
+    
+    func setupAdditionalConfiguration() {
+        self.view.backgroundColor = .orange
+    }
 }
