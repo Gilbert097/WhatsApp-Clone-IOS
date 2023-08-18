@@ -37,7 +37,17 @@ public class TextButton: UIButton {
             config.baseBackgroundColor = .clear
             config.baseForegroundColor = .white
             self.configuration = config
+        } else {
+            self.backgroundColor = .clear
+            self.setTitleColor(.white, for: .normal)
         }
     }
     
+    public func changeTextColor(color: UIColor) {
+        if #available(iOS 15.0, *) {
+            self.configuration?.baseForegroundColor = color
+        } else {
+            self.setTitleColor(color, for: .normal)
+        }
+    }
 }

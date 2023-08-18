@@ -64,8 +64,4 @@ extension SettingsViewControllerImpl: ViewCode {
             self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
-    
-    func setupAdditionalConfiguration() {
-        self.view.backgroundColor = .orange
-    }
 }
