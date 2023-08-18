@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-public typealias DatabaseCreateResult = Swift.Result<Void, Error>
+public typealias DatabaseCreateResult = Swift.Result<Void, DatabaseClientError>
 
 public protocol DatabaseClient {
     func create(query: DatabaseQuery, completion: @escaping (DatabaseCreateResult) -> Void)
@@ -30,7 +30,7 @@ class FirebaseFirestoreAdapter: DatabaseClient {
                     completion(.success(()))
                 } else if let error = error {
                     LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
-                    completion(.failure(error))
+                    completion(.failure(.createError))
                 }
             }
     }
