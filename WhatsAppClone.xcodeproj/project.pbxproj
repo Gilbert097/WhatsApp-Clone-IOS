@@ -37,6 +37,8 @@
 		D422A0C32A8EC00200CFE3C5 /* UserAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C22A8EC00200CFE3C5 /* UserAuthClient.swift */; };
 		D422A0C52A8EC5AB00CFE3C5 /* MainTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */; };
 		D422A0C92A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */; };
+		D422A0CB2A8F009D00CFE3C5 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0CA2A8F009D00CFE3C5 /* Data+.swift */; };
+		D422A0CD2A8F036700CFE3C5 /* DatabaseQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0CC2A8F036700CFE3C5 /* DatabaseQuery.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -100,6 +102,8 @@
 		D422A0C22A8EC00200CFE3C5 /* UserAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthClient.swift; sourceTree = "<group>"; };
 		D422A0C42A8EC5AB00CFE3C5 /* MainTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFactory.swift; sourceTree = "<group>"; };
 		D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreAdapter.swift; sourceTree = "<group>"; };
+		D422A0CA2A8F009D00CFE3C5 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		D422A0CC2A8F036700CFE3C5 /* DatabaseQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseQuery.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */,
+				D422A0CA2A8F009D00CFE3C5 /* Data+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */,
+				D422A0CC2A8F036700CFE3C5 /* DatabaseQuery.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -651,6 +657,7 @@
 				D422A0AE2A8EB4B800CFE3C5 /* SignUpBusiness.swift in Sources */,
 				D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */,
 				D422A0A22A8EAA6E00CFE3C5 /* AuthModel.swift in Sources */,
+				D422A0CB2A8F009D00CFE3C5 /* Data+.swift in Sources */,
 				D46359C22A8518B4006B16A9 /* AuthClientRequest.swift in Sources */,
 				D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */,
 				D46359DD2A85BFE3006B16A9 /* MainTabBarController.swift in Sources */,
@@ -690,6 +697,7 @@
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
 				D46359B22A84276C006B16A9 /* SignUpFactory.swift in Sources */,
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
+				D422A0CD2A8F036700CFE3C5 /* DatabaseQuery.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
 				D422A09A2A8E6F5500CFE3C5 /* SettingsFactory.swift in Sources */,
 				D422A0982A8E6E7800CFE3C5 /* SettingsCoordinator.swift in Sources */,

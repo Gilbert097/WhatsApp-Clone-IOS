@@ -8,17 +8,32 @@
 import Foundation
 import FirebaseFirestore
 
-class FirebaseFirestoreAdapter {
-    
-    
-//    public func create() {
-//        Firestore
-//            .firestore()
-//            .collection("usuarios")
-//            .document("user-id")
-//            .setData(<#T##documentData: [String : Any]##[String : Any]#>) { error in
-//                <#code#>
-//            }
-//    }
-//    
+public typealias DatabaseCreateResult = Swift.Result<Void, Error>
+
+public protocol DatabaseClient {
+    func create(query: DatabaseQuery, completion: @escaping (DatabaseCreateResult) -> Void)
 }
+
+class FirebaseFirestoreAdapter: DatabaseClient {
+    
+    private var TAG: String { String(describing: FirebaseFirestoreAdapter.self) }
+    
+    public func create(query: DatabaseQuery, completion: @escaping (DatabaseCreateResult) -> Void) {
+        guard let data = query.data.toJson() else { return }
+        Firestore
+            .firestore()
+            .collection(query.path)
+            .document(query.item)
+            .setData(data) { [weak self] error in
+                guard let self = self else { return }
+                if error == nil {
+                    completion(.success(()))
+                } else if let error = error {
+                    LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+}
+
