@@ -18,11 +18,13 @@ public class SettingsPresenterImpl: NSObject, SettingsPresenter {
     
     private weak var view: SettingsViewController?
     private let authService: AuthenticationService
+    private let profilePictureService: ProfilePictureService
     private let coordinator: SettingsCoordinator
     
-    public init(view: SettingsViewController?, authService: AuthenticationService, coordinator: SettingsCoordinator) {
+    public init(view: SettingsViewController?, authService: AuthenticationService, profilePictureService: ProfilePictureService, coordinator: SettingsCoordinator) {
         self.view = view
         self.authService = authService
+        self.profilePictureService = profilePictureService
         self.coordinator = coordinator
     }
     
@@ -44,5 +46,9 @@ extension SettingsPresenterImpl: ImagePickerDelegate {
     
     public func didSelect(data: Data) {
         self.view?.showImage(data: data)
+        
+        self.profilePictureService.updload(imageData: data) { result in
+            
+        }
     }
 }
