@@ -9,9 +9,12 @@ import Foundation
 
 public protocol SettingsPresenter {
     func logoutButtonAction()
+    func selectButtonAction()
 }
 
-public class SettingsPresenterImpl: SettingsPresenter {
+public class SettingsPresenterImpl: NSObject, SettingsPresenter {
+    
+    private var TAG: String { String(describing: SettingsPresenterImpl.self) }
     
     private weak var view: SettingsViewController?
     private let authService: AuthenticationService
@@ -29,5 +32,17 @@ public class SettingsPresenterImpl: SettingsPresenter {
                 self?.coordinator.backToLogin()
             }
         }
+    }
+    
+    public func selectButtonAction() {
+        self.coordinator.showImagePicker()
+    }
+}
+
+// MARK: - ImagePickerDelegate
+extension SettingsPresenterImpl: ImagePickerDelegate {
+    
+    public func didSelect(data: Data) {
+        LogUtils.printMessage(tag: TAG, message: "Image selected!")
     }
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+public protocol HeaderInfoViewDelegate: NSObject {
+    func didSelectButtonTapped()
+}
+
 public class HeaderInfoView: UIView {
     
     private let mainStack: UIStackView = {
@@ -30,20 +34,31 @@ public class HeaderInfoView: UIView {
     
     private let linesTextView = LinesTextView()
     
-    private let selectButton: TextButton = {
-        let view = TextButton(title: "Escolher imagem")
-        view.changeTextColor(color: .systemBlue)
-        return view
-    }()
+//    private lazy var selectButton: TextButton = {
+//        let view = TextButton(title: "Escolher imagem")
+//        view.changeTextColor(color: .systemBlue)
+//        return view
+//    }()
+    
+    public weak var delegate: HeaderInfoViewDelegate?
     
     public init() {
-         super.init(frame: .zero)
-         setupView()
-     }
-     
-     required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
+        super.init(frame: .zero)
+        setupView()
+        //configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+//    private func configure() {
+//        self.selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+//    }
+//    
+//    @objc private func selectButtonTapped() {
+//        self.delegate?.didSelectButtonTapped()
+//    }
     
 }
 
@@ -53,7 +68,7 @@ extension HeaderInfoView: ViewCode {
     func setupViewHierarchy() {
         mainStack.addArrangedSubview(imageView)
         mainStack.addArrangedSubview(linesTextView)
-        self.addSubviews([mainStack, selectButton])
+        self.addSubviews([mainStack])
     }
     
     func setupConstraints() {
@@ -70,11 +85,16 @@ extension HeaderInfoView: ViewCode {
             self.imageView.widthAnchor.constraint(equalToConstant: 120)
         ])
         
-        // selectButton
         NSLayoutConstraint.activate([
-            self.selectButton.topAnchor.constraint(equalTo: self.mainStack.bottomAnchor, constant: 10),
-            self.selectButton.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+            self.heightAnchor.constraint(equalToConstant: 120)
         ])
+        
+        // selectButton
+//        NSLayoutConstraint.activate([
+//            self.selectButton.topAnchor.constraint(equalTo: self.mainStack.bottomAnchor, constant: 10),
+//            self.selectButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            self.selectButton.heightAnchor.constraint(equalToConstant: 30),
+//        ])
     }
     
     func setupAdditionalConfiguration() {

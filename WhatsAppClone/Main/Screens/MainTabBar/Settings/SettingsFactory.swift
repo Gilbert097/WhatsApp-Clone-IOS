@@ -13,10 +13,15 @@ public final class SettingsFactory {
         let viewController = SettingsViewControllerImpl()
         let firebaseAuth = FirebaseAuthenticationAdapter()
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
-        let coordinator = SettingsCoordinatorImpl(navigation: navigation)
+        
+        let imagePickerManager = ImagePickerManager(presentationController: viewController)
+        let coordinator = SettingsCoordinatorImpl(navigation: navigation, imagePickerManager: imagePickerManager)
+        
         let presenter = SettingsPresenterImpl(view: viewController,
                                               authService: authService,
                                               coordinator: coordinator)
+        
+        imagePickerManager.delegate = presenter
         viewController.presenter = presenter
         return viewController
     }
