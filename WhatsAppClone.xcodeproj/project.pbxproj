@@ -336,6 +336,7 @@
 		D422A0A62A8EAC8600CFE3C5 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				D422A0E02A91510400CFE3C5 /* Storage */,
 				D422A0C72A8EFDB900CFE3C5 /* Firestore */,
 				D422A0C62A8EFDAD00CFE3C5 /* Autentication */,
 			);
@@ -493,6 +494,13 @@
 				D422A0DE2A904AF900CFE3C5 /* ImagePickerManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		D422A0E02A91510400CFE3C5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {

@@ -34,10 +34,12 @@ extension ImagePickerManager: UIImagePickerControllerDelegate {
     
     public func imagePickerController(_ picker: UIImagePickerController,
                                       didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        self.presentationController?.dismiss(animated: true)
-        if let imageSelected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-           let data = imageSelected.jpegData(compressionQuality: 3.0) {
-            self.delegate?.didSelect(data: data)
+        self.presentationController?.dismiss(animated: true)  { [weak self] in
+            guard let self = self else { return }
+            if let imageSelected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+               let data = imageSelected.jpegData(compressionQuality: 3.0) {
+                self.delegate?.didSelect(data: data)
+            }
         }
     }
 }
