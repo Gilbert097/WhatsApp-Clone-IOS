@@ -25,6 +25,7 @@ class ImagePickerManager: NSObject {
     }
     
     public func present() {
+        self.pickerController.delegate = self
         self.presentationController?.present(self.pickerController, animated: true)
     }
 }
@@ -33,6 +34,7 @@ extension ImagePickerManager: UIImagePickerControllerDelegate {
     
     public func imagePickerController(_ picker: UIImagePickerController,
                                       didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        self.presentationController?.dismiss(animated: true)
         if let imageSelected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
            let data = imageSelected.jpegData(compressionQuality: 3.0) {
             self.delegate?.didSelect(data: data)

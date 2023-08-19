@@ -25,19 +25,12 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
     }()
     
     private let headerView = HeaderInfoView()
-    
-    private lazy var selectButton: TextButton = {
-        let view = TextButton(title: "Escolher imagem")
-        view.changeTextColor(color: .systemBlue)
-        return view
-    }()
-    
+
     public var presenter: SettingsPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,15 +43,7 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
         super.viewWillDisappear(animated)
         self.parent?.navigationItem.rightBarButtonItem = nil
     }
-    
-    private func configure() {
-        self.selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc private func selectButtonTapped() {
-        self.presenter.selectButtonAction()
-    }
-    
+  
     @objc private func logoutButtonTapped() {
         self.presenter.logoutButtonAction()
     }
@@ -68,7 +53,7 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
 extension SettingsViewControllerImpl: ViewCode {
     
     func setupViewHierarchy() {
-        self.view.addSubviews([headerView, selectButton])
+        self.view.addSubviews([headerView])
     }
     
     func setupConstraints() {
@@ -77,17 +62,10 @@ extension SettingsViewControllerImpl: ViewCode {
             self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
-        
-        // selectButton
-        NSLayoutConstraint.activate([
-            self.selectButton.topAnchor.constraint(equalTo: self.headerView.bottomAnchor, constant: 10),
-            self.selectButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.selectButton.heightAnchor.constraint(equalToConstant: 30),
-        ])
     }
     
     func setupAdditionalConfiguration() {
-        //self.headerView.delegate = self
+        self.headerView.delegate = self
     }
 }
 

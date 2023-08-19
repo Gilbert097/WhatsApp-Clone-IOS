@@ -34,31 +34,32 @@ public class HeaderInfoView: UIView {
     
     private let linesTextView = LinesTextView()
     
-//    private lazy var selectButton: TextButton = {
-//        let view = TextButton(title: "Escolher imagem")
-//        view.changeTextColor(color: .systemBlue)
-//        return view
-//    }()
+    private lazy var selectButton: TextButton = {
+        let view = TextButton(title: "Escolher imagem")
+        view.changeTextColor(color: .systemBlue)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
     
     public weak var delegate: HeaderInfoViewDelegate?
     
     public init() {
         super.init(frame: .zero)
         setupView()
-        //configure()
+        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    private func configure() {
-//        self.selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-//    }
-//    
-//    @objc private func selectButtonTapped() {
-//        self.delegate?.didSelectButtonTapped()
-//    }
+    private func configure() {
+        self.selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func selectButtonTapped() {
+        self.delegate?.didSelectButtonTapped()
+    }
     
 }
 
@@ -68,7 +69,7 @@ extension HeaderInfoView: ViewCode {
     func setupViewHierarchy() {
         mainStack.addArrangedSubview(imageView)
         mainStack.addArrangedSubview(linesTextView)
-        self.addSubviews([mainStack])
+        self.addSubviews([mainStack, selectButton])
     }
     
     func setupConstraints() {
@@ -84,21 +85,21 @@ extension HeaderInfoView: ViewCode {
             self.imageView.heightAnchor.constraint(equalToConstant: 120),
             self.imageView.widthAnchor.constraint(equalToConstant: 120)
         ])
-        
-        NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 120)
-        ])
+    
         
         // selectButton
-//        NSLayoutConstraint.activate([
-//            self.selectButton.topAnchor.constraint(equalTo: self.mainStack.bottomAnchor, constant: 10),
-//            self.selectButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            self.selectButton.heightAnchor.constraint(equalToConstant: 30),
-//        ])
+        NSLayoutConstraint.activate([
+            self.selectButton.topAnchor.constraint(equalTo: self.mainStack.bottomAnchor, constant: 10),
+            self.selectButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.selectButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.selectButton.heightAnchor.constraint(equalToConstant: 30),
+            //self.selectButton.widthAnchor.constraint(equalToConstant: 150)
+        ])
     }
     
     func setupAdditionalConfiguration() {
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.isUserInteractionEnabled = true
     }
     
 }
