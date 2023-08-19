@@ -32,6 +32,7 @@ public class AuthenticationStateManagerImpl: AuthenticationStateManager {
             LogUtils.printMessage(tag: self.TAG, message: "----> Received state did change <----")
             if let user = user {
                 LogUtils.printMessage(tag: self.TAG, message: "User logged \(user.email).")
+                UserSession.shared.save(user: .init(userAuth: user))
                 completion(true)
             } else {
                 LogUtils.printMessage(tag: self.TAG, message: "No users logged in!")
@@ -44,5 +45,14 @@ public class AuthenticationStateManagerImpl: AuthenticationStateManager {
         guard let handler = self.handler else { return }
         LogUtils.printMessage(tag: TAG, message: "----> Remove state did change listener <----")
         self.authClient.removeStateChangeListener(handler: handler)
+    }
+}
+
+// MARK: UserApp
+private extension UserApp {
+    init(userAuth: UserAuthClient) {
+        self.id = userAuth.id
+        self.name = userAuth.name
+        self.email = userAuth.email
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: Codable {
+public struct UserApp: Codable {
     public let id: String
     public let name: String
     public let email: String
@@ -20,24 +20,21 @@ public struct UserSession {
     static let shared = UserSession()
     private init() { }
     
-    func save(user: User) -> Bool {
+    func save(user: UserApp) {
         do {
             let encoder = JSONEncoder()
             let userEncoded = try encoder.encode(user)
             UserDefaults.standard.set(userEncoded, forKey: UserSession.CURRENT_USER_KEY)
         } catch let error {
             print(error.localizedDescription)
-            return false
         }
-        
-        return true
     }
     
-    func read() -> User? {
+    func read() -> UserApp? {
         do {
             if let userRecovered = UserDefaults.standard.value(forKey: UserSession.CURRENT_USER_KEY) as? Data {
                 let decoder = JSONDecoder()
-                let userDecoded = try decoder.decode(User.self, from: userRecovered) as User
+                let userDecoded = try decoder.decode(UserApp.self, from: userRecovered) as UserApp
                 return userDecoded
             }
         } catch let error {

@@ -39,7 +39,7 @@ public class FirebaseAuthenticationAdapter: AutenticationClient {
     public func registerStateChangeListener(completion: @escaping AuthStateChangeClientListener) -> AuthListenerHandler {
         let handler = Auth.auth().addStateDidChangeListener { (firAuth, user) in
             if let user = user, let email = user.email {
-                completion(.init(name: user.uid, email: email))
+                completion(.init(id: user.uid, name: user.displayName ?? .init(), email: email))
             } else {
                 completion(nil)
             }

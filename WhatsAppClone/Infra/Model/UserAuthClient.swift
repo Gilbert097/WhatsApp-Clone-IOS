@@ -8,6 +8,7 @@
 import Foundation
 
 public struct UserAuthClient {
+    public let id: String
     public let name: String
     public let email: String
 }
