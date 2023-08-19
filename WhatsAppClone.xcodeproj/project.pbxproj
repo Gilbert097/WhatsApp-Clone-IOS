@@ -47,6 +47,7 @@
 		D422A0DA2A8FB5CA00CFE3C5 /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0D92A8FB5CA00CFE3C5 /* HeaderInfoView.swift */; };
 		D422A0DC2A8FBFFA00CFE3C5 /* LinesTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0DB2A8FBFFA00CFE3C5 /* LinesTextView.swift */; };
 		D422A0DF2A904AF900CFE3C5 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0DE2A904AF900CFE3C5 /* ImagePickerManager.swift */; };
+		D422A0E32A915A5A00CFE3C5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0E22A915A5A00CFE3C5 /* UserSession.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -120,6 +121,7 @@
 		D422A0D92A8FB5CA00CFE3C5 /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
 		D422A0DB2A8FBFFA00CFE3C5 /* LinesTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesTextView.swift; sourceTree = "<group>"; };
 		D422A0DE2A904AF900CFE3C5 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		D422A0E22A915A5A00CFE3C5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -261,8 +263,7 @@
 		D422A08C2A8D526400CFE3C5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				D422A0DB2A8FBFFA00CFE3C5 /* LinesTextView.swift */,
-				D422A0D92A8FB5CA00CFE3C5 /* HeaderInfoView.swift */,
+				D422A0E12A91538F00CFE3C5 /* Components */,
 				D422A08D2A8D527E00CFE3C5 /* SettingsViewController.swift */,
 			);
 			path = Settings;
@@ -282,6 +283,7 @@
 				D422A0932A8D66BC00CFE3C5 /* LogUtils.swift */,
 				D422A0CA2A8F009D00CFE3C5 /* Data+.swift */,
 				D422A0D62A8F05CA00CFE3C5 /* Model.swift */,
+				D422A0E22A915A5A00CFE3C5 /* UserSession.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -501,6 +503,15 @@
 			children = (
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		D422A0E12A91538F00CFE3C5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D422A0DB2A8FBFFA00CFE3C5 /* LinesTextView.swift */,
+				D422A0D92A8FB5CA00CFE3C5 /* HeaderInfoView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {
@@ -753,6 +764,7 @@
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D422A0CD2A8F036700CFE3C5 /* DatabaseQuery.swift in Sources */,
 				D406A3C62A82F3AB0044D13D /* ViewCode.swift in Sources */,
+				D422A0E32A915A5A00CFE3C5 /* UserSession.swift in Sources */,
 				D422A09A2A8E6F5500CFE3C5 /* SettingsFactory.swift in Sources */,
 				D422A0982A8E6E7800CFE3C5 /* SettingsCoordinator.swift in Sources */,
 				D46359B02A84174F006B16A9 /* LoginFactory.swift in Sources */,
