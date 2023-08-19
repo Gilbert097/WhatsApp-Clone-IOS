@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol SettingsViewController where Self: UIViewController {
-    
+    func showImage(data: Data)
 }
 
 class SettingsViewControllerImpl: UIViewController, SettingsViewController {
@@ -42,6 +42,11 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.parent?.navigationItem.rightBarButtonItem = nil
+    }
+    
+    public func showImage(data: Data) {
+        guard let image = UIImage(data: data) else { return }
+        self.headerView.setImage(image: image)
     }
   
     @objc private func logoutButtonTapped() {

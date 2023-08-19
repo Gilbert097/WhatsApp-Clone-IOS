@@ -26,7 +26,7 @@ public class HeaderInfoView: UIView {
     private let imageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "imagem-perfil"))
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 60
         view.clipsToBounds = true
         return view
@@ -51,6 +51,10 @@ public class HeaderInfoView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func setImage(image: UIImage) {
+        imageView.image = image
     }
     
     private func configure() {

@@ -43,6 +43,6 @@ public class SettingsPresenterImpl: NSObject, SettingsPresenter {
 extension SettingsPresenterImpl: ImagePickerDelegate {
     
     public func didSelect(data: Data) {
-        LogUtils.printMessage(tag: TAG, message: "Image selected!")
+        self.view?.showImage(data: data)
     }
 }
