@@ -11,14 +11,19 @@ public final class SettingsFactory {
     
     public static func build(navigation: NavigationController) -> SettingsViewController {
         let viewController = SettingsViewControllerImpl()
+        
         let firebaseAuth = FirebaseAuthenticationAdapter()
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
+        
+        let firebaseStorage = FirebaseStorageAdapter()
+        let profilePictureService = ProfilePictureServiceImpl(storageClient: firebaseStorage)
         
         let imagePickerManager = ImagePickerManager(presentationController: viewController)
         let coordinator = SettingsCoordinatorImpl(navigation: navigation, imagePickerManager: imagePickerManager)
         
         let presenter = SettingsPresenterImpl(view: viewController,
                                               authService: authService,
+                                              profilePictureService: profilePictureService,
                                               coordinator: coordinator)
         
         imagePickerManager.delegate = presenter

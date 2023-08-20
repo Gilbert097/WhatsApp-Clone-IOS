@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol SettingsViewController where Self: UIViewController {
+public protocol SettingsViewController: LoadingView, AlertView  where Self: UIViewController {
     func showImage(data: Data)
 }
 
-class SettingsViewControllerImpl: UIViewController, SettingsViewController {
+class SettingsViewControllerImpl: UIViewController {
     
     private lazy var logoutButtonItem: UIBarButtonItem = {
       let item = UIBarButtonItem(
@@ -25,7 +25,8 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
     }()
     
     private let headerView = HeaderInfoView()
-
+    private let loadingView = ScreenLoadingView()
+    
     public var presenter: SettingsPresenter!
     
     override func viewDidLoad() {
@@ -58,14 +59,24 @@ class SettingsViewControllerImpl: UIViewController, SettingsViewController {
 extension SettingsViewControllerImpl: ViewCode {
     
     func setupViewHierarchy() {
-        self.view.addSubviews([headerView])
+        self.view.addSubviews([headerView, loadingView])
     }
     
     func setupConstraints() {
+        let safeArea = self.view.safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.headerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+        
+        // loadingView
+        NSLayoutConstraint.activate([
+            self.loadingView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.loadingView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.loadingView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.loadingView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
     }
     
@@ -79,5 +90,19 @@ extension SettingsViewControllerImpl: HeaderInfoViewDelegate {
     
     func didSelectButtonTapped() {
         self.presenter.selectButtonAction()
+    }
+}
+
+// MARK: - SettingsViewController
+extension SettingsViewControllerImpl: SettingsViewController {
+    
+    public func display(viewModel: LoadingViewModel) {
+        self.loadingView.isHidden = !viewModel.isLoading
+        self.loadingView.display(viewModel: viewModel)
+    }
+    
+    public func showMessage(viewModel: AlertViewModel) {
+        let alert = AlertFactory.build(viewModel: viewModel)
+        present(alert, animated: true)
     }
 }

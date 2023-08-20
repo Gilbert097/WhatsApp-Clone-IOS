@@ -16,7 +16,7 @@ public protocol ProfilePictureService {
     func updload(imageData: Data, completion: @escaping (ProfilePictureServiceUploadResult) -> Void)
 }
 
-class ProfilePictureServiceImpl {
+class ProfilePictureServiceImpl: ProfilePictureService {
     
     private let storageClient: StorageClient
     

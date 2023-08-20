@@ -19,6 +19,8 @@ public protocol StorageClient {
 
 class FirebaseStorageAdapter: StorageClient {
     
+    private var TAG: String { String(describing: FirebaseStorageAdapter.self) }
+    
     public func upload(query: StorageQuery, completion: @escaping (StorageUploadResult) -> Void) {
         
         let rooReference = Storage
@@ -28,10 +30,12 @@ class FirebaseStorageAdapter: StorageClient {
         let (childReference, child) = findChild(query: query, root: rooReference)
         
         childReference
-            .putData(child.value!, metadata: nil) { metadata, error in
+            .putData(child.value!, metadata: nil) { [weak self] metadata, error in
+                guard let self = self else { return }
                 if error == nil {
                     completion(.success(()))
-                } else {
+                } else if let error = error {
+                    LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
                     completion(.failure(.uploadError))
                 }
             }
@@ -41,8 +45,8 @@ class FirebaseStorageAdapter: StorageClient {
         guard let child = query.child else { return (root, query) }
         let childPath = root.child(child.path)
         
-        if let subChild = child.child {
-            return findChild(query: query, root: childPath)
+        if child.hasChild()  {
+            return findChild(query: child, root: childPath)
         } else {
             return (childPath, child)
         }
@@ -60,4 +64,6 @@ public class StorageQuery {
         self.value = value
         self.child = child
     }
+    
+    public func hasChild() -> Bool { self.child != nil }
 }
