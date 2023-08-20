@@ -26,6 +26,7 @@ class FirebaseStorageAdapter: StorageClient {
         let rooReference = Storage
             .storage()
             .reference()
+            .child(query.path)
         
         let (childReference, child) = findChild(query: query, root: rooReference)
         
