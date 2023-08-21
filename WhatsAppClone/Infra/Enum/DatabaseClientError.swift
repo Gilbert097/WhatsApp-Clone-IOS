@@ -9,4 +9,5 @@ import Foundation
 
 public enum DatabaseClientError: Error {
     case createError
+    case valueNotFound
 }

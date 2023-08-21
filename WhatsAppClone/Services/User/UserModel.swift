@@ -12,3 +12,11 @@ public struct UserModel: Model {
     public let name: String
     public let email: String
 }
+
+public extension UserApp {
+    init(model: UserModel) {
+        self.id = model.id
+        self.name = model.name
+        self.email = model.email
+    }
+}

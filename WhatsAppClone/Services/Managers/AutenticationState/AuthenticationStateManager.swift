@@ -7,7 +7,11 @@
 
 import Foundation
 
-public typealias AuthStateListener = (Bool) -> Void
+public typealias AuthStateListener = (AuthStateResponse?) -> Void
+
+public struct AuthStateResponse {
+    public let userId: String
+}
 
 public protocol AuthenticationStateManager {
     func registerStateChangeListener(completion: @escaping AuthStateListener)
@@ -32,11 +36,10 @@ public class AuthenticationStateManagerImpl: AuthenticationStateManager {
             LogUtils.printMessage(tag: self.TAG, message: "----> Received state did change <----")
             if let user = user {
                 LogUtils.printMessage(tag: self.TAG, message: "User logged \(user.email).")
-                UserSession.shared.save(user: .init(userAuth: user))
-                completion(true)
+                completion(.init(userId: user.id))
             } else {
                 LogUtils.printMessage(tag: self.TAG, message: "No users logged in!")
-                completion(false)
+                completion(nil)
             }
         }
     }
@@ -48,11 +51,3 @@ public class AuthenticationStateManagerImpl: AuthenticationStateManager {
     }
 }
 
-// MARK: UserApp
-private extension UserApp {
-    init(userAuth: UserAuthClient) {
-        self.id = userAuth.id
-        self.name = userAuth.name
-        self.email = userAuth.email
-    }
-}

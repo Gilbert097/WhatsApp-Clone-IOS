@@ -8,23 +8,25 @@
 import Foundation
 
 public typealias CreateUserResult = Swift.Result<Void, UserServiceError>
+public typealias RetrieveUserResult = Swift.Result<UserModel, UserServiceError>
 
 public protocol UserService {
     func create(model: UserModel, completion: @escaping (CreateUserResult) -> Void)
+    func retrieve(userId: String, completion: @escaping (RetrieveUserResult) -> Void)
 }
 
 class UserServiceImpl: UserService {
     
-    private let createClient: DatabaseClient
+    private let databaseClient: DatabaseClient
     
-    public init(createClient: DatabaseClient) {
-        self.createClient = createClient
+    public init(databaseClient: DatabaseClient) {
+        self.databaseClient = databaseClient
     }
     
     public func create(model: UserModel, completion: @escaping (CreateUserResult) -> Void) {
         guard let data = model.toData() else { return completion(.failure(.parseError))}
         let query = DatabaseQuery(path: "users", item: model.id, data: data)
-        self.createClient.create(query: query) { result in
+        self.databaseClient.create(query: query) { result in
             switch result {
             case .success():
                 completion(.success(()))
@@ -34,4 +36,19 @@ class UserServiceImpl: UserService {
         }
     }
     
+    public func retrieve(userId: String, completion: @escaping (RetrieveUserResult) -> Void) {
+        let query = DatabaseQuery(path: "users", item: userId, data: nil)
+        self.databaseClient.retrieve(query: query) { result in
+            switch result {
+            case .success(let data):
+                if let model: UserModel = data.toModel() {
+                    completion(.success(model))
+                } else {
+                    completion(.failure(.unexpected))
+                }
+            case .failure:
+                completion(.failure(.unexpected))
+            }
+        }
+    }
 }

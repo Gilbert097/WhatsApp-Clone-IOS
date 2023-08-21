@@ -17,7 +17,7 @@ public final class SignUpFactory {
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)
         
         let firebaseFirestore = FirebaseFirestoreAdapter()
-        let userService = UserServiceImpl(createClient: firebaseFirestore)
+        let userService = UserServiceImpl(databaseClient: firebaseFirestore)
         
         let business = SignUpBusinessImpl(authService: authService, userService: userService)
         let presenter = SignUpPresenterImpl(view: viewController,

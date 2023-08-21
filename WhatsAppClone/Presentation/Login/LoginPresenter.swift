@@ -21,26 +21,42 @@ public class LoginPresenterImpl: LoginPresenter {
     private weak var view: LoginViewController?
     private let coodinator: LoginCoordinator
     private let authService: AuthenticationService
+    private let userService: UserService
     private let authStateManager: AuthenticationStateManager
     
     public init(view: LoginViewController?,
                 coodinator: LoginCoordinator,
                 authService: AuthenticationService,
+                userService: UserService,
                 authStateManager: AuthenticationStateManager) {
         self.view = view
         self.coodinator = coodinator
         self.authService = authService
+        self.userService = userService
         self.authStateManager = authStateManager
     }
     
     public func start() {
-        authStateManager.registerStateChangeListener { [weak self] isLogged in
+        authStateManager.registerStateChangeListener { [weak self] response in
             guard let self = self else { return }
-            if isLogged {
+            if let userId = response?.userId {
                 LogUtils.printMessage(tag: self.TAG, message: "Logado")
-                self.coodinator.showMain()
+                self.retrieveLoggedInUserInformation(userId: userId)
             } else {
                 LogUtils.printMessage(tag: self.TAG, message: "Deslogado")
+            }
+        }
+    }
+    
+    private func retrieveLoggedInUserInformation(userId: String) {
+        self.userService.retrieve(userId: userId) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let userModel):
+                UserSession.shared.save(user: .init(model: userModel))
+                self.coodinator.showMain()
+            case .failure:
+                self.view?.showMessage(viewModel: .init(title: "Error", message: "Erro ao tentar recuperar informações do usuário!", buttons: [.init(title: "Ok")]))
             }
         }
     }

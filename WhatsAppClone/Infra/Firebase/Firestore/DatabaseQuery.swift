@@ -10,5 +10,5 @@ import Foundation
 public struct DatabaseQuery {
     public let path: String
     public let item: String
-    public let data: Data
+    public let data: Data?
 }
