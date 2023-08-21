@@ -18,6 +18,8 @@ public protocol ProfilePictureService {
 
 class ProfilePictureServiceImpl: ProfilePictureService {
     
+    private var TAG: String { String(describing: ProfilePictureServiceImpl.self) }
+    
     private let storageClient: StorageClient
     
     public init(storageClient: StorageClient) {
@@ -30,9 +32,11 @@ class ProfilePictureServiceImpl: ProfilePictureService {
         let profileQuery = StorageQuery(path: "perfil", child: userQuery)
         let rootQuery = StorageQuery(path: "imagens", child: profileQuery)
         
-        self.storageClient.upload(query: rootQuery) { result in
+        self.storageClient.upload(query: rootQuery) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success:
+            case .success(let url):
+                LogUtils.printMessage(tag: self.TAG, message: url.absoluteString)
                 completion(.success(()))
             case .failure:
                 completion(.failure(.uploadError))

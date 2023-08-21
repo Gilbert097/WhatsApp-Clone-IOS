@@ -8,9 +8,10 @@
 import Foundation
 import FirebaseStorage
 
-public typealias StorageUploadResult = Swift.Result<Void, StorageClientError>
+public typealias StorageUploadResult = Swift.Result<URL, StorageClientError>
 public enum StorageClientError: Error {
     case uploadError
+    case downloadURLError
 }
 
 public protocol StorageClient {
@@ -34,12 +35,23 @@ class FirebaseStorageAdapter: StorageClient {
             .putData(child.value!, metadata: nil) { [weak self] metadata, error in
                 guard let self = self else { return }
                 if error == nil {
-                    completion(.success(()))
+                    retrieveImageUrl(childReference: childReference, completion: completion)
                 } else if let error = error {
                     LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
                     completion(.failure(.uploadError))
                 }
             }
+    }
+    
+    private func retrieveImageUrl(childReference: StorageReference, completion: @escaping (StorageUploadResult) -> Void) {
+        childReference.downloadURL { url, urlError in
+            if let url = url {
+                completion(.success(url))
+            } else if let urlError = urlError {
+                LogUtils.printMessage(tag: self.TAG, message: urlError.localizedDescription)
+                completion(.failure(.downloadURLError))
+            }
+        }
     }
     
     private func findChild(query: StorageQuery, root: StorageReference) -> (reference: StorageReference, child: StorageQuery) {
