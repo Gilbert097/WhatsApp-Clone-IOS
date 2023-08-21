@@ -29,7 +29,7 @@ class SignUpBusinessImpl: SignUpBusiness {
             switch authResult {
             case .success(let response):
                 let userModel = UserModel(id: response.uid, name: request.name, email: request.email)
-                saveUserInSession(userModel: userModel)
+                saveUserInSession(user: .init(model: userModel))
                 self.userService.create(model: userModel) { createResult in
                     switch createResult {
                     case .success:

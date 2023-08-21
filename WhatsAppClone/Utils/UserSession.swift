@@ -45,6 +45,6 @@ public struct UserSession {
     }
 }
 
-public func saveUserInSession(userModel: UserModel) {
-    UserSession.shared.save(user: .init(model: userModel))
+public func saveUserInSession(user: UserApp) {
+    UserSession.shared.save(user: user)
 }

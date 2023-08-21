@@ -53,7 +53,7 @@ public class LoginPresenterImpl: LoginPresenter {
             guard let self = self else { return }
             switch result {
             case .success(let userModel):
-                saveUserInSession(userModel: userModel)
+                saveUserInSession(user: .init(model: userModel))
                 self.coodinator.showMain()
             case .failure:
                 self.view?.showMessage(viewModel: .init(title: "Error", message: "Erro ao tentar recuperar informações do usuário!", buttons: [.init(title: "Ok")]))
