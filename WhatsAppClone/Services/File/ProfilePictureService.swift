@@ -7,7 +7,7 @@
 
 import Foundation
 
-public typealias ProfilePictureServiceUploadResult = Swift.Result<Void, ProfilePictureServiceError>
+public typealias ProfilePictureServiceUploadResult = Swift.Result<URL, ProfilePictureServiceError>
 public enum ProfilePictureServiceError: Error {
     case uploadError
 }
@@ -32,12 +32,10 @@ class ProfilePictureServiceImpl: ProfilePictureService {
         let profileQuery = StorageQuery(path: "perfil", child: userQuery)
         let rootQuery = StorageQuery(path: "imagens", child: profileQuery)
         
-        self.storageClient.upload(query: rootQuery) { [weak self] result in
-            guard let self = self else { return }
+        self.storageClient.upload(query: rootQuery) { result in
             switch result {
             case .success(let url):
-                LogUtils.printMessage(tag: self.TAG, message: url.absoluteString)
-                completion(.success(()))
+                completion(.success(url))
             case .failure:
                 completion(.failure(.uploadError))
             }

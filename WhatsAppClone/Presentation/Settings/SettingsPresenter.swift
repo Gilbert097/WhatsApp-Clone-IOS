@@ -18,13 +18,13 @@ public class SettingsPresenterImpl: NSObject, SettingsPresenter {
     
     private weak var view: SettingsViewController?
     private let authService: AuthenticationService
-    private let profilePictureService: ProfilePictureService
+    private let settingsBusiness: SettingsBusiness
     private let coordinator: SettingsCoordinator
     
-    public init(view: SettingsViewController?, authService: AuthenticationService, profilePictureService: ProfilePictureService, coordinator: SettingsCoordinator) {
+    public init(view: SettingsViewController?, authService: AuthenticationService, settingsBusiness: SettingsBusiness, coordinator: SettingsCoordinator) {
         self.view = view
         self.authService = authService
-        self.profilePictureService = profilePictureService
+        self.settingsBusiness = settingsBusiness
         self.coordinator = coordinator
     }
     
@@ -48,7 +48,7 @@ extension SettingsPresenterImpl: ImagePickerDelegate {
         self.view?.showImage(data: data)
         
         self.view?.display(viewModel: .init(isLoading: true))
-        self.profilePictureService.updload(imageData: data) { [weak self] result in
+        self.settingsBusiness.uploadProfilePicture(data: data) { [weak self] result in
             guard let self = self else { return }
             self.view?.display(viewModel: .init(isLoading: false))
             switch result {

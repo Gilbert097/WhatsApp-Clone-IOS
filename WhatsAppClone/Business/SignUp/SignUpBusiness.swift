@@ -28,7 +28,7 @@ class SignUpBusinessImpl: SignUpBusiness {
             guard let self = self else { return }
             switch authResult {
             case .success(let response):
-                let userModel = UserModel(id: response.uid, name: request.name, email: request.email)
+                let userModel = UserModel(id: response.uid, name: request.name, email: request.email, urlImage: nil)
                 saveUserInSession(user: .init(model: userModel))
                 self.userService.create(model: userModel) { createResult in
                     switch createResult {

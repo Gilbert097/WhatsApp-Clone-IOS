@@ -11,6 +11,7 @@ public struct UserModel: Model {
     public let id: String
     public let name: String
     public let email: String
+    public let urlImage: String?
 }
 
 public extension UserApp {
@@ -18,5 +19,15 @@ public extension UserApp {
         self.id = model.id
         self.name = model.name
         self.email = model.email
+        self.urlImage = model.urlImage
+    }
+}
+
+public extension UserModel {
+    init(userApp: UserApp) {
+        self.id = userApp.id
+        self.name = userApp.name
+        self.email = userApp.email
+        self.urlImage = userApp.urlImage
     }
 }

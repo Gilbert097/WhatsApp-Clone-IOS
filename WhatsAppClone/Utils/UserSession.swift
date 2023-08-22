@@ -11,6 +11,7 @@ public struct UserApp: Codable {
     public let id: String
     public let name: String
     public let email: String
+    public var urlImage: String?
 }
 
 public struct UserSession {

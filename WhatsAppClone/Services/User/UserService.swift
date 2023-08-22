@@ -8,10 +8,12 @@
 import Foundation
 
 public typealias CreateUserResult = Swift.Result<Void, UserServiceError>
+public typealias UpdateUserResult = Swift.Result<Void, UserServiceError>
 public typealias RetrieveUserResult = Swift.Result<UserModel, UserServiceError>
 
 public protocol UserService {
     func create(model: UserModel, completion: @escaping (CreateUserResult) -> Void)
+    func update(model: UserModel, completion: @escaping (UpdateUserResult) -> Void)
     func retrieve(userId: String, completion: @escaping (RetrieveUserResult) -> Void)
 }
 
@@ -27,6 +29,19 @@ class UserServiceImpl: UserService {
         guard let data = model.toData() else { return completion(.failure(.parseError))}
         let query = DatabaseQuery(path: "users", item: model.id, data: data)
         self.databaseClient.create(query: query) { result in
+            switch result {
+            case .success():
+                completion(.success(()))
+            case .failure:
+                completion(.failure(.unexpected))
+            }
+        }
+    }
+    
+    public func update(model: UserModel, completion: @escaping (UpdateUserResult) -> Void) {
+        guard let data = model.toData() else { return completion(.failure(.parseError))}
+        let query = DatabaseQuery(path: "users", item: model.id, data: data)
+        self.databaseClient.update(query: query) { result in
             switch result {
             case .success():
                 completion(.success(()))

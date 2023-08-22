@@ -18,12 +18,17 @@ public final class SettingsFactory {
         let firebaseStorage = FirebaseStorageAdapter()
         let profilePictureService = ProfilePictureServiceImpl(storageClient: firebaseStorage)
         
+        let firebaseFirestorage = FirebaseFirestoreAdapter()
+        let userService = UserServiceImpl(databaseClient: firebaseFirestorage)
+        
+        let settingsBusiness = SettingsBusinessImpl(profilePictureService: profilePictureService, userService: userService)
+        
         let imagePickerManager = ImagePickerManager(presentationController: viewController)
         let coordinator = SettingsCoordinatorImpl(navigation: navigation, imagePickerManager: imagePickerManager)
         
         let presenter = SettingsPresenterImpl(view: viewController,
                                               authService: authService,
-                                              profilePictureService: profilePictureService,
+                                              settingsBusiness: settingsBusiness,
                                               coordinator: coordinator)
         
         imagePickerManager.delegate = presenter

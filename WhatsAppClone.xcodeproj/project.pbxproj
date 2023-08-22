@@ -75,6 +75,8 @@
 		D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359DA2A85BCD8006B16A9 /* ContactsViewController.swift */; };
 		D46359DD2A85BFE3006B16A9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359DC2A85BFE3006B16A9 /* MainTabBarController.swift */; };
 		D47FB2042A93E5030034E974 /* DocumentSnapshot+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2032A93E5030034E974 /* DocumentSnapshot+.swift */; };
+		D47FB2062A93F7FF0034E974 /* SettingsBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2052A93F7FF0034E974 /* SettingsBusiness.swift */; };
+		D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2082A93F88A0034E974 /* UploadPictureError.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +154,8 @@
 		D46359DA2A85BCD8006B16A9 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		D46359DC2A85BFE3006B16A9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D47FB2032A93E5030034E974 /* DocumentSnapshot+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentSnapshot+.swift"; sourceTree = "<group>"; };
+		D47FB2052A93F7FF0034E974 /* SettingsBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBusiness.swift; sourceTree = "<group>"; };
+		D47FB2082A93F88A0034E974 /* UploadPictureError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPictureError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +359,7 @@
 		D422A0AF2A8EB99500CFE3C5 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				D47FB2072A93F8080034E974 /* Settings */,
 				D422A0B62A8EBAAA00CFE3C5 /* SignUp */,
 			);
 			path = Business;
@@ -613,6 +618,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		D47FB2072A93F8080034E974 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D47FB2052A93F7FF0034E974 /* SettingsBusiness.swift */,
+				D47FB2082A93F88A0034E974 /* UploadPictureError.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,6 +790,7 @@
 				D422A0A02A8EA42500CFE3C5 /* AutenticationClient.swift in Sources */,
 				D422A0C12A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift in Sources */,
 				D46359D52A85B92F006B16A9 /* MainTabBarCoordinator.swift in Sources */,
+				D47FB2062A93F7FF0034E974 /* SettingsBusiness.swift in Sources */,
 				D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */,
 				D46359CA2A85A668006B16A9 /* ScreenLoadingView.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
@@ -784,6 +799,7 @@
 				D422A0C32A8EC00200CFE3C5 /* UserAuthClient.swift in Sources */,
 				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
 				D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */,
+				D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */,
 				D422A0AA2A8EB01900CFE3C5 /* AuthResponse.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
