@@ -8,8 +8,15 @@
 import Foundation
 
 public protocol SettingsPresenter {
+    func start()
     func logoutButtonAction()
     func selectButtonAction()
+}
+
+public struct SettingsViewModel {
+    public let name: String
+    public let email: String
+    public var urlImage: String?
 }
 
 public class SettingsPresenterImpl: NSObject, SettingsPresenter {
@@ -26,6 +33,11 @@ public class SettingsPresenterImpl: NSObject, SettingsPresenter {
         self.authService = authService
         self.settingsBusiness = settingsBusiness
         self.coordinator = coordinator
+    }
+    
+    public func start() {
+        guard let currentUser = UserSession.shared.read() else { return }
+        self.view?.display(viewModel: .init(name: currentUser.name, email: currentUser.email, urlImage: currentUser.urlImage))
     }
     
     public func logoutButtonAction() {

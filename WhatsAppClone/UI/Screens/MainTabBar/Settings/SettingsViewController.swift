@@ -9,6 +9,7 @@ import UIKit
 
 public protocol SettingsViewController: LoadingView, AlertView  where Self: UIViewController {
     func showImage(data: Data)
+    func display(viewModel: SettingsViewModel)
 }
 
 class SettingsViewControllerImpl: UIViewController {
@@ -38,6 +39,7 @@ class SettingsViewControllerImpl: UIViewController {
         super.viewWillAppear(animated)
         self.parent?.title = "Ajustes"
         self.parent?.navigationItem.rightBarButtonItem = self.logoutButtonItem
+        self.presenter.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,6 +50,10 @@ class SettingsViewControllerImpl: UIViewController {
     public func showImage(data: Data) {
         guard let image = UIImage(data: data) else { return }
         self.headerView.setImage(image: image)
+    }
+    
+    public func display(viewModel: SettingsViewModel) {
+        self.headerView.display(name: viewModel.name, email: viewModel.email)
     }
   
     @objc private func logoutButtonTapped() {

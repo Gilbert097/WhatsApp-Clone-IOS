@@ -28,17 +28,22 @@ class SettingsBusinessImpl: SettingsBusiness {
             guard let self = self else { return }
             switch uploadResult {
             case .success(let url):
-                guard var currentUser = UserSession.shared.read() else { return completion(.failure(.updateUser))}
-                currentUser.urlImage = url.absoluteString
-                saveUserInSession(user: currentUser)
-                self.updateUserInformation(userModel: .init(userApp: currentUser), completion: completion)
+                guard var updatedUser = updateLocalUserInformation(url: url) else { return completion(.failure(.updateUser))}
+                self.updateExternalUserInformation(userModel: .init(userApp: updatedUser), completion: completion)
             case .failure:
                 completion(.failure(.updload))
             }
         }
     }
     
-    private func updateUserInformation(userModel: UserModel, completion: @escaping (UploadPictureResult) -> Void) {
+    private func updateLocalUserInformation(url: URL) -> UserApp? {
+        guard var currentUser = UserSession.shared.read() else { return nil }
+        currentUser.urlImage = url.absoluteString
+        saveUserInSession(user: currentUser)
+        return currentUser
+    }
+    
+    private func updateExternalUserInformation(userModel: UserModel, completion: @escaping (UploadPictureResult) -> Void) {
         self.userService.update(model: userModel) { updateResult in
             switch updateResult {
             case .success:

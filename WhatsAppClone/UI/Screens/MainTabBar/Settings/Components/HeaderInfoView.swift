@@ -57,6 +57,11 @@ public class HeaderInfoView: UIView {
         imageView.image = image
     }
     
+    public func display(name: String, email: String, urlImage: String? = nil) {
+        linesTextView.nameText = name
+        linesTextView.emailText = email
+    }
+    
     private func configure() {
         self.selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
     }

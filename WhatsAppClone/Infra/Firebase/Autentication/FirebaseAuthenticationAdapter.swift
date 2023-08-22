@@ -63,7 +63,7 @@ public class FirebaseAuthenticationAdapter: AutenticationClient {
                 let errorParse = error as NSError?,
                 let code = AuthErrorCode.Code(rawValue: errorParse.code)
             else { return completion(.failure(.internalError)) }
-            
+            LogUtils.printMessage(tag: self.TAG, message: errorParse.localizedDescription)
             switch code {
             case .networkError:
                 completion(.failure(.networkError))

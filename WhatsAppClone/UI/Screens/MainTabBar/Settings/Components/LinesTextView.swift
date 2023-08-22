@@ -19,17 +19,19 @@ class LinesTextView : UIView {
         return view
     }()
     
-    private let nameLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Gilberto Silva"
-        return view
-    }()
+    private let nameLabelField = UILabel()
+    public var nameText: String? {
+        didSet {
+            self.nameLabelField.text = nameText
+        }
+    }
     
-    private let emailLabel: UILabel = {
-        let view = UILabel()
-        view.text = "gilberto.silva@gmail.com"
-        return view
-    }()
+    private let emailLabelField = UILabel()
+    public var emailText: String? {
+        didSet {
+            self.emailLabelField.text = emailText
+        }
+    }
     
     public init() {
         super.init(frame: .zero)
@@ -45,7 +47,7 @@ class LinesTextView : UIView {
 extension LinesTextView: ViewCode {
     
     func setupViewHierarchy() {
-        self.mainStack.addArrangedSubviews([nameLabel, emailLabel])
+        self.mainStack.addArrangedSubviews([nameLabelField, emailLabelField])
         self.addSubview(self.mainStack)
     }
     
