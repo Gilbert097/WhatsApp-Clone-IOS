@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import FirebaseStorageUI
 
 public protocol HeaderInfoViewDelegate: NSObject {
     func didSelectButtonTapped()
 }
 
 public class HeaderInfoView: UIView {
+    
+    private var TAG: String { String(describing: HeaderInfoView.self) }
     
     private let mainStack: UIStackView = {
         let view = UIStackView()
@@ -60,6 +63,17 @@ public class HeaderInfoView: UIView {
     public func display(name: String, email: String, urlImage: String? = nil) {
         linesTextView.nameText = name
         linesTextView.emailText = email
+        loadImage(urlImage: urlImage)
+    }
+    
+    private func loadImage(urlImage: String?) {
+        if let urlImage = urlImage {
+            imageView.sd_setImage(with: URL(string: urlImage)) { [weak self] image, error, _, _ in
+                if let error = error, let self = self {
+                    LogUtils.printMessage(tag: self.TAG, message: error.localizedDescription)
+                }
+            }
+        }
     }
     
     private func configure() {

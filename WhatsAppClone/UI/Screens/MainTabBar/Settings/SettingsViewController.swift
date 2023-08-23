@@ -53,7 +53,7 @@ class SettingsViewControllerImpl: UIViewController {
     }
     
     public func display(viewModel: SettingsViewModel) {
-        self.headerView.display(name: viewModel.name, email: viewModel.email)
+        self.headerView.display(name: viewModel.name, email: viewModel.email, urlImage: viewModel.urlImage)
     }
   
     @objc private func logoutButtonTapped() {

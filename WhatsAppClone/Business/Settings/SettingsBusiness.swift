@@ -28,7 +28,7 @@ class SettingsBusinessImpl: SettingsBusiness {
             guard let self = self else { return }
             switch uploadResult {
             case .success(let url):
-                guard var updatedUser = updateLocalUserInformation(url: url) else { return completion(.failure(.updateUser))}
+                guard let updatedUser = updateLocalUserInformation(url: url) else { return completion(.failure(.updateUser))}
                 self.updateExternalUserInformation(userModel: .init(userApp: updatedUser), completion: completion)
             case .failure:
                 completion(.failure(.updload))

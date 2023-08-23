@@ -10,6 +10,7 @@ target 'WhatsAppClone' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseStorage'
+  pod 'FirebaseStorageUI'
   
   names = ['abseil', 'gRPC-C++', 'gRPC-Core', 'BoringSSL-GRPC']
   post_install do |installer|
