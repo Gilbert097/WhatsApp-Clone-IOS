@@ -18,11 +18,10 @@ class ContactsViewController: UIViewController {
     private let tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        view.register(ContactTableViewCell.self, forCellReuseIdentifier: ContactTableViewCell.identifier)
+        view.separatorStyle = .none
         return view
     }()
-    
-    let characters = ["Link", "Zelda", "Ganondorf", "Midna"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class ContactsViewController: UIViewController {
         super.viewWillAppear(animated)
         self.parent?.title = "Contatos"
     }
-
+    
 }
 
 //MARK: - ViewCode
@@ -63,17 +62,31 @@ extension ContactsViewController: ViewCode {
     func setupAdditionalConfiguration() {
         self.view.backgroundColor = .white
         self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension ContactsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 80
     }
 }
 
 //MARK: - UITableViewDataSource
 extension ContactsViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return characters.count
-  }
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = characters[indexPath.row]
-    return cell
-  }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath)
+        guard let contactsCell = tableViewCell as? ContactTableViewCell else { return UITableViewCell() }
+        let index = indexPath.row + 1
+        contactsCell.nameLabel.text = "Gilberto Silva \(index)"
+        contactsCell.emailLabel.text = "gilberto.silva\(index)@gmail.com"
+        return contactsCell
+    }
 }

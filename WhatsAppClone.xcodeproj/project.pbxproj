@@ -77,6 +77,7 @@
 		D47FB2042A93E5030034E974 /* DocumentSnapshot+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2032A93E5030034E974 /* DocumentSnapshot+.swift */; };
 		D47FB2062A93F7FF0034E974 /* SettingsBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2052A93F7FF0034E974 /* SettingsBusiness.swift */; };
 		D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2082A93F88A0034E974 /* UploadPictureError.swift */; };
+		D47FB20B2A969CE20034E974 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB20A2A969CE20034E974 /* ContactTableViewCell.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		D47FB2032A93E5030034E974 /* DocumentSnapshot+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentSnapshot+.swift"; sourceTree = "<group>"; };
 		D47FB2052A93F7FF0034E974 /* SettingsBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBusiness.swift; sourceTree = "<group>"; };
 		D47FB2082A93F88A0034E974 /* UploadPictureError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPictureError.swift; sourceTree = "<group>"; };
+		D47FB20A2A969CE20034E974 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -606,6 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				D46359DA2A85BCD8006B16A9 /* ContactsViewController.swift */,
+				D47FB20A2A969CE20034E974 /* ContactTableViewCell.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
 				D46359C62A8519FF006B16A9 /* SignUpRequest.swift in Sources */,
 				D422A0E52A916A2300CFE3C5 /* FirebaseStorageAdapter.swift in Sources */,
+				D47FB20B2A969CE20034E974 /* ContactTableViewCell.swift in Sources */,
 				D422A0BF2A8EBEB100CFE3C5 /* AuthListenerHandler.swift in Sources */,
 				D422A0AC2A8EB08000CFE3C5 /* AuthenticationError.swift in Sources */,
 				D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */,
