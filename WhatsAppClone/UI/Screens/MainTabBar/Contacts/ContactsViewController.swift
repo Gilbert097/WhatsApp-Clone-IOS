@@ -9,6 +9,12 @@ import UIKit
 
 class ContactsViewController: UIViewController {
     
+    private let searchBar: UISearchBar = {
+        let view = UISearchBar()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,14 +40,20 @@ class ContactsViewController: UIViewController {
 extension ContactsViewController: ViewCode {
     
     func setupViewHierarchy() {
-        self.view.addSubview(tableView)
+        self.view.addSubviews([searchBar, tableView])
     }
     
     func setupConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.searchBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.searchBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.searchBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             self.tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
