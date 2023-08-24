@@ -88,5 +88,6 @@ extension AddContactViewControllerImpl: ViewCode {
     
     func setupAdditionalConfiguration() {
         self.view.backgroundColor = .white
+        self.title = "Adicionar Contato"
     }
 }
