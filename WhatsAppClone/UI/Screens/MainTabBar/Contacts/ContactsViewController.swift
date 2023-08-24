@@ -13,6 +13,8 @@ public protocol ContactsViewController where Self: UIViewController {
 
 class ContactsViewControllerImpl: UIViewController, ContactsViewController {
     
+    private var TAG: String { String(describing: ContactsViewControllerImpl.self) }
+    
     private lazy var addButtonItem: UIBarButtonItem = {
       let item = UIBarButtonItem(
             title: nil,
@@ -48,12 +50,16 @@ class ContactsViewControllerImpl: UIViewController, ContactsViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.title = "Contatos"
-        self.parent?.navigationItem.rightBarButtonItem = self.addButtonItem
         //self.presenter.start()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.parent?.navigationItem.rightBarButtonItem = self.addButtonItem
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         self.parent?.navigationItem.rightBarButtonItem = nil
     }
     
