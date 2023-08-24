@@ -14,13 +14,14 @@ public protocol ContactsCoordinator {
 class ContactsCoordinatorImpl: ContactsCoordinator {
     
     private let navigation: NavigationController
+   
     
     public init(navigation: NavigationController) {
         self.navigation = navigation
     }
     
     public func showAddContact() {
-        let viewController = AddContactViewController()
-        self.navigation.pushViewController(viewController)
+        let addContactCoordinator = AddContactCoordinatorImpl(navigation: navigation)
+        addContactCoordinator.show()
     }
 }

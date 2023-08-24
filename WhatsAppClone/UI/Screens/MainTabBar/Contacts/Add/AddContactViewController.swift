@@ -7,7 +7,11 @@
 
 import UIKit
 
-class AddContactViewController: UIViewController {
+public protocol AddContactViewController where Self: UIViewController {
+    
+}
+
+class AddContactViewControllerImpl: UIViewController, AddContactViewController {
     
     let descriptionLabel: UILabel = {
         let view = UILabel()
@@ -32,14 +36,16 @@ class AddContactViewController: UIViewController {
         return view
     }()
     
-    override func viewDidLoad() {
+    public var presenter: AddContactPresenter!
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 }
 
 // MARK: - ViewCode
-extension AddContactViewController: ViewCode {
+extension AddContactViewControllerImpl: ViewCode {
     func setupViewHierarchy() {
         self.view.addSubviews([descriptionLabel, emailField, addButton])
     }
