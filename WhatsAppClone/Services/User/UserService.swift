@@ -27,7 +27,7 @@ class UserServiceImpl: UserService {
     
     public func create(model: UserModel, completion: @escaping (CreateUserResult) -> Void) {
         guard let data = model.toData() else { return completion(.failure(.parseError))}
-        let query = DatabaseQuery(path: "users", item: model.id, data: data)
+        let query = DatabaseQuery(path: "users", item: .init(path: model.id, data: data))
         self.databaseClient.create(query: query) { result in
             switch result {
             case .success():
@@ -40,7 +40,7 @@ class UserServiceImpl: UserService {
     
     public func update(model: UserModel, completion: @escaping (UpdateUserResult) -> Void) {
         guard let data = model.toData() else { return completion(.failure(.parseError))}
-        let query = DatabaseQuery(path: "users", item: model.id, data: data)
+        let query = DatabaseQuery(path: "users", item: .init(path: model.id, data: data) )
         self.databaseClient.update(query: query) { result in
             switch result {
             case .success():
@@ -52,7 +52,7 @@ class UserServiceImpl: UserService {
     }
     
     public func retrieve(userId: String, completion: @escaping (RetrieveUserResult) -> Void) {
-        let query = DatabaseQuery(path: "users", item: userId, data: nil)
+        let query = DatabaseQuery(path: "users", item: .init(path: userId))
         self.databaseClient.retrieve(query: query) { result in
             switch result {
             case .success(let data):

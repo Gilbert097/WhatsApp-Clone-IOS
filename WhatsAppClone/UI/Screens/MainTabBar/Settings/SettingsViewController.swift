@@ -14,6 +14,8 @@ public protocol SettingsViewController: LoadingView, AlertView  where Self: UIVi
 
 class SettingsViewControllerImpl: UIViewController {
     
+    private var TAG: String { String(describing: SettingsViewControllerImpl.self) }
+    
     private lazy var logoutButtonItem: UIBarButtonItem = {
       let item = UIBarButtonItem(
             title: "Deslogar",
@@ -38,12 +40,16 @@ class SettingsViewControllerImpl: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.title = "Ajustes"
-        self.parent?.navigationItem.rightBarButtonItem = self.logoutButtonItem
         self.presenter.start()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.parent?.navigationItem.rightBarButtonItem = self.logoutButtonItem
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         self.parent?.navigationItem.rightBarButtonItem = nil
     }
     
