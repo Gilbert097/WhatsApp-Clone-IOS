@@ -15,6 +15,7 @@ public protocol UserService {
     func create(model: UserModel, completion: @escaping (CreateUserResult) -> Void)
     func update(model: UserModel, completion: @escaping (UpdateUserResult) -> Void)
     func retrieve(userId: String, completion: @escaping (RetrieveUserResult) -> Void)
+    func retrieve(email: String, completion: @escaping (RetrieveUserResult) -> Void)
 }
 
 class UserServiceImpl: UserService {
@@ -58,6 +59,26 @@ class UserServiceImpl: UserService {
             case .success(let data):
                 if let model: UserModel = data.toModel() {
                     completion(.success(model))
+                } else {
+                    completion(.failure(.unexpected))
+                }
+            case .failure:
+                completion(.failure(.unexpected))
+            }
+        }
+    }
+    
+    public func retrieve(email: String, completion: @escaping (RetrieveUserResult) -> Void) {
+        let query = DatabaseQuery(path: "users", condition: .init(field: "email", value: email))
+        self.databaseClient.retrieveValues(query: query) { result in
+            switch result {
+            case .success(let datas):
+                let models: [UserModel] = datas
+                    .map({ $0.toModel()})
+                    .compactMap({ $0 })
+                
+                if models.count == 1 {
+                    completion(.success(models.first!))
                 } else {
                     completion(.failure(.unexpected))
                 }

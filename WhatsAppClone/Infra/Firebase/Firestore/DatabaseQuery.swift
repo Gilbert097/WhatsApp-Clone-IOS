@@ -10,10 +10,10 @@ import Foundation
 public class DatabaseQuery {
     
     public let path: String
-    public let item: DatabaseQueryItem
+    public let item: DatabaseQueryItem?
     public let condition: DatabaseQueryCondition?
     
-    public init(path: String, item: DatabaseQueryItem, condition: DatabaseQueryCondition? = nil) {
+    public init(path: String, item: DatabaseQueryItem? = nil, condition: DatabaseQueryCondition? = nil) {
         self.path = path
         self.item = item
         self.condition = condition

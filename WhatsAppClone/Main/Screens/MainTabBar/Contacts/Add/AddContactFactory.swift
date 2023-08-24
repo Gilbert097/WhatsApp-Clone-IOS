@@ -12,7 +12,11 @@ public final class AddContactFactory {
     public static func build(navigation: NavigationController) -> AddContactViewController {
         let viewController = AddContactViewControllerImpl()
         let coordinator = AddContactCoordinatorImpl(navigation: navigation)
-        let presenter = AddContactPresenterImpl(coordinator: coordinator)
+        
+        let firebaseFirestore = FirebaseFirestoreAdapter()
+        let userService = UserServiceImpl(databaseClient: firebaseFirestore)
+        
+        let presenter = AddContactPresenterImpl(coordinator: coordinator, userService: userService)
         viewController.presenter = presenter
         return viewController
     }

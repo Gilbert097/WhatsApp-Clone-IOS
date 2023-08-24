@@ -41,6 +41,15 @@ class AddContactViewControllerImpl: UIViewController, AddContactViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        configure()
+    }
+    
+    private func configure() {
+        self.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func addButtonTapped() {
+        self.presenter.addButtonAction(email: emailField.text!)
     }
 }
 

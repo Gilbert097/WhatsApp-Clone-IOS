@@ -25,7 +25,7 @@ class FirebaseFirestoreAdapter: DatabaseClient {
     private var TAG: String { String(describing: FirebaseFirestoreAdapter.self) }
     
     public func create(query: DatabaseQuery, completion: @escaping (DatabaseCreateResult) -> Void) {
-        let (itemReference, item) = findItemReferenceWithDatabaseQuery(query: query)
+        guard let (itemReference, item) = findItemReferenceWithDatabaseQuery(query: query) else { return }
         guard let data = item.data, let dataToJson = data.toJson() else { return }
         
         itemReference.setData(dataToJson) { [weak self] error in
@@ -40,7 +40,7 @@ class FirebaseFirestoreAdapter: DatabaseClient {
     }
     
     public func update(query: DatabaseQuery, completion: @escaping (DatabaseUpdateResult) -> Void) {
-        let (itemReference, item) = findItemReferenceWithDatabaseQuery(query: query)
+        guard let (itemReference, item) = findItemReferenceWithDatabaseQuery(query: query) else { return }
         guard let data = item.data, let dataToJson = data.toJson() else { return }
         itemReference.updateData(dataToJson) { [weak self] error in
                 guard let self = self else { return }
@@ -53,9 +53,9 @@ class FirebaseFirestoreAdapter: DatabaseClient {
             }
     }
     
-    private func findItemReferenceWithDatabaseQuery(query: DatabaseQuery, itemReference: DocumentReference? = nil) -> (reference: DocumentReference, item: DatabaseQueryItem) {
+    private func findItemReferenceWithDatabaseQuery(query: DatabaseQuery, itemReference: DocumentReference? = nil) -> (reference: DocumentReference, item: DatabaseQueryItem)? {
         let rootReference = findRootReference(query: query, itemReference: itemReference)
-        let item = query.item
+        guard let item = query.item else { return nil }
         let itemReference = rootReference.document(item.path)
         
         if let itemQuery = item.query {
@@ -77,7 +77,7 @@ class FirebaseFirestoreAdapter: DatabaseClient {
     }
     
     public func retrieve(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveResult) -> Void) {
-        let (itemReference, _) = findItemReferenceWithDatabaseQuery(query: query)
+        guard let (itemReference, _) = findItemReferenceWithDatabaseQuery(query: query) else { return }
         itemReference.getDocument { snapshot, error in
                 guard
                     let snapshot = snapshot,
@@ -111,11 +111,11 @@ class FirebaseFirestoreAdapter: DatabaseClient {
     
     private func findRootReferenceWithFirebaseQuery(query: DatabaseQuery, itemReference: DocumentReference? = nil) -> (reference: CollectionReference, firebaseQuery: Query?) {
         let rootReference = findRootReference(query: query, itemReference: itemReference)
-        let item = query.item
-        let itemReference = rootReference.document(item.path)
         
-        if let itemQuery = item.query {
-            return findRootReferenceWithFirebaseQuery(query: itemQuery, itemReference: itemReference)
+        if let item = query.item {
+            let itemReference = rootReference.document(item.path)
+            guard let itemSubQuery = item.query else { return (rootReference, nil) }
+            return findRootReferenceWithFirebaseQuery(query: itemSubQuery, itemReference: itemReference)
         } else {
             var firebaseQuery: Query? = nil
             if let condition = query.condition {
