@@ -7,7 +7,22 @@
 
 import UIKit
 
-class ContactsViewController: UIViewController {
+public protocol ContactsViewController where Self: UIViewController {
+
+}
+
+class ContactsViewControllerImpl: UIViewController, ContactsViewController {
+    
+    private lazy var addButtonItem: UIBarButtonItem = {
+      let item = UIBarButtonItem(
+            title: nil,
+            style: .plain,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        item.image = .add
+        return item
+    }()
     
     private let searchBar: UISearchBar = {
         let view = UISearchBar()
@@ -22,6 +37,8 @@ class ContactsViewController: UIViewController {
         view.separatorStyle = .none
         return view
     }()
+    
+    public var presenter: ContactsPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +48,22 @@ class ContactsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.title = "Contatos"
+        self.parent?.navigationItem.rightBarButtonItem = self.addButtonItem
+        //self.presenter.start()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.parent?.navigationItem.rightBarButtonItem = nil
+    }
+    
+    @objc private func addButtonTapped() {
+        self.presenter.addButtonAction()
+    }
 }
 
 //MARK: - ViewCode
-extension ContactsViewController: ViewCode {
+extension ContactsViewControllerImpl: ViewCode {
     
     func setupViewHierarchy() {
         self.view.addSubviews([searchBar, tableView])
@@ -67,7 +94,7 @@ extension ContactsViewController: ViewCode {
 }
 
 //MARK: - UITableViewDelegate
-extension ContactsViewController: UITableViewDelegate {
+extension ContactsViewControllerImpl: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 80
@@ -75,7 +102,7 @@ extension ContactsViewController: UITableViewDelegate {
 }
 
 //MARK: - UITableViewDataSource
-extension ContactsViewController: UITableViewDataSource {
+extension ContactsViewControllerImpl: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10

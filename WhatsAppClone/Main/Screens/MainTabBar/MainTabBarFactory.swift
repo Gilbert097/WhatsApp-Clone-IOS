@@ -13,7 +13,7 @@ public final class MainTabBarFactory {
     public static func build(navigation: NavigationController) -> MainTabBarController {
         let tabBarViewController = MainTabBarControllerImpl()
         let conversations = makeConversationsViewController()
-        let contacts = makeContactsViewController()
+        let contacts = makeContactsViewController(navigation: navigation)
         let settings = makeSettingsViewController(navigation: navigation)
         tabBarViewController.setViewControllers([conversations, contacts, settings], animated: true)
         return tabBarViewController
@@ -26,8 +26,8 @@ public final class MainTabBarFactory {
         return viewController
     }
     
-    private static func makeContactsViewController() -> ContactsViewController {
-        let viewController = ContactsViewController()
+    private static func makeContactsViewController(navigation: NavigationController) -> ContactsViewController {
+        let viewController = ContactsFactory.build(navigation: navigation)
         viewController.tabBarItem.image = UIImage(named: "contatos")
         viewController.title = "Contatos"
         return viewController

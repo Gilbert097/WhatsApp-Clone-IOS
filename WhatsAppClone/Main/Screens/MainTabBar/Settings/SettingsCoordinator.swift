@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol SettingsCoordinator{
+public protocol SettingsCoordinator {
     func backToLogin()
     func showImagePicker() 
 }
