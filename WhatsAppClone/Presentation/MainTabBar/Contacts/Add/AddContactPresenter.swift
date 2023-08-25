@@ -17,18 +17,30 @@ class AddContactPresenterImpl: AddContactPresenter {
    
     private let coordinator: AddContactCoordinator
     private let userService: UserService
+    private let contactService: ContactService
     
-    public init(coordinator: AddContactCoordinator, userService: UserService) {
+    public init(coordinator: AddContactCoordinator, userService: UserService, contactService: ContactService) {
         self.coordinator = coordinator
         self.userService = userService
+        self.contactService = contactService
     }
 
     public func addButtonAction(email: String) {
-        self.userService.retrieve(email: email) { [weak self] result in
+        // Criar ContactBusiness
+        self.userService.retrieve(email: email) { [weak self] retrieveResult in
             guard let self = self else { return }
-            switch result {
+            switch retrieveResult {
             case .success(let user):
-                LogUtils.printMessage(tag: self.TAG, message: "Retrieve user success! name: \(user.name)")
+                guard let currentUser = UserSession.shared.read() else { return }
+                let request = ContactRequest(currentUserId: currentUser.id, userToAdd: user)
+                self.contactService.add(request: request) { addResult in
+                    switch addResult {
+                    case .success:
+                        LogUtils.printMessage(tag: self.TAG, message: "Add contact success!")
+                    case .failure:
+                        LogUtils.printMessage(tag: self.TAG, message: "Retrieve user failure!")
+                    }
+                }
             case .failure:
                 LogUtils.printMessage(tag: self.TAG, message: "Retrieve user failure!")
             }
