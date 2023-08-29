@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol AddContactViewController where Self: UIViewController {
+public protocol AddContactViewController: LoadingView, AlertView where Self: UIViewController {
     
 }
 
-class AddContactViewControllerImpl: UIViewController, AddContactViewController {
+class AddContactViewControllerImpl: UIViewController {
     
     let descriptionLabel: UILabel = {
         let view = UILabel()
@@ -36,6 +36,8 @@ class AddContactViewControllerImpl: UIViewController, AddContactViewController {
         return view
     }()
     
+    private let loadingView = ScreenLoadingView()
+    
     public var presenter: AddContactPresenter!
     
     public override func viewDidLoad() {
@@ -56,7 +58,7 @@ class AddContactViewControllerImpl: UIViewController, AddContactViewController {
 // MARK: - ViewCode
 extension AddContactViewControllerImpl: ViewCode {
     func setupViewHierarchy() {
-        self.view.addSubviews([descriptionLabel, emailField, addButton])
+        self.view.addSubviews([descriptionLabel, emailField, addButton, loadingView])
     }
     
     func setupConstraints() {
@@ -84,10 +86,32 @@ extension AddContactViewControllerImpl: ViewCode {
             self.addButton.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 8),
             self.addButton.heightAnchor.constraint(equalToConstant: 30)
         ])
+        
+        // loadingView
+        NSLayoutConstraint.activate([
+            self.loadingView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.loadingView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.loadingView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.loadingView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
     }
     
     func setupAdditionalConfiguration() {
         self.view.backgroundColor = .white
         self.title = "Adicionar Contato"
+    }
+}
+
+// MARK: - AddContactViewController
+extension AddContactViewControllerImpl: AddContactViewController {
+    
+    public func display(viewModel: LoadingViewModel) {
+        self.loadingView.isHidden = !viewModel.isLoading
+        self.loadingView.display(viewModel: viewModel)
+    }
+    
+    public func showMessage(viewModel: AlertViewModel) {
+        let alert = AlertFactory.build(viewModel: viewModel)
+        present(alert, animated: true)
     }
 }

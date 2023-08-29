@@ -12,10 +12,10 @@ public struct ContactRequest {
     public let userToAdd: UserModel
 }
 
-public typealias AddContactResult = Swift.Result<Void, UserServiceError>
+public typealias AddContactResult = Swift.Result<Void, ContactServiceError>
 
 public protocol ContactService {
-    func add(request: ContactRequest, completion: @escaping (CreateUserResult) -> Void)
+    func add(request: ContactRequest, completion: @escaping (AddContactResult) -> Void)
 }
 
 class ContactServiceImpl: ContactService {

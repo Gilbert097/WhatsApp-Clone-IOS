@@ -15,34 +15,26 @@ class AddContactPresenterImpl: AddContactPresenter {
     
     private var TAG: String { String(describing: AddContactPresenterImpl.self) }
    
+    private let view: AddContactViewController
     private let coordinator: AddContactCoordinator
-    private let userService: UserService
-    private let contactService: ContactService
+    private let business: ContactsBusiness
     
-    public init(coordinator: AddContactCoordinator, userService: UserService, contactService: ContactService) {
+    public init(view: AddContactViewController, coordinator: AddContactCoordinator, business: ContactsBusiness) {
+        self.view = view
         self.coordinator = coordinator
-        self.userService = userService
-        self.contactService = contactService
+        self.business = business
     }
 
     public func addButtonAction(email: String) {
-        // Criar ContactBusiness
-        self.userService.retrieve(email: email) { [weak self] retrieveResult in
+        self.view.display(viewModel: .init(isLoading: true))
+        self.business.addNewContact(email: email) { [weak self] result in
             guard let self = self else { return }
-            switch retrieveResult {
-            case .success(let user):
-                guard let currentUser = UserSession.shared.read() else { return }
-                let request = ContactRequest(currentUserId: currentUser.id, userToAdd: user)
-                self.contactService.add(request: request) { addResult in
-                    switch addResult {
-                    case .success:
-                        LogUtils.printMessage(tag: self.TAG, message: "Add contact success!")
-                    case .failure:
-                        LogUtils.printMessage(tag: self.TAG, message: "Retrieve user failure!")
-                    }
-                }
+            self.view.display(viewModel: .init(isLoading: false))
+            switch result {
+            case .success:
+                self.view.showMessage(viewModel: .init(title: "Sucesso", message: "Contato adicionado sucesso!", buttons: [.init(title: "Ok")]))
             case .failure:
-                LogUtils.printMessage(tag: self.TAG, message: "Retrieve user failure!")
+                self.view.showMessage(viewModel: .init(title: "Error", message: "Error ao tentar adiocinar usuário!", buttons: [.init(title: "Ok")]))
             }
         }
     }

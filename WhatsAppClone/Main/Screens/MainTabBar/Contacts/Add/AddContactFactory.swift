@@ -16,7 +16,8 @@ public final class AddContactFactory {
         let firebaseFirestore = FirebaseFirestoreAdapter()
         let userService = UserServiceImpl(databaseClient: firebaseFirestore)
         let contactService = ContactServiceImpl(databaseClient: firebaseFirestore)
-        let presenter = AddContactPresenterImpl(coordinator: coordinator, userService: userService, contactService: contactService)
+        let business = ContactsBusinessImpl(userService: userService, contactService: contactService)
+        let presenter = AddContactPresenterImpl(view: viewController, coordinator: coordinator, business: business)
         viewController.presenter = presenter
         return viewController
     }

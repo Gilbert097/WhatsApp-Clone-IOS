@@ -40,6 +40,8 @@ class ContactsViewControllerImpl: UIViewController, ContactsViewController {
         return view
     }()
     
+    private let loadingView = ScreenLoadingView()
+    
     public var presenter: ContactsPresenter!
 
     override func viewDidLoad() {
@@ -78,12 +80,14 @@ extension ContactsViewControllerImpl: ViewCode {
     func setupConstraints() {
         let safeArea = self.view.safeAreaLayoutGuide
         
+        // searchBar
         NSLayoutConstraint.activate([
             self.searchBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
             self.searchBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             self.searchBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
         
+        // tableView
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             self.tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
