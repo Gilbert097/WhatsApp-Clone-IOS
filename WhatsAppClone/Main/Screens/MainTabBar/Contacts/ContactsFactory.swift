@@ -12,7 +12,9 @@ public final class ContactsFactory {
     public static func build(navigation: NavigationController) -> ContactsView {
         let viewController = ContactsViewController()
         let coordinator = ContactsCoordinatorImpl(navigation: navigation)
-        let presenter = ContactsPresenterImpl(coordinator: coordinator)
+        let firebase = FirebaseFirestoreAdapter()
+        let contactService = ContactServiceImpl(databaseClient: firebase)
+        let presenter = ContactsPresenterImpl(view: viewController, coordinator: coordinator, contactService: contactService)
         viewController.presenter = presenter
         return viewController
     }

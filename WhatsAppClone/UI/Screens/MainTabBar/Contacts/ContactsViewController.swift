@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol ContactsView where Self: UIViewController {
-
+public protocol ContactsView: LoadingView, AlertView where Self: UIViewController {
+    func loadList()
 }
 
-class ContactsViewController: UIViewController, ContactsView {
+class ContactsViewController: UIViewController {
     
     private var TAG: String { String(describing: ContactsViewController.self) }
     
@@ -52,7 +52,7 @@ class ContactsViewController: UIViewController, ContactsView {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.title = "Contatos"
-        //self.presenter.start()
+        self.presenter.start()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +63,7 @@ class ContactsViewController: UIViewController, ContactsView {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.parent?.navigationItem.rightBarButtonItem = nil
+        self.presenter.stop()
     }
     
     @objc private func addButtonTapped() {
@@ -74,7 +75,7 @@ class ContactsViewController: UIViewController, ContactsView {
 extension ContactsViewController: ViewCode {
     
     func setupViewHierarchy() {
-        self.view.addSubviews([searchBar, tableView])
+        self.view.addSubviews([searchBar, tableView, loadingView])
     }
     
     func setupConstraints() {
@@ -93,6 +94,14 @@ extension ContactsViewController: ViewCode {
             self.tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        ])
+        
+        // loadingView
+        NSLayoutConstraint.activate([
+            self.loadingView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.loadingView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.loadingView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.loadingView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
     }
     
@@ -115,15 +124,32 @@ extension ContactsViewController: UITableViewDelegate {
 extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.presenter.contactList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath)
         guard let contactsCell = tableViewCell as? ContactTableViewCell else { return UITableViewCell() }
-        let index = indexPath.row + 1
-        contactsCell.nameLabel.text = "Gilberto Silva \(index)"
-        contactsCell.emailLabel.text = "gilberto.silva\(index)@gmail.com"
+        let currentItem = self.presenter.contactList[indexPath.row]
+        contactsCell.nameLabel.text = currentItem.name
+        contactsCell.emailLabel.text = currentItem.email
         return contactsCell
+    }
+}
+
+// MARK: - ContactsView
+extension ContactsViewController: ContactsView {
+    public func loadList() {
+        self.tableView.reloadData()
+    }
+    
+    public func display(viewModel: LoadingViewModel) {
+        self.loadingView.isHidden = !viewModel.isLoading
+        self.loadingView.display(viewModel: viewModel)
+    }
+    
+    public func showMessage(viewModel: AlertViewModel) {
+        let alert = AlertFactory.build(viewModel: viewModel)
+        present(alert, animated: true)
     }
 }
