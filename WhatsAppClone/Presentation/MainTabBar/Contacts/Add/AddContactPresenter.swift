@@ -32,7 +32,8 @@ class AddContactPresenterImpl: AddContactPresenter {
             self.view.display(viewModel: .init(isLoading: false))
             switch result {
             case .success:
-                self.view.showMessage(viewModel: .init(title: "Sucesso", message: "Contato adicionado sucesso!", buttons: [.init(title: "Ok")]))
+                let okButton = AlertButtonModel(title: "Ok", action: { [weak self] in self?.coordinator.close() })
+                self.view.showMessage(viewModel: .init(title: "Sucesso", message: "Contato adicionado sucesso!", buttons: [okButton]))
             case .failure:
                 self.view.showMessage(viewModel: .init(title: "Error", message: "Error ao tentar adiocinar usuário!", buttons: [.init(title: "Ok")]))
             }

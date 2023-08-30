@@ -8,6 +8,7 @@
 import Foundation
 
 public protocol AddContactCoordinator: Coordinator {
+    func close()
 }
 
 class AddContactCoordinatorImpl: AddContactCoordinator {
@@ -21,5 +22,9 @@ class AddContactCoordinatorImpl: AddContactCoordinator {
     public func show() {
         let viewController = AddContactFactory.build(navigation: self.navigation)
         self.navigation.pushViewController(viewController)
+    }
+    
+    public func close() {
+        self.navigation.popViewController(animated: true)
     }
 }
