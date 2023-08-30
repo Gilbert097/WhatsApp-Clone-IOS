@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseStorageUI
 
 class ContactTableViewCell: UITableViewCell {
     
@@ -50,6 +51,12 @@ class ContactTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    public func loadProfileImage(url: String?) {
+        if let url = url {
+            self.profileImageView.sd_setImage(with: URL(string: url))
+        }
     }
 }
 

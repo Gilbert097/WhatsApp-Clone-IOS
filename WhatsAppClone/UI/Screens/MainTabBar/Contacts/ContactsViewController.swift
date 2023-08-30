@@ -133,6 +133,7 @@ extension ContactsViewController: UITableViewDataSource {
         let currentItem = self.presenter.contactList[indexPath.row]
         contactsCell.nameLabel.text = currentItem.name
         contactsCell.emailLabel.text = currentItem.email
+        contactsCell.loadProfileImage(url: currentItem.urlImage)
         return contactsCell
     }
 }
