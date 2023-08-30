@@ -9,8 +9,8 @@ import Foundation
 
 public final class SettingsFactory {
     
-    public static func build(navigation: NavigationController) -> SettingsViewController {
-        let viewController = SettingsViewControllerImpl()
+    public static func build(navigation: NavigationController) -> SettingsView {
+        let viewController = SettingsViewController()
         
         let firebaseAuth = FirebaseAuthenticationAdapter()
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)

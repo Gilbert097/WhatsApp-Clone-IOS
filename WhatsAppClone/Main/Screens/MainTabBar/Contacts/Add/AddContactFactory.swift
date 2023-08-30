@@ -9,8 +9,8 @@ import Foundation
 
 public final class AddContactFactory {
     
-    public static func build(navigation: NavigationController) -> AddContactViewController {
-        let viewController = AddContactViewControllerImpl()
+    public static func build(navigation: NavigationController) -> AddContactView {
+        let viewController = AddContactViewController()
         let coordinator = AddContactCoordinatorImpl(navigation: navigation)
         
         let firebaseFirestore = FirebaseFirestoreAdapter()

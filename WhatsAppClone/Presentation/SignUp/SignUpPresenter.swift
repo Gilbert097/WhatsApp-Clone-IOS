@@ -13,11 +13,11 @@ public protocol SignUpPresenter {
 
 public class SignUpPresenterImpl: SignUpPresenter {
    
-    private weak var view: SignUpViewController?
+    private weak var view: SignUpView?
     private let coodinator: SignUpCoordinator
     private let business: SignUpBusiness
     
-    public init(view: SignUpViewController?,
+    public init(view: SignUpView?,
                 coodinator: SignUpCoordinator,
                 business: SignUpBusiness) {
         self.view = view

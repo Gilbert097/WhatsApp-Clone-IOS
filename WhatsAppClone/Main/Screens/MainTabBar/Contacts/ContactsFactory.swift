@@ -9,8 +9,8 @@ import Foundation
 
 public final class ContactsFactory {
     
-    public static func build(navigation: NavigationController) -> ContactsViewController {
-        let viewController = ContactsViewControllerImpl()
+    public static func build(navigation: NavigationController) -> ContactsView {
+        let viewController = ContactsViewController()
         let coordinator = ContactsCoordinatorImpl(navigation: navigation)
         let presenter = ContactsPresenterImpl(coordinator: coordinator)
         viewController.presenter = presenter

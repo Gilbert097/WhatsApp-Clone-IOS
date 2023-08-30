@@ -10,8 +10,8 @@ import UIKit
 
 public final class MainTabBarFactory {
     
-    public static func build(navigation: NavigationController) -> MainTabBarController {
-        let tabBarViewController = MainTabBarControllerImpl()
+    public static func build(navigation: NavigationController) -> MainTabBarView {
+        let tabBarViewController = MainTabBarController()
         let conversations = makeConversationsViewController()
         let contacts = makeContactsViewController(navigation: navigation)
         let settings = makeSettingsViewController(navigation: navigation)
@@ -26,14 +26,14 @@ public final class MainTabBarFactory {
         return viewController
     }
     
-    private static func makeContactsViewController(navigation: NavigationController) -> ContactsViewController {
+    private static func makeContactsViewController(navigation: NavigationController) -> ContactsView {
         let viewController = ContactsFactory.build(navigation: navigation)
         viewController.tabBarItem.image = UIImage(named: "contatos")
         viewController.title = "Contatos"
         return viewController
     }
     
-    private static func makeSettingsViewController(navigation: NavigationController) -> SettingsViewController {
+    private static func makeSettingsViewController(navigation: NavigationController) -> SettingsView {
         let viewController = SettingsFactory.build(navigation: navigation)
         viewController.tabBarItem.image = UIImage(named: "ajustes")
         viewController.title = "Ajustes"

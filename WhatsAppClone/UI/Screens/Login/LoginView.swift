@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol LoginViewController: LoadingView, AlertView where Self: UIViewController {
+public protocol LoginView: LoadingView, AlertView where Self: UIViewController {
     
 }
 
-class LoginViewControllerImpl: UIViewController {
+class LoginViewController: UIViewController {
     
     private let logoImageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "logo"))
@@ -78,7 +78,7 @@ class LoginViewControllerImpl: UIViewController {
 }
 
 // MARK: - LoginViewController
-extension LoginViewControllerImpl: LoginViewController {
+extension LoginViewController: LoginView {
     
     public func display(viewModel: LoadingViewModel) {
         self.loadingView.isHidden = !viewModel.isLoading
@@ -92,7 +92,7 @@ extension LoginViewControllerImpl: LoginViewController {
 }
 
 // MARK: - ViewCode
-extension LoginViewControllerImpl: ViewCode {
+extension LoginViewController: ViewCode {
     
     func setupViewHierarchy() {
         self.view.addSubviews([logoImageView, emailField, passwordField, loginButton, linkButton, loadingView])

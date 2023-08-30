@@ -7,13 +7,13 @@
 
 import UIKit
 
-public protocol ContactsViewController where Self: UIViewController {
+public protocol ContactsView where Self: UIViewController {
 
 }
 
-class ContactsViewControllerImpl: UIViewController, ContactsViewController {
+class ContactsViewController: UIViewController, ContactsView {
     
-    private var TAG: String { String(describing: ContactsViewControllerImpl.self) }
+    private var TAG: String { String(describing: ContactsViewController.self) }
     
     private lazy var addButtonItem: UIBarButtonItem = {
       let item = UIBarButtonItem(
@@ -71,7 +71,7 @@ class ContactsViewControllerImpl: UIViewController, ContactsViewController {
 }
 
 //MARK: - ViewCode
-extension ContactsViewControllerImpl: ViewCode {
+extension ContactsViewController: ViewCode {
     
     func setupViewHierarchy() {
         self.view.addSubviews([searchBar, tableView])
@@ -104,7 +104,7 @@ extension ContactsViewControllerImpl: ViewCode {
 }
 
 //MARK: - UITableViewDelegate
-extension ContactsViewControllerImpl: UITableViewDelegate {
+extension ContactsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 80
@@ -112,7 +112,7 @@ extension ContactsViewControllerImpl: UITableViewDelegate {
 }
 
 //MARK: - UITableViewDataSource
-extension ContactsViewControllerImpl: UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10

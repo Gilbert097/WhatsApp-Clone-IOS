@@ -23,12 +23,12 @@ public class SettingsPresenterImpl: NSObject, SettingsPresenter {
     
     private var TAG: String { String(describing: SettingsPresenterImpl.self) }
     
-    private weak var view: SettingsViewController?
+    private weak var view: SettingsView?
     private let authService: AuthenticationService
     private let settingsBusiness: SettingsBusiness
     private let coordinator: SettingsCoordinator
     
-    public init(view: SettingsViewController?, authService: AuthenticationService, settingsBusiness: SettingsBusiness, coordinator: SettingsCoordinator) {
+    public init(view: SettingsView?, authService: AuthenticationService, settingsBusiness: SettingsBusiness, coordinator: SettingsCoordinator) {
         self.view = view
         self.authService = authService
         self.settingsBusiness = settingsBusiness

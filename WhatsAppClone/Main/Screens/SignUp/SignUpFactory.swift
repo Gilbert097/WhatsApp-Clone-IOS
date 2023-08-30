@@ -10,8 +10,8 @@ import UIKit
 
 public final class SignUpFactory {
     
-    public static func build(coordinator: SignUpCoordinator) -> SignUpViewController {
-        let viewController = SignUpViewControllerImpl()
+    public static func build(coordinator: SignUpCoordinator) -> SignUpView {
+        let viewController = SignUpViewController()
         
         let firebaseAuth = FirebaseAuthenticationAdapter()
         let authService = AuthenticationServiceImpl(authClient: firebaseAuth)

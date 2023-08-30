@@ -18,13 +18,13 @@ public class LoginPresenterImpl: LoginPresenter {
     
     private var TAG: String { String(describing: LoginPresenterImpl.self) }
    
-    private weak var view: LoginViewController?
+    private weak var view: LoginView?
     private let coodinator: LoginCoordinator
     private let authService: AuthenticationService
     private let userService: UserService
     private let authStateManager: AuthenticationStateManager
     
-    public init(view: LoginViewController?,
+    public init(view: LoginView?,
                 coodinator: LoginCoordinator,
                 authService: AuthenticationService,
                 userService: UserService,

@@ -23,7 +23,7 @@ class SettingsCoordinatorImpl: SettingsCoordinator {
     }
     
     public func backToLogin() {
-        self.navigation.backToViewController(viewController: LoginViewControllerImpl.self)
+        self.navigation.backToViewController(viewController: LoginViewController.self)
     }
     
     public func showImagePicker() {

@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol SignUpViewController: LoadingView, AlertView where Self: UIViewController {
+public protocol SignUpView: LoadingView, AlertView where Self: UIViewController {
     
 }
 
-class SignUpViewControllerImpl: UIViewController {
+class SignUpViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -88,7 +88,7 @@ class SignUpViewControllerImpl: UIViewController {
 }
 
 // MARK: - SignUpViewController
-extension SignUpViewControllerImpl: SignUpViewController {
+extension SignUpViewController: SignUpView {
     
     public func display(viewModel: LoadingViewModel) {
         self.loadingView.isHidden = !viewModel.isLoading
@@ -104,7 +104,7 @@ extension SignUpViewControllerImpl: SignUpViewController {
 }
 
 // MARK: - ViewCode
-extension SignUpViewControllerImpl: ViewCode {
+extension SignUpViewController: ViewCode {
     
     func setupViewHierarchy() {
         

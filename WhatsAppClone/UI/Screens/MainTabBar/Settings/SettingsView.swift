@@ -7,14 +7,14 @@
 
 import UIKit
 
-public protocol SettingsViewController: LoadingView, AlertView  where Self: UIViewController {
+public protocol SettingsView: LoadingView, AlertView  where Self: UIViewController {
     func showImage(data: Data)
     func display(viewModel: SettingsViewModel)
 }
 
-class SettingsViewControllerImpl: UIViewController {
+class SettingsViewController: UIViewController {
     
-    private var TAG: String { String(describing: SettingsViewControllerImpl.self) }
+    private var TAG: String { String(describing: SettingsViewController.self) }
     
     private lazy var logoutButtonItem: UIBarButtonItem = {
       let item = UIBarButtonItem(
@@ -68,7 +68,7 @@ class SettingsViewControllerImpl: UIViewController {
 }
 
 // MARK: - ViewCode
-extension SettingsViewControllerImpl: ViewCode {
+extension SettingsViewController: ViewCode {
     
     func setupViewHierarchy() {
         self.view.addSubviews([headerView, loadingView])
@@ -98,7 +98,7 @@ extension SettingsViewControllerImpl: ViewCode {
 }
 
 // MARK: - HeaderInfoViewDelegate
-extension SettingsViewControllerImpl: HeaderInfoViewDelegate {
+extension SettingsViewController: HeaderInfoViewDelegate {
     
     func didSelectButtonTapped() {
         self.presenter.selectButtonAction()
@@ -106,7 +106,7 @@ extension SettingsViewControllerImpl: HeaderInfoViewDelegate {
 }
 
 // MARK: - SettingsViewController
-extension SettingsViewControllerImpl: SettingsViewController {
+extension SettingsViewController: SettingsView {
     
     public func display(viewModel: LoadingViewModel) {
         self.loadingView.isHidden = !viewModel.isLoading

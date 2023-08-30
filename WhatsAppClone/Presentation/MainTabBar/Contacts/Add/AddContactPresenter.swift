@@ -15,11 +15,11 @@ class AddContactPresenterImpl: AddContactPresenter {
     
     private var TAG: String { String(describing: AddContactPresenterImpl.self) }
    
-    private let view: AddContactViewController
+    private let view: AddContactView
     private let coordinator: AddContactCoordinator
     private let business: ContactsBusiness
     
-    public init(view: AddContactViewController, coordinator: AddContactCoordinator, business: ContactsBusiness) {
+    public init(view: AddContactView, coordinator: AddContactCoordinator, business: ContactsBusiness) {
         self.view = view
         self.coordinator = coordinator
         self.business = business

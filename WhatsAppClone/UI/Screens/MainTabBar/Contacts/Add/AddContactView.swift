@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol AddContactViewController: LoadingView, AlertView where Self: UIViewController {
+public protocol AddContactView: LoadingView, AlertView where Self: UIViewController {
     
 }
 
-class AddContactViewControllerImpl: UIViewController {
+class AddContactViewController: UIViewController {
     
     let descriptionLabel: UILabel = {
         let view = UILabel()
@@ -56,7 +56,7 @@ class AddContactViewControllerImpl: UIViewController {
 }
 
 // MARK: - ViewCode
-extension AddContactViewControllerImpl: ViewCode {
+extension AddContactViewController: ViewCode {
     func setupViewHierarchy() {
         self.view.addSubviews([descriptionLabel, emailField, addButton, loadingView])
     }
@@ -102,8 +102,8 @@ extension AddContactViewControllerImpl: ViewCode {
     }
 }
 
-// MARK: - AddContactViewController
-extension AddContactViewControllerImpl: AddContactViewController {
+// MARK: - AddContactView
+extension AddContactViewController: AddContactView {
     
     public func display(viewModel: LoadingViewModel) {
         self.loadingView.isHidden = !viewModel.isLoading

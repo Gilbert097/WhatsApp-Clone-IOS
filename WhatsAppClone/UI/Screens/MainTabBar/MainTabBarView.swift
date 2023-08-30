@@ -7,11 +7,11 @@
 
 import UIKit
 
-public protocol MainTabBarController where Self: UITabBarController {
+public protocol MainTabBarView where Self: UITabBarController {
     
 }
 
-class MainTabBarControllerImpl: UITabBarController, MainTabBarController {
+class MainTabBarController: UITabBarController, MainTabBarView {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
