@@ -37,8 +37,10 @@ class ContactsPresenterImpl: ContactsPresenter {
     
     private func loadContacts() {
         guard let currentUser = UserSession.shared.read() else { return }
+        self.view.display(viewModel: .init(isLoading: true))
         self.contactService.getAllUserContacts(user: .init(userApp: currentUser)) { [weak self] result in
             guard let self = self else { return }
+            self.view.display(viewModel: .init(isLoading: false))
             switch result {
             case .success(let users):
                 self.contactList.append(contentsOf: users)
