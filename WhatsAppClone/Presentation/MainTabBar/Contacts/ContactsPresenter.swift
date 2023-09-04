@@ -12,6 +12,8 @@ public protocol ContactsPresenter {
     func start()
     func stop()
     func addButtonAction()
+    func searchTheList(text: String)
+    func clearSearch()
 }
 
 class ContactsPresenterImpl: ContactsPresenter {
@@ -20,6 +22,7 @@ class ContactsPresenterImpl: ContactsPresenter {
     private let coordinator: ContactsCoordinator
     private let contactService: ContactService
     public var contactList: [UserModel] = []
+    private var originalList: [UserModel] = []
     
     public init(view: ContactsView, coordinator: ContactsCoordinator, contactService: ContactService) {
         self.view = view
@@ -57,5 +60,22 @@ class ContactsPresenterImpl: ContactsPresenter {
     
     public func addButtonAction() {
         self.coordinator.showAddContact()
+    }
+    
+    public func searchTheList(text: String) {
+        if self.originalList.isEmpty {
+            self.originalList = self.contactList
+        } else {
+            self.contactList = self.originalList
+        }
+        
+        self.contactList = self.contactList.filter({ $0.name.lowercased().contains(text)})
+        self.view.loadList()
+    }
+    
+    public func clearSearch() {
+        self.contactList = self.originalList
+        self.originalList = []
+        self.view.loadList()
     }
 }

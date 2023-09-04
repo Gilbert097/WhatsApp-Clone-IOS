@@ -26,9 +26,10 @@ class ContactsViewController: UIViewController {
         return item
     }()
     
-    private let searchBar: UISearchBar = {
+    private lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
     
@@ -152,5 +153,20 @@ extension ContactsViewController: ContactsView {
     public func showMessage(viewModel: AlertViewModel) {
         let alert = AlertFactory.build(viewModel: viewModel)
         present(alert, animated: true)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension ContactsViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+        self.presenter.searchTheList(text: searchBar.text ?? .init())
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.presenter.clearSearch()
+        }
     }
 }
