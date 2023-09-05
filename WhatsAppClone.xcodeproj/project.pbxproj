@@ -89,6 +89,9 @@
 		D47FB2272A9E8DFC0034E974 /* ContactsBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2262A9E8DFC0034E974 /* ContactsBusiness.swift */; };
 		D47FB2292A9E8E780034E974 /* AddNewContactError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB2282A9E8E780034E974 /* AddNewContactError.swift */; };
 		D47FB22B2A9E8EF80034E974 /* ContactServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47FB22A2A9E8EF80034E974 /* ContactServiceError.swift */; };
+		D48DD5C62AA7C0DC00698BA9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48DD5C52AA7C0DC00698BA9 /* ConversationViewController.swift */; };
+		D48DD5C92AA7C18E00698BA9 /* ConversationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48DD5C82AA7C18E00698BA9 /* ConversationFactory.swift */; };
+		D48DD5CC2AA7C1DD00698BA9 /* ConversationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48DD5CB2AA7C1DD00698BA9 /* ConversationCoordinator.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +183,9 @@
 		D47FB2262A9E8DFC0034E974 /* ContactsBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsBusiness.swift; sourceTree = "<group>"; };
 		D47FB2282A9E8E780034E974 /* AddNewContactError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContactError.swift; sourceTree = "<group>"; };
 		D47FB22A2A9E8EF80034E974 /* ContactServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactServiceError.swift; sourceTree = "<group>"; };
+		D48DD5C52AA7C0DC00698BA9 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		D48DD5C82AA7C18E00698BA9 /* ConversationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationFactory.swift; sourceTree = "<group>"; };
+		D48DD5CB2AA7C1DD00698BA9 /* ConversationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +428,7 @@
 			children = (
 				D422A0B92A8EBB1200CFE3C5 /* Login */,
 				D422A0B82A8EBAC500CFE3C5 /* SignUp */,
+				D48DD5C72AA7C17800698BA9 /* Conversation */,
 				D422A0B52A8EBA5500CFE3C5 /* MainTabBar */,
 			);
 			path = Screens;
@@ -605,6 +612,7 @@
 			children = (
 				D406A3BB2A82C2470044D13D /* Login */,
 				D46359A62A83CCEC006B16A9 /* SignUp */,
+				D48DD5C42AA7C0B900698BA9 /* Conversation */,
 				D46359D32A85B921006B16A9 /* MainTabBar */,
 			);
 			path = Screens;
@@ -725,6 +733,23 @@
 				D47FB2282A9E8E780034E974 /* AddNewContactError.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		D48DD5C42AA7C0B900698BA9 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				D48DD5C52AA7C0DC00698BA9 /* ConversationViewController.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		D48DD5C72AA7C17800698BA9 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				D48DD5C82AA7C18E00698BA9 /* ConversationFactory.swift */,
+				D48DD5CB2AA7C1DD00698BA9 /* ConversationCoordinator.swift */,
+			);
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
@@ -889,11 +914,13 @@
 				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
 				D46359D92A85BC9F006B16A9 /* ConversationsViewController.swift in Sources */,
 				D422A0962A8E6CBB00CFE3C5 /* SettingsPresenter.swift in Sources */,
+				D48DD5C92AA7C18E00698BA9 /* ConversationFactory.swift in Sources */,
 				D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */,
 				D47FB21E2A9791B50034E974 /* AddContactFactory.swift in Sources */,
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
 				D422A0A02A8EA42500CFE3C5 /* AutenticationClient.swift in Sources */,
 				D422A0C12A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift in Sources */,
+				D48DD5C62AA7C0DC00698BA9 /* ConversationViewController.swift in Sources */,
 				D46359D52A85B92F006B16A9 /* MainTabBarCoordinator.swift in Sources */,
 				D47FB21C2A9791740034E974 /* AddContactCoordinator.swift in Sources */,
 				D47FB2062A93F7FF0034E974 /* SettingsBusiness.swift in Sources */,
@@ -907,6 +934,7 @@
 				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
 				D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */,
 				D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */,
+				D48DD5CC2AA7C1DD00698BA9 /* ConversationCoordinator.swift in Sources */,
 				D47FB22B2A9E8EF80034E974 /* ContactServiceError.swift in Sources */,
 				D422A0AA2A8EB01900CFE3C5 /* AuthResponse.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,

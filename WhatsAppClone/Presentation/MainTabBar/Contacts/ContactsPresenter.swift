@@ -14,6 +14,7 @@ public protocol ContactsPresenter {
     func addButtonAction()
     func searchTheList(text: String)
     func clearSearch()
+    func didSelectContact(index: Int)
 }
 
 class ContactsPresenterImpl: ContactsPresenter {
@@ -77,5 +78,10 @@ class ContactsPresenterImpl: ContactsPresenter {
         self.contactList = self.originalList
         self.originalList = []
         self.view.loadList()
+    }
+    
+    public func didSelectContact(index: Int) {
+        let contactSelected = self.contactList[index]
+        self.coordinator.showConversation(user: contactSelected)
     }
 }

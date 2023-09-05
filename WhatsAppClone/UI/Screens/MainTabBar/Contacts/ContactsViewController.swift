@@ -137,6 +137,11 @@ extension ContactsViewController: UITableViewDataSource {
         contactsCell.loadProfileImage(url: currentItem.urlImage)
         return contactsCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.presenter.didSelectContact(index: indexPath.row)
+    }
 }
 
 // MARK: - ContactsView
