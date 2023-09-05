@@ -8,6 +8,8 @@
 import UIKit
 
 public class ConversationViewController: UIViewController {
+    
+    private let bottomBar = BottomBarInputMessageView()
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +21,17 @@ public class ConversationViewController: UIViewController {
 extension ConversationViewController: ViewCode {
     
     func setupViewHierarchy() {
+        self.view.addSubview(bottomBar)
     }
     
     func setupConstraints() {
+        let safeArea = self.view.safeAreaLayoutGuide
+        // bottomBar
+        NSLayoutConstraint.activate([
+            self.bottomBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.bottomBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.bottomBar.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
     }
     
     func setupAdditionalConfiguration() {
