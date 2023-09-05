@@ -18,7 +18,6 @@ public class ConversationViewController: UIViewController {
         return view
     }()
     
-    
     private let bottomBar = BottomBarInputMessageView()
 
     public override func viewDidLoad() {
