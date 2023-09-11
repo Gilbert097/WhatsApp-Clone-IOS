@@ -14,15 +14,20 @@ public class ConversationViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.backgroundView =  UIImageView(image: .init(named: "bg"))
-        //view.separatorStyle = .none
+        view.register(LeftMessageTableViewCell.self, forCellReuseIdentifier: LeftMessageTableViewCell.identifier)
+        view.register(RightMessageTableViewCell.self, forCellReuseIdentifier: RightMessageTableViewCell.identifier)
+        view.separatorStyle = .none
         return view
     }()
     
     private let bottomBar = BottomBarInputMessageView()
+    
+    private let conversations = ["Olá, tudo bem?", "Tudo ótimo meu amigo", "Estou muito doente e precisava falar com você, será que podetia ir na farmácia pegar alguns remédios?"]
 
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        self.tableView.reloadData()
     }
 }
 
@@ -63,21 +68,31 @@ extension ConversationViewController: ViewCode {
 //MARK: - UITableViewDelegate
 extension ConversationViewController: UITableViewDelegate {
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 40
-    }
 }
 
 //MARK: - UITableViewDataSource
 extension ConversationViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return conversations.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        tableViewCell.backgroundColor = .clear
+        let index = indexPath.row
+        let message = self.conversations[index]
+        let isRight = index % 2 == 0
+        
+        let identifier = isRight ? RightMessageTableViewCell.identifier : LeftMessageTableViewCell.identifier
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+       
+        if isRight {
+            let rightCell = tableViewCell as! RightMessageTableViewCell
+            rightCell.messageLabel.text = message
+        } else {
+            let leftCell = tableViewCell as! LeftMessageTableViewCell
+            leftCell.messageLabel.text = message
+        }
+        
         return tableViewCell
     }
 }
