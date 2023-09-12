@@ -23,6 +23,8 @@ public class ConversationViewController: UIViewController {
     private let bottomBar = BottomBarInputMessageView()
     
     private let conversations = ["Olá, tudo bem?", "Tudo ótimo meu amigo", "Estou muito doente e precisava falar com você, será que podetia ir na farmácia pegar alguns remédios?"]
+    
+    public var presenter: ConversationPresenter!
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,14 @@ extension ConversationViewController: ViewCode {
         self.view.backgroundColor = .white
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.bottomBar.delegate = self
+    }
+}
+
+//MARK: - BottomBarInputMessageDelegate
+extension ConversationViewController: BottomBarInputMessageDelegate {
+    public func sendButtonTapped() {
+        self.presenter.sendMessageButtonAction(text: self.bottomBar.text)
     }
 }
 

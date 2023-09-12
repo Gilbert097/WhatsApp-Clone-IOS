@@ -95,6 +95,7 @@
 		D48DD5CF2AA7D1EC00698BA9 /* BottomBarInputMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48DD5CE2AA7D1EC00698BA9 /* BottomBarInputMessageView.swift */; };
 		D4934E752AAF926F0057466E /* RightMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E742AAF926F0057466E /* RightMessageTableViewCell.swift */; };
 		D4934E772AAF96080057466E /* LeftMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E762AAF96080057466E /* LeftMessageTableViewCell.swift */; };
+		D4934E7A2AB107360057466E /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E792AB107360057466E /* ConversationPresenter.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +193,7 @@
 		D48DD5CE2AA7D1EC00698BA9 /* BottomBarInputMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarInputMessageView.swift; sourceTree = "<group>"; };
 		D4934E742AAF926F0057466E /* RightMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMessageTableViewCell.swift; sourceTree = "<group>"; };
 		D4934E762AAF96080057466E /* LeftMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMessageTableViewCell.swift; sourceTree = "<group>"; };
+		D4934E792AB107360057466E /* ConversationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +409,7 @@
 			children = (
 				D422A0BA2A8EBB3400CFE3C5 /* Login */,
 				D422A0B72A8EBAB900CFE3C5 /* SignUp */,
+				D4934E782AB107160057466E /* Conversation */,
 				D47FB2192A96ECCB0034E974 /* MainTabBar */,
 			);
 			path = Presentation;
@@ -769,6 +772,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		D4934E782AB107160057466E /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				D4934E792AB107360057466E /* ConversationPresenter.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -959,6 +970,7 @@
 				D422A0AA2A8EB01900CFE3C5 /* AuthResponse.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
+				D4934E7A2AB107360057466E /* ConversationPresenter.swift in Sources */,
 				D46359B22A84276C006B16A9 /* SignUpFactory.swift in Sources */,
 				D406A3CB2A82F6920044D13D /* PrimaryTextField.swift in Sources */,
 				D422A0CD2A8F036700CFE3C5 /* DatabaseQuery.swift in Sources */,

@@ -8,7 +8,15 @@
 import Foundation
 import UIKit
 
+public protocol BottomBarInputMessageDelegate: NSObject {
+    func sendButtonTapped()
+}
+
 class BottomBarInputMessageView: UIView {
+    
+    public var text: String {
+        textField.text ?? .init()
+    }
     
     private let attachmentButton: UIButton = {
         let view = UIButton()
@@ -26,13 +34,24 @@ class BottomBarInputMessageView: UIView {
         return view
     }()
     
+    public weak var delegate: BottomBarInputMessageDelegate?
+    
     public init() {
         super.init(frame: .zero)
         setupView()
+        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure() {
+        self.sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func sendButtonTapped() {
+        self.delegate?.sendButtonTapped()
     }
 }
 

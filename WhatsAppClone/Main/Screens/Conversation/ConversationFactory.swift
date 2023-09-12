@@ -12,7 +12,8 @@ public final class ConversationFactory {
     
     public static func build(coordinator: ConversationCoordinator, user: UserModel) -> ConversationViewController {
         let viewController = ConversationViewController()
-        
+        let presenter = ConversationPresenterImpl(coordinator: coordinator)
+        viewController.presenter = presenter
         return viewController
     }
 }
