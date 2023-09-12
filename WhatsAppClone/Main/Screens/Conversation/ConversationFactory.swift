@@ -12,7 +12,9 @@ public final class ConversationFactory {
     
     public static func build(coordinator: ConversationCoordinator, user: UserModel) -> ConversationViewController {
         let viewController = ConversationViewController()
-        let presenter = ConversationPresenterImpl(coordinator: coordinator)
+        let firebase = FirebaseFirestoreAdapter()
+        let conversationService = ConversationServiceImpl(databaseClient: firebase)
+        let presenter = ConversationPresenterImpl(coordinator: coordinator, conversationService: conversationService, conversationUser: user)
         viewController.presenter = presenter
         return viewController
     }
