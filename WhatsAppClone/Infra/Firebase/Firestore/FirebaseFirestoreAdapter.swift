@@ -18,6 +18,7 @@ public protocol DatabaseClient {
     func update(query: DatabaseQuery, completion: @escaping (DatabaseUpdateResult) -> Void)
     func retrieve(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveResult) -> Void)
     func retrieveValues(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveValuesResult) -> Void)
+    func addChangeListener(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveValuesResult) -> Void) -> DatabaseRegisterListener
 }
 
 class FirebaseFirestoreAdapter: DatabaseClient {
@@ -37,6 +38,29 @@ class FirebaseFirestoreAdapter: DatabaseClient {
                 completion(.failure(.createError))
             }
         }
+    }
+    
+    public func addChangeListener(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveValuesResult) -> Void) -> DatabaseRegisterListener {
+        let (rootReference, firebaseQuery) = findRootReferenceWithFirebaseQuery(query: query)
+        
+        let addSnapshotListener: (QuerySnapshot?, Error?) -> Void = { querySnapshot, error in
+            if let querySnapshot = querySnapshot {
+                let datas = querySnapshot
+                    .documents
+                    .map({ $0.value })
+                    .compactMap { $0 }
+                completion(.success(datas))
+            } else {
+                completion(.failure(.valueNotFound))
+            }
+        }
+        var registration: ListenerRegistration!
+        if let firebaseQuery = firebaseQuery {
+            registration = firebaseQuery.addSnapshotListener(addSnapshotListener)
+        } else {
+            registration = rootReference.addSnapshotListener(addSnapshotListener)
+        }
+        return FirestoreRegiterListener(registration: registration)
     }
     
     public func update(query: DatabaseQuery, completion: @escaping (DatabaseUpdateResult) -> Void) {

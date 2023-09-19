@@ -7,10 +7,17 @@
 
 import Foundation
 
+public enum ConversationError: Error {
+    case unexpected
+    case parseError
+}
+
 public typealias SendMessageResult = Swift.Result<Void, SendMessageError>
+public typealias AddChangeValueResult = Swift.Result<[MessageModel], ConversationError>
 
 public protocol ConversationService {
     func sendMessage(request: ConversationRequest, completion: @escaping (SendMessageResult) -> Void)
+    func addChangeListener(observer: ConversationObserver, completion: @escaping (AddChangeValueResult) -> Void) -> DatabaseRegisterListener
 }
 
 class ConversationServiceImpl: ConversationService {
@@ -36,4 +43,33 @@ class ConversationServiceImpl: ConversationService {
             }
         }
     }
+    
+    public func addChangeListener(observer: ConversationObserver, completion: @escaping (AddChangeValueResult) -> Void) -> DatabaseRegisterListener {
+        let userRecipientRoot = DatabaseQuery(path: observer.userRecipientId)
+        let userSenderItem = DatabaseQueryItem(query: userRecipientRoot, path: observer.userSenderId)
+        let queryRoot = DatabaseQuery(path: "messages", item: userSenderItem)
+        
+        let registration = self.databaseClient.addChangeListener(query: queryRoot) { result in
+            switch result {
+            case .success(let datas):
+                let models: [MessageModel] = datas
+                    .map({ $0.toModel()})
+                    .compactMap({ $0 })
+                completion(.success(models))
+            case .failure:
+                completion(.failure(.unexpected))
+            }
+        }
+        return registration
+    }
+}
+
+public struct ConversationObserver {
+    public let userSenderId: String
+    public let userRecipientId: String
+}
+
+public struct MessageModel: Model {
+    public let id: String
+    public let message: String
 }

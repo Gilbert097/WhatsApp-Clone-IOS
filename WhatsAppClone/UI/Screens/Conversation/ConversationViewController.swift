@@ -31,6 +31,16 @@ public class ConversationViewController: UIViewController {
         setupView()
         self.tableView.reloadData()
     }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter.start()
+    }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.presenter.stop()
+    }
 }
 
 // MARK: - ViewCode

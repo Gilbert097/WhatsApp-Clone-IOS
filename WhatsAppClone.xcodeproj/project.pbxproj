@@ -99,6 +99,8 @@
 		D4934E7D2AB116690057466E /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E7C2AB116690057466E /* ConversationService.swift */; };
 		D4934E7F2AB11D360057466E /* SendMessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E7E2AB11D360057466E /* SendMessageError.swift */; };
 		D4934E812AB11D550057466E /* ConversationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E802AB11D550057466E /* ConversationRequest.swift */; };
+		D4934E832AB206760057466E /* FirebaseFirestoreListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */; };
+		D4934E852AB3AA420057466E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E842AB3AA420057466E /* ConversationManager.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +202,8 @@
 		D4934E7C2AB116690057466E /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		D4934E7E2AB11D360057466E /* SendMessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageError.swift; sourceTree = "<group>"; };
 		D4934E802AB11D550057466E /* ConversationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRequest.swift; sourceTree = "<group>"; };
+		D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreListener.swift; sourceTree = "<group>"; };
+		D4934E842AB3AA420057466E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				D422A08F2A8D653800CFE3C5 /* AutenticationState */,
+				D4934E842AB3AA420057466E /* ConversationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 			children = (
 				D422A0C82A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift */,
 				D422A0CC2A8F036700CFE3C5 /* DatabaseQuery.swift */,
+				D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -932,6 +938,7 @@
 				D422A0D12A8F042100CFE3C5 /* DatabaseClientError.swift in Sources */,
 				D47FB2292A9E8E780034E974 /* AddNewContactError.swift in Sources */,
 				D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */,
+				D4934E832AB206760057466E /* FirebaseFirestoreListener.swift in Sources */,
 				D46359DD2A85BFE3006B16A9 /* MainTabBarController.swift in Sources */,
 				D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */,
 				D422A0DF2A904AF900CFE3C5 /* ImagePickerManager.swift in Sources */,
@@ -1004,6 +1011,7 @@
 				D47FB2182A96E9CA0034E974 /* ContactsFactory.swift in Sources */,
 				D422A08E2A8D527E00CFE3C5 /* SettingsViewController.swift in Sources */,
 				D422A0DC2A8FBFFA00CFE3C5 /* LinesTextView.swift in Sources */,
+				D4934E852AB3AA420057466E /* ConversationManager.swift in Sources */,
 				D47FB2212A97921D0034E974 /* AddContactPresenter.swift in Sources */,
 				D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */,
 				D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */,
