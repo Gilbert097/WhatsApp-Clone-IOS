@@ -12,6 +12,7 @@ public protocol ConversationPresenter {
     func start()
     func stop()
     func sendMessageButtonAction(text: String)
+    func attachmentButtonAction()
 }
 
 class ConversationPresenterImpl: ConversationPresenter {
@@ -73,6 +74,7 @@ class ConversationPresenterImpl: ConversationPresenter {
         let requestUserRecipient = ConversationRequest(userSenderId: conversationUser.id, userRecipientId: currentUser.id, message: conversationMessage)
         sendMessage(request: requestUserRecipient)
     }
+    
     private func sendMessage(request: ConversationRequest) {
         self.conversationService.sendMessage(request: request) { [weak self] result in
             guard let self = self else { return }
@@ -83,6 +85,10 @@ class ConversationPresenterImpl: ConversationPresenter {
                 LogUtils.printMessage(tag: self.TAG, message: "Send message error! \(request.toString())")
             }
         }
+    }
+    
+    public func attachmentButtonAction() {
+        LogUtils.printMessage(tag: self.TAG, message: "attachmentButtonAction!")
     }
 }
 

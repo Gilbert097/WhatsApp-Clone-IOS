@@ -91,6 +91,11 @@ extension ConversationViewController: ViewCode {
 
 //MARK: - BottomBarInputMessageDelegate
 extension ConversationViewController: BottomBarInputMessageDelegate {
+    
+    public func attachmentButtonTapped() {
+        self.presenter.attachmentButtonAction()
+    }
+    
     public func sendButtonTapped() {
         self.presenter.sendMessageButtonAction(text: self.bottomBar.text)
     }

@@ -10,6 +10,7 @@ import UIKit
 
 public protocol BottomBarInputMessageDelegate: NSObject {
     func sendButtonTapped()
+    func attachmentButtonTapped()
 }
 
 class BottomBarInputMessageView: UIView {
@@ -48,10 +49,15 @@ class BottomBarInputMessageView: UIView {
     
     private func configure() {
         self.sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
+        self.attachmentButton.addTarget(self, action: #selector(attachmentButtonTapped), for: .touchUpInside)
     }
     
     @objc private func sendButtonTapped() {
         self.delegate?.sendButtonTapped()
+    }
+    
+    @objc private func attachmentButtonTapped() {
+        self.delegate?.attachmentButtonTapped()
     }
 }
 
