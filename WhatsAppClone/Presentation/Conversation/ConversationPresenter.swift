@@ -15,7 +15,7 @@ public protocol ConversationPresenter {
     func attachmentButtonAction()
 }
 
-class ConversationPresenterImpl: ConversationPresenter {
+class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     private var TAG: String { String(describing: ConversationPresenterImpl.self) }
     
@@ -88,7 +88,15 @@ class ConversationPresenterImpl: ConversationPresenter {
     }
     
     public func attachmentButtonAction() {
-        LogUtils.printMessage(tag: self.TAG, message: "attachmentButtonAction!")
+        self.coordinator.showImagePicker()
+    }
+}
+
+// MARK: - ImagePickerDelegate
+extension ConversationPresenterImpl: ImagePickerDelegate {
+    
+    func didSelect(data: Data) {
+        LogUtils.printMessage(tag: self.TAG, message: "didSelectImagePicker!")
     }
 }
 

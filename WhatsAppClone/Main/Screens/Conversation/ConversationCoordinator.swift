@@ -8,21 +8,21 @@
 import Foundation
 import UIKit
 
-public protocol ConversationCoordinator: Coordinator {
+public protocol ConversationCoordinator {
+    func showImagePicker()
 }
 
-public class ConversationCoordinatorImpl: ConversationCoordinator  {
+class ConversationCoordinatorImpl: ConversationCoordinator  {
     
     private let navigation: NavigationController
-    private let user: UserModel
+    private let imagePickerManager: ImagePickerManager
     
-    public init(navigation: NavigationController, user: UserModel) {
+    public init(navigation: NavigationController, imagePickerManager: ImagePickerManager) {
         self.navigation = navigation
-        self.user = user
+        self.imagePickerManager = imagePickerManager
     }
     
-    public func show() {
-        let viewController = ConversationFactory.build(coordinator: self, user: self.user)
-        self.navigation.pushViewController(viewController)
+    public func showImagePicker() {
+        self.imagePickerManager.present()
     }
 }

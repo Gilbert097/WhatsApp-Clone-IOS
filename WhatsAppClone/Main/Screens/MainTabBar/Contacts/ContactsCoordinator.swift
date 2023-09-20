@@ -26,7 +26,7 @@ class ContactsCoordinatorImpl: ContactsCoordinator {
     }
     
     public func showConversation(user: UserModel) {
-        let conversationCoordinator = ConversationCoordinatorImpl(navigation: self.navigation, user: user)
-        conversationCoordinator.show()
+        let viewController = ConversationFactory.build(navigation: self.navigation, user: user)
+        self.navigation.pushViewController(viewController)
     }
 }
