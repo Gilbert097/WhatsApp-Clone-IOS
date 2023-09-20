@@ -55,6 +55,7 @@ class ConversationServiceImpl: ConversationService {
                 let models: [MessageModel] = datas
                     .map({ $0.toModel()})
                     .compactMap({ $0 })
+                    .sorted(by: { $0.date.compare($1.date) == .orderedAscending })
                 completion(.success(models))
             case .failure:
                 completion(.failure(.unexpected))
@@ -73,4 +74,5 @@ public struct MessageModel: Model {
     public let id: String
     public let userId: String
     public let message: String
+    public let date: Date
 }

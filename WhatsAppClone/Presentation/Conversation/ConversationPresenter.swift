@@ -45,7 +45,8 @@ class ConversationPresenterImpl: ConversationPresenter {
             guard let self = self else { return }
             switch result {
             case .success(let messages):
-                let viewModels = messages.map({MessageViewModel(message: $0.message, isMessageFromCurrentUser: currentUser.id == $0.userId)})
+                let viewModels = messages
+                    .map({MessageViewModel(message: $0.message, isMessageFromCurrentUser: currentUser.id == $0.userId)})
                 self.messages = viewModels
                 self.view.loadList()
             case .failure:
@@ -61,7 +62,7 @@ class ConversationPresenterImpl: ConversationPresenter {
     
     public func sendMessageButtonAction(text: String) {
         guard let currentUser = UserSession.shared.read() else { return }
-        let conversationMessage = ConversationMessage(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text)
+        let conversationMessage = ConversationMessage(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
         let request = ConversationRequest(userSenderId: currentUser.id, userRecipientId: conversationUser.id, message: conversationMessage)
         self.conversationService.sendMessage(request: request) { [weak self] result in
             guard let self = self else { return }
