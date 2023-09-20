@@ -9,6 +9,7 @@ import UIKit
 
 public protocol ConversationView {
     func loadList()
+    func setTitle(title: String)
 }
 
 public class ConversationViewController: UIViewController, ConversationView {
@@ -46,6 +47,10 @@ public class ConversationViewController: UIViewController, ConversationView {
     
     public func loadList() {
         self.tableView.reloadData()
+    }
+    
+    public func setTitle(title: String) {
+        self.title = title
     }
 }
 

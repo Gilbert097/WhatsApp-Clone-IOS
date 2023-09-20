@@ -39,6 +39,11 @@ class ConversationPresenterImpl: ConversationPresenter {
     }
     
     public func start() {
+        self.view.setTitle(title: conversationUser.name)
+        registerConversationListener()
+    }
+    
+    private func registerConversationListener() {
         guard let currentUser = UserSession.shared.read() else { return }
         let conversation = ConversationObserver(userSenderId: currentUser.id, userRecipientId: conversationUser.id)
         self.conversationManager.registerChangeListener(conversation: conversation) { [weak self] result in
@@ -63,14 +68,19 @@ class ConversationPresenterImpl: ConversationPresenter {
     public func sendMessageButtonAction(text: String) {
         guard let currentUser = UserSession.shared.read() else { return }
         let conversationMessage = ConversationMessage(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
-        let request = ConversationRequest(userSenderId: currentUser.id, userRecipientId: conversationUser.id, message: conversationMessage)
+        let requestUserSender = ConversationRequest(userSenderId: currentUser.id, userRecipientId: conversationUser.id, message: conversationMessage)
+        sendMessage(request: requestUserSender)
+        let requestUserRecipient = ConversationRequest(userSenderId: conversationUser.id, userRecipientId: currentUser.id, message: conversationMessage)
+        sendMessage(request: requestUserRecipient)
+    }
+    private func sendMessage(request: ConversationRequest) {
         self.conversationService.sendMessage(request: request) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success:
-                LogUtils.printMessage(tag: self.TAG, message: "Send message success!")
+                LogUtils.printMessage(tag: self.TAG, message: "Send message success! \(request.toString())")
             case .failure:
-                LogUtils.printMessage(tag: self.TAG, message: "Send message error!")
+                LogUtils.printMessage(tag: self.TAG, message: "Send message error! \(request.toString())")
             }
         }
     }

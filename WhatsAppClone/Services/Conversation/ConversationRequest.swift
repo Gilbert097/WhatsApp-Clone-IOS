@@ -11,6 +11,10 @@ public struct ConversationRequest {
     public let userSenderId: String
     public let userRecipientId: String
     public let message: ConversationMessage
+    
+    public func toString() -> String {
+        "\(userSenderId) -> \(userRecipientId)"
+    }
 }
 
 public struct ConversationMessage: Model {
