@@ -15,7 +15,7 @@ public final class ConversationFactory {
         let firebase = FirebaseFirestoreAdapter()
         let conversationService = ConversationServiceImpl(databaseClient: firebase)
         let manager = ConversationManagerImpl(conversationService: conversationService)
-        let presenter = ConversationPresenterImpl(coordinator: coordinator, conversationService: conversationService, conversationManager: manager, conversationUser: user)
+        let presenter = ConversationPresenterImpl(view: viewController, coordinator: coordinator, conversationService: conversationService, conversationManager: manager, conversationUser: user)
         viewController.presenter = presenter
         return viewController
     }

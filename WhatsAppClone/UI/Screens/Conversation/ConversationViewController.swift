@@ -7,7 +7,11 @@
 
 import UIKit
 
-public class ConversationViewController: UIViewController {
+public protocol ConversationView {
+    func loadList()
+}
+
+public class ConversationViewController: UIViewController, ConversationView {
     
     private let tableView: UITableView = {
         let view = UITableView()
@@ -21,8 +25,6 @@ public class ConversationViewController: UIViewController {
     }()
     
     private let bottomBar = BottomBarInputMessageView()
-    
-    private let conversations = ["Olá, tudo bem?", "Tudo ótimo meu amigo", "Estou muito doente e precisava falar com você, será que podetia ir na farmácia pegar alguns remédios?"]
     
     public var presenter: ConversationPresenter!
 
@@ -40,6 +42,10 @@ public class ConversationViewController: UIViewController {
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.presenter.stop()
+    }
+    
+    public func loadList() {
+        self.tableView.reloadData()
     }
 }
 
@@ -94,12 +100,12 @@ extension ConversationViewController: UITableViewDelegate {
 extension ConversationViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversations.count
+        return self.presenter.messages.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
-        let message = self.conversations[index]
+        let viewModel = self.presenter.messages[index]
         let isRight = index % 2 == 0
         
         let identifier = isRight ? RightMessageTableViewCell.identifier : LeftMessageTableViewCell.identifier
@@ -107,10 +113,10 @@ extension ConversationViewController: UITableViewDataSource {
        
         if isRight {
             let rightCell = tableViewCell as! RightMessageTableViewCell
-            rightCell.messageLabel.text = message
+            rightCell.messageLabel.text = viewModel.message
         } else {
             let leftCell = tableViewCell as! LeftMessageTableViewCell
-            leftCell.messageLabel.text = message
+            leftCell.messageLabel.text = viewModel.message
         }
         
         return tableViewCell
