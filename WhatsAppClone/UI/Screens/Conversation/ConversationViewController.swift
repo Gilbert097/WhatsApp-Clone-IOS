@@ -106,12 +106,11 @@ extension ConversationViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
         let viewModel = self.presenter.messages[index]
-        let isRight = index % 2 == 0
         
-        let identifier = isRight ? RightMessageTableViewCell.identifier : LeftMessageTableViewCell.identifier
+        let identifier = viewModel.isMessageFromCurrentUser ? RightMessageTableViewCell.identifier : LeftMessageTableViewCell.identifier
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
        
-        if isRight {
+        if viewModel.isMessageFromCurrentUser {
             let rightCell = tableViewCell as! RightMessageTableViewCell
             rightCell.messageLabel.text = viewModel.message
         } else {

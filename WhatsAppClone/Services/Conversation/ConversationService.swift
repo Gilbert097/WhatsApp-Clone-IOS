@@ -71,5 +71,6 @@ public struct ConversationObserver {
 
 public struct MessageModel: Model {
     public let id: String
+    public let userId: String
     public let message: String
 }
