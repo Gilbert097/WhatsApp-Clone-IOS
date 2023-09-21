@@ -68,17 +68,12 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     public func sendMessageButtonAction(text: String) {
         guard let request = makeConversationResquest(text: text) else { return }
-        self.conversationBusiness.sendMessageToSenderAndRecipientUser(request: request)
+        self.conversationBusiness.sendMessageFromContentType(request: request, completion: { _ in })
     }
     
-    private func makeConversationResquest(text: String) -> ConversationRequest? {
+    private func makeConversationResquest(text: String? = nil, data: Data? = nil) -> ConversationRequest? {
         guard let currentUser = UserSession.shared.read() else { return nil}
-        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: text, data: nil)
-    }
-    
-    private func makeConversationResquest(data: Data) -> ConversationRequest? {
-        guard let currentUser = UserSession.shared.read() else { return nil}
-        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: nil, data: data)
+        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: text, data: data)
     }
     
     public func attachmentButtonAction() {
@@ -91,7 +86,7 @@ extension ConversationPresenterImpl: ImagePickerDelegate {
     
     func didSelect(data: Data) {
         guard let request = makeConversationResquest(data: data) else { return }
-        self.conversationBusiness.sendMessageToSenderAndRecipientUser(request: request)
+        self.conversationBusiness.sendMessageFromContentType(request: request, completion: { _ in })
     }
 }
 
