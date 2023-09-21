@@ -21,6 +21,8 @@ public class ConversationViewController: UIViewController, ConversationView {
         view.backgroundView =  UIImageView(image: .init(named: "bg"))
         view.register(LeftMessageCell.self, forCellReuseIdentifier: LeftMessageCell.identifier)
         view.register(RightMessageCell.self, forCellReuseIdentifier: RightMessageCell.identifier)
+        view.register(LeftImageMessageCell.self, forCellReuseIdentifier: LeftImageMessageCell.identifier)
+        view.register(RightImageMessageCell.self, forCellReuseIdentifier: RightImageMessageCell.identifier)
         view.separatorStyle = .none
         return view
     }()
@@ -117,17 +119,30 @@ extension ConversationViewController: UITableViewDataSource {
         let index = indexPath.row
         let viewModel = self.presenter.messages[index]
         
-        let identifier = viewModel.isMessageFromCurrentUser ? RightMessageCell.identifier : LeftMessageCell.identifier
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-       
-        if viewModel.isMessageFromCurrentUser {
-            let rightCell = tableViewCell as! RightMessageCell
-            rightCell.messageLabel.text = viewModel.message
-        } else {
-            let leftCell = tableViewCell as! LeftMessageCell
-            leftCell.messageLabel.text = viewModel.message
+        var tableViewCell: UITableViewCell!
+        if let message = viewModel.message {
+            let identifier = viewModel.isMessageFromCurrentUser ? RightMessageCell.identifier : LeftMessageCell.identifier
+            tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            
+            if viewModel.isMessageFromCurrentUser {
+                let rightCell = tableViewCell as! RightMessageCell
+                rightCell.messageLabel.text = viewModel.message
+            } else {
+                let leftCell = tableViewCell as! LeftMessageCell
+                leftCell.messageLabel.text = viewModel.message
+            }
+        } else if let urlImage = viewModel.urlImage {
+            let identifier = viewModel.isMessageFromCurrentUser ? RightImageMessageCell.identifier : LeftImageMessageCell.identifier
+            tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            
+            if viewModel.isMessageFromCurrentUser {
+                let rightCell = tableViewCell as! RightImageMessageCell
+                rightCell.imageMessageView.sd_setImage(with: urlImage)
+            } else {
+                let leftCell = tableViewCell as! LeftImageMessageCell
+                leftCell.imageMessageView.sd_setImage(with: urlImage)
+            }
         }
-        
         return tableViewCell
     }
 }

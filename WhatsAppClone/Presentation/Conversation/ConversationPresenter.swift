@@ -52,7 +52,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
             switch result {
             case .success(let messages):
                 let viewModels = messages
-                    .map({MessageViewModel(message: $0.message ?? .init(), isMessageFromCurrentUser: currentUser.id == $0.userId)})
+                    .map({MessageViewModel(message: $0.message, urlImage: $0.toURL(), isMessageFromCurrentUser: currentUser.id == $0.userId)})
                 self.messages = viewModels
                 self.view.loadList()
             case .failure:
@@ -91,6 +91,7 @@ extension ConversationPresenterImpl: ImagePickerDelegate {
 }
 
 public struct MessageViewModel {
-    public let message: String
+    public let message: String?
+    public let urlImage: URL?
     public let isMessageFromCurrentUser: Bool
 }

@@ -23,4 +23,11 @@ public struct MessageModel: Model {
     public let message: String?
     public let urlImage: String?
     public let date: Date
+    
+    public func toURL() -> URL? {
+        if let url = urlImage {
+            return URL(string: url)
+        }
+        return nil
+    }
 }
