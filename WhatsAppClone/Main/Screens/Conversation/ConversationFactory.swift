@@ -16,11 +16,12 @@ public final class ConversationFactory {
         let firebase = FirebaseFirestoreAdapter()
         let conversationService = ConversationServiceImpl(databaseClient: firebase)
         let manager = ConversationManagerImpl(conversationService: conversationService)
+        let business = ConversationBusinessImpl(conversationService: conversationService)
         
         let imagePickerManager = ImagePickerManager(presentationController: viewController)
         let coordinator = ConversationCoordinatorImpl(navigation: navigation, imagePickerManager: imagePickerManager)
         
-        let presenter = ConversationPresenterImpl(view: viewController, coordinator: coordinator, conversationService: conversationService, conversationManager: manager, conversationUser: user)
+        let presenter = ConversationPresenterImpl(view: viewController, coordinator: coordinator, conversationBusiness: business, conversationManager: manager, conversationUser: user)
         imagePickerManager.delegate = presenter
         viewController.presenter = presenter
         return viewController

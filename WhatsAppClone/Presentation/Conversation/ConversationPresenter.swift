@@ -21,7 +21,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     private let view: ConversationView
     private let coordinator: ConversationCoordinator
-    private let conversationService: ConversationService
+    private let conversationBusiness: ConversationBusiness
     private let conversationManager: ConversationManager
     private let conversationUser: UserModel
     
@@ -29,12 +29,12 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     public init(view: ConversationView,
                 coordinator: ConversationCoordinator,
-                conversationService: ConversationService,
+                conversationBusiness: ConversationBusiness,
                 conversationManager: ConversationManager,
                 conversationUser: UserModel) {
         self.view = view
         self.coordinator = coordinator
-        self.conversationService = conversationService
+        self.conversationBusiness = conversationBusiness
         self.conversationManager = conversationManager
         self.conversationUser = conversationUser
     }
@@ -69,22 +69,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     public func sendMessageButtonAction(text: String) {
         guard let currentUser = UserSession.shared.read() else { return }
         let conversationMessage = ConversationMessage(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
-        let requestUserSender = ConversationRequest(userSenderId: currentUser.id, userRecipientId: conversationUser.id, message: conversationMessage)
-        sendMessage(request: requestUserSender)
-        let requestUserRecipient = ConversationRequest(userSenderId: conversationUser.id, userRecipientId: currentUser.id, message: conversationMessage)
-        sendMessage(request: requestUserRecipient)
-    }
-    
-    private func sendMessage(request: ConversationRequest) {
-        self.conversationService.sendMessage(request: request) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success:
-                LogUtils.printMessage(tag: self.TAG, message: "Send message success! \(request.toString())")
-            case .failure:
-                LogUtils.printMessage(tag: self.TAG, message: "Send message error! \(request.toString())")
-            }
-        }
+        
     }
     
     public func attachmentButtonAction() {
