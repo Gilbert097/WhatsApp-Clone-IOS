@@ -1,5 +1,5 @@
 //
-//  RightMessageTableViewCell.swift
+//  LeftMessageCell.swift
 //  WhatsAppClone
 //
 //  Created by Gilberto Silva on 11/09/23.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class RightMessageTableViewCell: UITableViewCell {
+class LeftMessageCell: UITableViewCell {
     
-    public static let identifier = "rightMessageCell"
+    public static let identifier = "leftMessageCell"
 
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
-        view.backgroundColor = Color.greenish_yellow
+        view.backgroundColor = .white
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
@@ -40,7 +40,7 @@ class RightMessageTableViewCell: UITableViewCell {
 }
 
 // MARK: - ViewCode
-extension RightMessageTableViewCell: ViewCode {
+extension LeftMessageCell: ViewCode {
     
     func setupViewHierarchy() {
         self.containerView.addSubviews([messageLabel])
@@ -52,8 +52,8 @@ extension RightMessageTableViewCell: ViewCode {
         //containerView
         NSLayoutConstraint.activate([
             self.containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
-            self.containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 60),
-            self.containerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
+            self.containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
+            self.containerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -60),
             self.containerView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10)
         ])
         

@@ -19,8 +19,8 @@ public class ConversationViewController: UIViewController, ConversationView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.backgroundView =  UIImageView(image: .init(named: "bg"))
-        view.register(LeftMessageTableViewCell.self, forCellReuseIdentifier: LeftMessageTableViewCell.identifier)
-        view.register(RightMessageTableViewCell.self, forCellReuseIdentifier: RightMessageTableViewCell.identifier)
+        view.register(LeftMessageCell.self, forCellReuseIdentifier: LeftMessageCell.identifier)
+        view.register(RightMessageCell.self, forCellReuseIdentifier: RightMessageCell.identifier)
         view.separatorStyle = .none
         return view
     }()
@@ -117,14 +117,14 @@ extension ConversationViewController: UITableViewDataSource {
         let index = indexPath.row
         let viewModel = self.presenter.messages[index]
         
-        let identifier = viewModel.isMessageFromCurrentUser ? RightMessageTableViewCell.identifier : LeftMessageTableViewCell.identifier
+        let identifier = viewModel.isMessageFromCurrentUser ? RightMessageCell.identifier : LeftMessageCell.identifier
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
        
         if viewModel.isMessageFromCurrentUser {
-            let rightCell = tableViewCell as! RightMessageTableViewCell
+            let rightCell = tableViewCell as! RightMessageCell
             rightCell.messageLabel.text = viewModel.message
         } else {
-            let leftCell = tableViewCell as! LeftMessageTableViewCell
+            let leftCell = tableViewCell as! LeftMessageCell
             leftCell.messageLabel.text = viewModel.message
         }
         
