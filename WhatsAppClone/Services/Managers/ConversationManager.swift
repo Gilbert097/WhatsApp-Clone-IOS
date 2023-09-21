@@ -9,6 +9,11 @@ import Foundation
 
 public typealias AddChangeValueResult = Swift.Result<[MessageModel], ConversationError>
 
+public struct ConversationObserver {
+    public let userSenderId: String
+    public let userRecipientId: String
+}
+
 public protocol ConversationManager {
     func registerChangeListener(observer: ConversationObserver, listener: @escaping (AddChangeValueResult) -> Void)
     func unregisterChangeListener()

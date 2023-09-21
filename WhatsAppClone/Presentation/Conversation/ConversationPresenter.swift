@@ -52,7 +52,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
             switch result {
             case .success(let messages):
                 let viewModels = messages
-                    .map({MessageViewModel(message: $0.message, isMessageFromCurrentUser: currentUser.id == $0.userId)})
+                    .map({MessageViewModel(message: $0.message ?? .init(), isMessageFromCurrentUser: currentUser.id == $0.userId)})
                 self.messages = viewModels
                 self.view.loadList()
             case .failure:
@@ -67,14 +67,18 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     }
     
     public func sendMessageButtonAction(text: String) {
-        guard let request = makeConversationResquestByMessageText(text: text) else { return }
+        guard let request = makeConversationResquest(text: text) else { return }
         self.conversationBusiness.sendMessageToSenderAndRecipientUser(request: request)
     }
     
-    private func makeConversationResquestByMessageText(text: String) -> ConversationRequest? {
+    private func makeConversationResquest(text: String) -> ConversationRequest? {
         guard let currentUser = UserSession.shared.read() else { return nil}
-        let model = MessageModel(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
-        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, message: model)
+        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: text, data: nil)
+    }
+    
+    private func makeConversationResquest(data: Data) -> ConversationRequest? {
+        guard let currentUser = UserSession.shared.read() else { return nil}
+        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: nil, data: data)
     }
     
     public func attachmentButtonAction() {
@@ -86,7 +90,8 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
 extension ConversationPresenterImpl: ImagePickerDelegate {
     
     func didSelect(data: Data) {
-        LogUtils.printMessage(tag: self.TAG, message: "didSelectImagePicker!")
+        guard let request = makeConversationResquest(data: data) else { return }
+        self.conversationBusiness.sendMessageToSenderAndRecipientUser(request: request)
     }
 }
 

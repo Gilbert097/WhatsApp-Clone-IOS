@@ -43,7 +43,3 @@ class MessageServiceImpl: MessageService {
     }
 }
 
-public struct ConversationObserver {
-    public let userSenderId: String
-    public let userRecipientId: String
-}

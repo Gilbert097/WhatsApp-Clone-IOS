@@ -13,11 +13,13 @@ public final class ConversationFactory {
     public static func build(navigation: NavigationController, user: UserModel) -> ConversationViewController {
         let viewController = ConversationViewController()
         
-        let firebase = FirebaseFirestoreAdapter()
-        let manager = ConversationManagerImpl(databaseClient: firebase)
+        let firestore = FirebaseFirestoreAdapter()
+        let storage = FirebaseStorageAdapter()
+        let manager = ConversationManagerImpl(databaseClient: firestore)
         
-        let messageService = MessageServiceImpl(databaseClient: firebase)
-        let business = ConversationBusinessImpl(messageService: messageService)
+        let messageService = MessageServiceImpl(databaseClient: firestore)
+        let attachmentService = MessageAttachmentServiceImpl(storageClient: storage)
+        let business = ConversationBusinessImpl(messageService: messageService, attachmentService: attachmentService)
         
         let imagePickerManager = ImagePickerManager(presentationController: viewController)
         let coordinator = ConversationCoordinatorImpl(navigation: navigation, imagePickerManager: imagePickerManager)

@@ -20,6 +20,7 @@ public struct MessageRequest {
 public struct MessageModel: Model {
     public let id: String
     public let userId: String
-    public let message: String
+    public let message: String?
+    public let urlImage: String?
     public let date: Date
 }

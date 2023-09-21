@@ -51,6 +51,7 @@
 		D422A0E52A916A2300CFE3C5 /* FirebaseStorageAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0E42A916A2300CFE3C5 /* FirebaseStorageAdapter.swift */; };
 		D422A0E82A91720F00CFE3C5 /* ProfilePictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422A0E72A91720F00CFE3C5 /* ProfilePictureService.swift */; };
 		D45034AF2ABBC0A5007E4E55 /* ConversationBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45034AE2ABBC0A5007E4E55 /* ConversationBusiness.swift */; };
+		D45034B12ABC7F9D007E4E55 /* MessageAttachmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45034B02ABC7F9D007E4E55 /* MessageAttachmentService.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -155,6 +156,7 @@
 		D422A0E42A916A2300CFE3C5 /* FirebaseStorageAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageAdapter.swift; sourceTree = "<group>"; };
 		D422A0E72A91720F00CFE3C5 /* ProfilePictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureService.swift; sourceTree = "<group>"; };
 		D45034AE2ABBC0A5007E4E55 /* ConversationBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationBusiness.swift; sourceTree = "<group>"; };
+		D45034B02ABC7F9D007E4E55 /* MessageAttachmentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageAttachmentService.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				D422A0E72A91720F00CFE3C5 /* ProfilePictureService.swift */,
+				D45034B02ABC7F9D007E4E55 /* MessageAttachmentService.swift */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				D46359B42A84277B006B16A9 /* SignUpPresenter.swift in Sources */,
 				D422A0DF2A904AF900CFE3C5 /* ImagePickerManager.swift in Sources */,
 				D422A09D2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift in Sources */,
+				D45034B12ABC7F9D007E4E55 /* MessageAttachmentService.swift in Sources */,
 				D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */,
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
 				D46359C62A8519FF006B16A9 /* SignUpRequest.swift in Sources */,
