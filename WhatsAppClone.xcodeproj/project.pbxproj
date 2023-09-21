@@ -97,9 +97,9 @@
 		D4934E752AAF926F0057466E /* RightMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E742AAF926F0057466E /* RightMessageTableViewCell.swift */; };
 		D4934E772AAF96080057466E /* LeftMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E762AAF96080057466E /* LeftMessageTableViewCell.swift */; };
 		D4934E7A2AB107360057466E /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E792AB107360057466E /* ConversationPresenter.swift */; };
-		D4934E7D2AB116690057466E /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E7C2AB116690057466E /* ConversationService.swift */; };
+		D4934E7D2AB116690057466E /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E7C2AB116690057466E /* MessageService.swift */; };
 		D4934E7F2AB11D360057466E /* SendMessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E7E2AB11D360057466E /* SendMessageError.swift */; };
-		D4934E812AB11D550057466E /* ConversationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E802AB11D550057466E /* ConversationRequest.swift */; };
+		D4934E812AB11D550057466E /* MessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E802AB11D550057466E /* MessageRequest.swift */; };
 		D4934E832AB206760057466E /* FirebaseFirestoreListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */; };
 		D4934E852AB3AA420057466E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E842AB3AA420057466E /* ConversationManager.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
@@ -201,9 +201,9 @@
 		D4934E742AAF926F0057466E /* RightMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMessageTableViewCell.swift; sourceTree = "<group>"; };
 		D4934E762AAF96080057466E /* LeftMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMessageTableViewCell.swift; sourceTree = "<group>"; };
 		D4934E792AB107360057466E /* ConversationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
-		D4934E7C2AB116690057466E /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
+		D4934E7C2AB116690057466E /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		D4934E7E2AB11D360057466E /* SendMessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageError.swift; sourceTree = "<group>"; };
-		D4934E802AB11D550057466E /* ConversationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationRequest.swift; sourceTree = "<group>"; };
+		D4934E802AB11D550057466E /* MessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRequest.swift; sourceTree = "<group>"; };
 		D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreListener.swift; sourceTree = "<group>"; };
 		D4934E842AB3AA420057466E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -807,9 +807,9 @@
 		D4934E7B2AB115F60057466E /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				D4934E7C2AB116690057466E /* ConversationService.swift */,
+				D4934E7C2AB116690057466E /* MessageService.swift */,
 				D4934E7E2AB11D360057466E /* SendMessageError.swift */,
-				D4934E802AB11D550057466E /* ConversationRequest.swift */,
+				D4934E802AB11D550057466E /* MessageRequest.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -981,7 +981,7 @@
 				D48DD5C92AA7C18E00698BA9 /* ConversationFactory.swift in Sources */,
 				D46359B62A8427E4006B16A9 /* SignUpCoordinator.swift in Sources */,
 				D47FB21E2A9791B50034E974 /* AddContactFactory.swift in Sources */,
-				D4934E7D2AB116690057466E /* ConversationService.swift in Sources */,
+				D4934E7D2AB116690057466E /* MessageService.swift in Sources */,
 				D406A3C32A82C7A90044D13D /* Color.swift in Sources */,
 				D422A0A02A8EA42500CFE3C5 /* AutenticationClient.swift in Sources */,
 				D422A0C12A8EBEC100CFE3C5 /* FirebaseAuthListenerHandler.swift in Sources */,
@@ -997,7 +997,7 @@
 				D47FB2112A96E8E40034E974 /* ContactsPresenter.swift in Sources */,
 				D422A0C32A8EC00200CFE3C5 /* UserAuthClient.swift in Sources */,
 				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
-				D4934E812AB11D550057466E /* ConversationRequest.swift in Sources */,
+				D4934E812AB11D550057466E /* MessageRequest.swift in Sources */,
 				D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */,
 				D4934E752AAF926F0057466E /* RightMessageTableViewCell.swift in Sources */,
 				D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */,

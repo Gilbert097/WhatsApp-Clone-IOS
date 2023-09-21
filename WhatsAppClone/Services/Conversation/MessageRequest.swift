@@ -7,17 +7,17 @@
 
 import Foundation
 
-public struct ConversationRequest {
+public struct MessageRequest {
     public let userSenderId: String
     public let userRecipientId: String
-    public let message: ConversationMessage
+    public let message: MessageModel
     
     public func toString() -> String {
         "\(userSenderId) -> \(userRecipientId)"
     }
 }
 
-public struct ConversationMessage: Model {
+public struct MessageModel: Model {
     public let id: String
     public let userId: String
     public let message: String

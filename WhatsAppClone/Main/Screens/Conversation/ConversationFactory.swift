@@ -14,9 +14,10 @@ public final class ConversationFactory {
         let viewController = ConversationViewController()
         
         let firebase = FirebaseFirestoreAdapter()
-        let conversationService = ConversationServiceImpl(databaseClient: firebase)
-        let manager = ConversationManagerImpl(conversationService: conversationService)
-        let business = ConversationBusinessImpl(conversationService: conversationService)
+        let manager = ConversationManagerImpl(databaseClient: firebase)
+        
+        let messageService = MessageServiceImpl(databaseClient: firebase)
+        let business = ConversationBusinessImpl(messageService: messageService)
         
         let imagePickerManager = ImagePickerManager(presentationController: viewController)
         let coordinator = ConversationCoordinatorImpl(navigation: navigation, imagePickerManager: imagePickerManager)

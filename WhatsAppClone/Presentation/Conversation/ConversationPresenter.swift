@@ -46,8 +46,8 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     private func registerConversationListener() {
         guard let currentUser = UserSession.shared.read() else { return }
-        let conversation = ConversationObserver(userSenderId: currentUser.id, userRecipientId: conversationUser.id)
-        self.conversationManager.registerChangeListener(conversation: conversation) { [weak self] result in
+        let observer = ConversationObserver(userSenderId: currentUser.id, userRecipientId: conversationUser.id)
+        self.conversationManager.registerChangeListener(observer: observer) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let messages):
@@ -68,7 +68,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     public func sendMessageButtonAction(text: String) {
         guard let currentUser = UserSession.shared.read() else { return }
-        let conversationMessage = ConversationMessage(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
+        let conversationMessage = MessageModel(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
         
     }
     

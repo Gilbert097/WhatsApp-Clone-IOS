@@ -7,6 +7,12 @@
 
 import Foundation
 
+public struct ConversationRequest {
+    public let userSender: UserModel
+    public let userRecipient: UserModel
+    public let message: MessageModel
+}
+
 public protocol ConversationBusiness {
    
 }
@@ -14,22 +20,21 @@ public protocol ConversationBusiness {
 class ConversationBusinessImpl: ConversationBusiness {
     private var TAG: String { String(describing: ConversationBusinessImpl.self) }
     
-    private let conversationService: ConversationService
+    private let messageService: MessageService
     
-    public init(conversationService: ConversationService) {
-        self.conversationService = conversationService
+    public init(messageService: MessageService) {
+        self.messageService = messageService
     }
     
-    public func sendMessageToSenderAndRecipientUser(conversationUser: UserModel, conversationMessage: ConversationMessage) {
-        guard let currentUser = UserSession.shared.read() else { return }
-        let requestUserSender = ConversationRequest(userSenderId: currentUser.id, userRecipientId: conversationUser.id, message: conversationMessage)
+    public func sendMessageToSenderAndRecipientUser(request: ConversationRequest) {
+        let requestUserSender = MessageRequest(userSenderId: request.userSender.id, userRecipientId: request.userRecipient.id, message: request.message)
         sendMessage(request: requestUserSender)
-        let requestUserRecipient = ConversationRequest(userSenderId: conversationUser.id, userRecipientId: currentUser.id, message: conversationMessage)
+        let requestUserRecipient = MessageRequest(userSenderId: request.userRecipient.id, userRecipientId: request.userSender.id, message: request.message)
         sendMessage(request: requestUserRecipient)
     }
     
-    private func sendMessage(request: ConversationRequest) {
-        self.conversationService.sendMessage(request: request) { [weak self] result in
+    private func sendMessage(request: MessageRequest) {
+        self.messageService.sendMessage(request: request) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success:
