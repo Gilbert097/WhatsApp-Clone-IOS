@@ -14,7 +14,7 @@ public struct ConversationRequest {
 }
 
 public protocol ConversationBusiness {
-   
+    func sendMessageToSenderAndRecipientUser(request: ConversationRequest)
 }
 
 class ConversationBusinessImpl: ConversationBusiness {

@@ -67,9 +67,14 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     }
     
     public func sendMessageButtonAction(text: String) {
-        guard let currentUser = UserSession.shared.read() else { return }
-        let conversationMessage = MessageModel(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
-        
+        guard let request = makeConversationResquestByMessageText(text: text) else { return }
+        self.conversationBusiness.sendMessageToSenderAndRecipientUser(request: request)
+    }
+    
+    private func makeConversationResquestByMessageText(text: String) -> ConversationRequest? {
+        guard let currentUser = UserSession.shared.read() else { return nil}
+        let model = MessageModel(id: UUID().uuidString.lowercased(), userId: currentUser.id, message: text, date: Date())
+        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, message: model)
     }
     
     public func attachmentButtonAction() {
