@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ConversationsViewController: UIViewController {
+public class ConversationsViewController: UIViewController {
     
     private let tableView: UITableView = {
         let view = UITableView()
@@ -18,17 +18,16 @@ class ConversationsViewController: UIViewController {
         return view
     }()
     
-    private var list: [ConversationViewModel] = []
+    public var presenter: ConversationsPresenter!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        list.append(.init(name: "Gilberto Silva", lastMessage: "Olá"))
-        list.append(.init(name: "Marina Silva", lastMessage: "Onde você está?"))
+        self.presenter.start()
         tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.title = "Conversas"
     }
@@ -63,7 +62,7 @@ extension ConversationsViewController: ViewCode {
 //MARK: - UITableViewDelegate
 extension ConversationsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 70
     }
 }
@@ -72,11 +71,11 @@ extension ConversationsViewController: UITableViewDelegate {
 extension ConversationsViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return self.presenter.conversations.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = self.list[indexPath.row]
+        let viewModel = self.presenter.conversations[indexPath.row]
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.identifier, for: indexPath)
         if let conversationCell = tableViewCell as? ConversationCell {
             conversationCell.nameLabel.text = viewModel.name
@@ -84,9 +83,4 @@ extension ConversationsViewController: UITableViewDataSource {
         }
         return tableViewCell
     }
-}
-
-public struct ConversationViewModel {
-    public let name: String
-    public let lastMessage: String
 }

@@ -12,15 +12,15 @@ public final class MainTabBarFactory {
     
     public static func build(navigation: NavigationController) -> MainTabBarView {
         let tabBarViewController = MainTabBarController()
-        let conversations = makeConversationsViewController()
+        let conversations = makeConversationsViewController(navigation: navigation)
         let contacts = makeContactsViewController(navigation: navigation)
         let settings = makeSettingsViewController(navigation: navigation)
         tabBarViewController.setViewControllers([conversations, contacts, settings], animated: true)
         return tabBarViewController
     }
     
-    private static func makeConversationsViewController() -> ConversationsViewController {
-        let viewController = ConversationsViewController()
+    private static func makeConversationsViewController(navigation: NavigationController) -> ConversationsViewController {
+        let viewController = ConversationsFactory.build(navigation: navigation)
         viewController.tabBarItem.image = UIImage(named: "conversas")
         viewController.title = "Conversas"
         return viewController
