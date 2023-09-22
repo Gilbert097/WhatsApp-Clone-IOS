@@ -71,3 +71,10 @@ extension LeftMessageCell: ViewCode {
         self.backgroundColor = .clear
     }
 }
+
+// MARK: - TextMessageCell
+extension LeftMessageCell: TextMessageCell {
+    func setMessage(message: String) {
+        self.messageLabel.text = message
+    }
+}

@@ -124,23 +124,14 @@ extension ConversationViewController: UITableViewDataSource {
             let identifier = viewModel.isMessageFromCurrentUser ? RightMessageCell.identifier : LeftMessageCell.identifier
             tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
             
-            if viewModel.isMessageFromCurrentUser {
-                let rightCell = tableViewCell as! RightMessageCell
-                rightCell.messageLabel.text = viewModel.message
-            } else {
-                let leftCell = tableViewCell as! LeftMessageCell
-                leftCell.messageLabel.text = viewModel.message
+            if let messageCell = tableViewCell as? TextMessageCell {
+                messageCell.setMessage(message: message)
             }
         } else if let urlImage = viewModel.urlImage {
             let identifier = viewModel.isMessageFromCurrentUser ? RightImageMessageCell.identifier : LeftImageMessageCell.identifier
             tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-            
-            if viewModel.isMessageFromCurrentUser {
-                let rightCell = tableViewCell as! RightImageMessageCell
-                rightCell.imageMessageView.sd_setImage(with: urlImage)
-            } else {
-                let leftCell = tableViewCell as! LeftImageMessageCell
-                leftCell.imageMessageView.sd_setImage(with: urlImage)
+            if let imageCell = tableViewCell as? ImageMessageCell {
+                imageCell.setImage(urlImage: urlImage)
             }
         }
         return tableViewCell

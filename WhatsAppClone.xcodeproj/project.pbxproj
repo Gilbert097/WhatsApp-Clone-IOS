@@ -54,6 +54,7 @@
 		D45034B12ABC7F9D007E4E55 /* MessageAttachmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45034B02ABC7F9D007E4E55 /* MessageAttachmentService.swift */; };
 		D45034B32ABCD3B0007E4E55 /* RightImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45034B22ABCD3B0007E4E55 /* RightImageMessageCell.swift */; };
 		D45034B52ABCD465007E4E55 /* LeftImageMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45034B42ABCD465007E4E55 /* LeftImageMessageCell.swift */; };
+		D4570ACE2ABDE4D100C982FF /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4570ACD2ABDE4D100C982FF /* MessageCell.swift */; };
 		D46359A82A83CCFA006B16A9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */; };
 		D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359A92A83D811006B16A9 /* LoginCoordinator.swift */; };
 		D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46359AB2A83D8E7006B16A9 /* Coordinator.swift */; };
@@ -161,6 +162,7 @@
 		D45034B02ABC7F9D007E4E55 /* MessageAttachmentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageAttachmentService.swift; sourceTree = "<group>"; };
 		D45034B22ABCD3B0007E4E55 /* RightImageMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightImageMessageCell.swift; sourceTree = "<group>"; };
 		D45034B42ABCD465007E4E55 /* LeftImageMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftImageMessageCell.swift; sourceTree = "<group>"; };
+		D4570ACD2ABDE4D100C982FF /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		D46359A72A83CCFA006B16A9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D46359A92A83D811006B16A9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		D46359AB2A83D8E7006B16A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -784,6 +786,7 @@
 				D45034B22ABCD3B0007E4E55 /* RightImageMessageCell.swift */,
 				D4934E762AAF96080057466E /* LeftMessageCell.swift */,
 				D45034B42ABCD465007E4E55 /* LeftImageMessageCell.swift */,
+				D4570ACD2ABDE4D100C982FF /* MessageCell.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				D422A09D2A8EA2AA00CFE3C5 /* AuthenticationStateManager.swift in Sources */,
 				D45034B12ABC7F9D007E4E55 /* MessageAttachmentService.swift in Sources */,
 				D406A3CD2A82FD8D0044D13D /* PrimaryButton.swift in Sources */,
+				D4570ACE2ABDE4D100C982FF /* MessageCell.swift in Sources */,
 				D46359AE2A83D9D1006B16A9 /* LoginPresenter.swift in Sources */,
 				D46359C62A8519FF006B16A9 /* SignUpRequest.swift in Sources */,
 				D422A0E52A916A2300CFE3C5 /* FirebaseStorageAdapter.swift in Sources */,

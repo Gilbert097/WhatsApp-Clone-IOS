@@ -71,3 +71,10 @@ extension RightMessageCell: ViewCode {
         self.backgroundColor = .clear
     }
 }
+
+// MARK: - TextMessageCell
+extension RightMessageCell: TextMessageCell {
+    func setMessage(message: String) {
+        self.messageLabel.text = message
+    }
+}

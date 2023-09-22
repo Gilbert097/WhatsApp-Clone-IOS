@@ -69,3 +69,10 @@ extension RightImageMessageCell: ViewCode {
         self.backgroundColor = .clear
     }
 }
+
+// MARK: - ImageMessageCell
+extension RightImageMessageCell: ImageMessageCell {
+    func setImage(urlImage: URL) {
+        self.imageMessageView.sd_setImage(with: urlImage)
+    }
+}
