@@ -17,7 +17,6 @@ public class ConversationViewController: UIViewController, ConversationView {
     private let tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.backgroundView =  UIImageView(image: .init(named: "bg"))
         view.register(LeftMessageCell.self, forCellReuseIdentifier: LeftMessageCell.identifier)
         view.register(RightMessageCell.self, forCellReuseIdentifier: RightMessageCell.identifier)
