@@ -609,6 +609,18 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
+		D4570ACF2ABE1D3C00C982FF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D4570ACD2ABDE4D100C982FF /* MessageCell.swift */,
+				D4934E742AAF926F0057466E /* RightMessageCell.swift */,
+				D45034B22ABCD3B0007E4E55 /* RightImageMessageCell.swift */,
+				D4934E762AAF96080057466E /* LeftMessageCell.swift */,
+				D45034B42ABCD465007E4E55 /* LeftImageMessageCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D46359A62A83CCEC006B16A9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -780,13 +792,9 @@
 		D48DD5C42AA7C0B900698BA9 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				D4570ACF2ABE1D3C00C982FF /* Cell */,
 				D48DD5CD2AA7D1E300698BA9 /* Components */,
 				D48DD5C52AA7C0DC00698BA9 /* ConversationViewController.swift */,
-				D4934E742AAF926F0057466E /* RightMessageCell.swift */,
-				D45034B22ABCD3B0007E4E55 /* RightImageMessageCell.swift */,
-				D4934E762AAF96080057466E /* LeftMessageCell.swift */,
-				D45034B42ABCD465007E4E55 /* LeftImageMessageCell.swift */,
-				D4570ACD2ABDE4D100C982FF /* MessageCell.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
