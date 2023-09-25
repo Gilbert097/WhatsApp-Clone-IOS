@@ -115,23 +115,36 @@ extension ConversationViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let index = indexPath.row
-        let viewModel = self.presenter.messages[index]
-        
+        makeCell(self.presenter.messages[indexPath.row], tableView, indexPath)
+    }
+    
+    private func makeCell(_ viewModel: MessageViewModel, _ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         var tableViewCell: UITableViewCell!
-        if let message = viewModel.message {
-            let identifier = viewModel.isMessageFromCurrentUser ? RightMessageCell.identifier : LeftMessageCell.identifier
-            tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-            
-            if let messageCell = tableViewCell as? TextMessageCell {
-                messageCell.setMessage(message: message)
-            }
-        } else if let urlImage = viewModel.urlImage {
-            let identifier = viewModel.isMessageFromCurrentUser ? RightImageMessageCell.identifier : LeftImageMessageCell.identifier
-            tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-            if let imageCell = tableViewCell as? ImageMessageCell {
-                imageCell.setImage(urlImage: urlImage)
-            }
+        if viewModel.message != nil {
+            tableViewCell =  makeTextMessageCell(viewModel, tableView, indexPath)
+        } else if viewModel.urlImage != nil  {
+            tableViewCell = makeImageMessageCell(viewModel, tableView, indexPath)
+        }
+        return tableViewCell
+    }
+    
+    private func makeTextMessageCell(_ viewModel: MessageViewModel, _ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let identifier = viewModel.isMessageFromCurrentUser ? RightMessageCell.identifier : LeftMessageCell.identifier
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        
+        if let messageCell = tableViewCell as? TextMessageCell {
+            messageCell.setMessage(message: viewModel.message!)
+        }
+        
+        return tableViewCell
+    }
+    
+    private func makeImageMessageCell(_ viewModel: MessageViewModel, _ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let identifier = viewModel.isMessageFromCurrentUser ? RightImageMessageCell.identifier : LeftImageMessageCell.identifier
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        
+        if let imageCell = tableViewCell as? ImageMessageCell {
+            imageCell.setImage(urlImage: viewModel.urlImage!)
         }
         return tableViewCell
     }
