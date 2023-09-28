@@ -21,59 +21,58 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
     
     private let view: ConversationView
     private let coordinator: ConversationCoordinator
-    private let conversationBusiness: ConversationBusiness
-    private let conversationManager: ConversationManager
+    private let messageBusiness: MensageBusiness
+    private let messageManager: MessageManager
     private let conversationUser: UserModel
     
     public var messages: [MessageViewModel] = []
     
     public init(view: ConversationView,
                 coordinator: ConversationCoordinator,
-                conversationBusiness: ConversationBusiness,
-                conversationManager: ConversationManager,
+                messageBusiness: MensageBusiness,
+                messageManager: MessageManager,
                 conversationUser: UserModel) {
         self.view = view
         self.coordinator = coordinator
-        self.conversationBusiness = conversationBusiness
-        self.conversationManager = conversationManager
+        self.messageBusiness = messageBusiness
+        self.messageManager = messageManager
         self.conversationUser = conversationUser
     }
     
     public func start() {
         self.view.setTitle(title: conversationUser.name)
-        registerConversationListener()
+        registerMessageListener()
     }
     
-    private func registerConversationListener() {
+    private func registerMessageListener() {
         guard let currentUser = UserSession.shared.read() else { return }
-        let observer = ConversationObserver(userSenderId: currentUser.id, userRecipientId: conversationUser.id)
-        self.conversationManager.registerChangeListener(observer: observer) { [weak self] result in
+        let observer = MenssageObserver(userSenderId: currentUser.id, userRecipientId: conversationUser.id)
+        self.messageManager.registerChangeListener(observer: observer) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let messages):
-                let viewModels = messages
-                    .map({MessageViewModel(message: $0.message, urlImage: $0.toURL(), isMessageFromCurrentUser: currentUser.id == $0.userId)})
+                let viewModels : [MessageViewModel] = messages
+                    .map({.init(model: $0, isMessageFromCurrentUser: currentUser.id == $0.userId)})
                 self.messages = viewModels
                 self.view.loadList()
             case .failure:
                 LogUtils.printMessage(tag: self.TAG, message: "registerChangeListener error!")
-                break
             }
         }
     }
     
     public func stop() {
-        self.conversationManager.unregisterChangeListener()
+        self.messageManager.unregisterChangeListener()
     }
     
     public func sendMessageButtonAction(text: String) {
-        guard let request = makeConversationResquest(text: text) else { return }
-        self.conversationBusiness.sendMessageFromContentType(request: request, completion: { _ in })
+        guard let request = makeMessageDetailResquest(text: text) else { return }
+        self.messageBusiness.sendMessageFromContentType(request: request, completion: { _ in })
     }
     
-    private func makeConversationResquest(text: String? = nil, data: Data? = nil) -> ConversationRequest? {
+    private func makeMessageDetailResquest(text: String? = nil, data: Data? = nil) -> MessageDetailRequest? {
         guard let currentUser = UserSession.shared.read() else { return nil}
-        return ConversationRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: text, data: data)
+        return MessageDetailRequest(userSender: .init(userApp: currentUser), userRecipient: self.conversationUser, text: text, data: data)
     }
     
     public func attachmentButtonAction() {
@@ -85,13 +84,7 @@ class ConversationPresenterImpl: NSObject, ConversationPresenter {
 extension ConversationPresenterImpl: ImagePickerDelegate {
     
     func didSelect(data: Data) {
-        guard let request = makeConversationResquest(data: data) else { return }
-        self.conversationBusiness.sendMessageFromContentType(request: request, completion: { _ in })
+        guard let request = makeMessageDetailResquest(data: data) else { return }
+        self.messageBusiness.sendMessageFromContentType(request: request, completion: { _ in })
     }
-}
-
-public struct MessageViewModel {
-    public let message: String?
-    public let urlImage: URL?
-    public let isMessageFromCurrentUser: Bool
 }

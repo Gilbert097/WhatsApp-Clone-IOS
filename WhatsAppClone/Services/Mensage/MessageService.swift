@@ -7,11 +7,6 @@
 
 import Foundation
 
-public enum ConversationError: Error {
-    case unexpected
-    case parseError
-}
-
 public typealias SendMessageResult = Swift.Result<Void, SendMessageError>
 
 public protocol MessageService {

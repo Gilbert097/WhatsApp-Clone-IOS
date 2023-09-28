@@ -7,19 +7,24 @@
 
 import Foundation
 
-public typealias AddChangeValueResult = Swift.Result<[MessageModel], ConversationError>
+public enum MessageError: Error {
+    case unexpected
+    case parseError
+}
 
-public struct ConversationObserver {
+public typealias AddChangeMessageResult = Swift.Result<[MessageModel], MessageError>
+
+public struct MenssageObserver {
     public let userSenderId: String
     public let userRecipientId: String
 }
 
-public protocol ConversationManager {
-    func registerChangeListener(observer: ConversationObserver, listener: @escaping (AddChangeValueResult) -> Void)
+public protocol MessageManager {
+    func registerChangeListener(observer: MenssageObserver, listener: @escaping (AddChangeMessageResult) -> Void)
     func unregisterChangeListener()
 }
 
-class ConversationManagerImpl: ConversationManager {
+class MensageManagerImpl: MessageManager {
     
     private let databaseClient: DatabaseClient
     private var registration: DatabaseRegisterListener?
@@ -29,7 +34,7 @@ class ConversationManagerImpl: ConversationManager {
         self.registration = registration
     }
     
-    public func registerChangeListener(observer: ConversationObserver, listener: @escaping (AddChangeValueResult) -> Void)  {
+    public func registerChangeListener(observer: MenssageObserver, listener: @escaping (AddChangeMessageResult) -> Void)  {
         
         let userRecipientRoot = DatabaseQuery(path: observer.userRecipientId)
         let userSenderItem = DatabaseQueryItem(query: userRecipientRoot, path: observer.userSenderId)
