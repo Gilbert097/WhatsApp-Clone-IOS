@@ -7,7 +7,11 @@
 
 import Foundation
 
-public typealias SendMessageBusinessResult = Swift.Result<Void, SendMessageBusinessError>
+public struct SendMessageResponse {
+    public let urlImage: String?
+}
+
+public typealias SendMessageBusinessResult = Swift.Result<SendMessageResponse, SendMessageBusinessError>
 
 public protocol MensageBusiness {
     func sendMessageFromContentType(request: MessageDetailRequest, completion: @escaping (SendMessageBusinessResult) -> Void)
@@ -79,7 +83,7 @@ class MensageBusinessImpl: MensageBusiness {
             } else if case let .failure(error) = recipientUserResult {
                 completion(.failure(error))
             } else {
-                completion(.success(()))
+                completion(.success(.init(urlImage: model.urlImage)))
             }
         }
     }
@@ -91,7 +95,7 @@ class MensageBusinessImpl: MensageBusiness {
             switch result {
             case .success:
                 LogUtils.printMessage(tag: self.TAG, message: "SendMessage success!")
-                completion(.success(()))
+                completion(.success(.init(urlImage: messageRequest.message.urlImage)))
             case .failure:
                 LogUtils.printMessage(tag: self.TAG, message: "SendMessage error!")
                 completion(.failure(.senderUser))

@@ -112,6 +112,12 @@
 		D4934E812AB11D550057466E /* MessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E802AB11D550057466E /* MessageRequest.swift */; };
 		D4934E832AB206760057466E /* FirebaseFirestoreListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */; };
 		D4934E852AB3AA420057466E /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4934E842AB3AA420057466E /* MessageManager.swift */; };
+		D4A2C3222ACB537500277D7D /* ConversationBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3212ACB537500277D7D /* ConversationBusiness.swift */; };
+		D4A2C3252ACB53AF00277D7D /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3242ACB53AF00277D7D /* ConversationService.swift */; };
+		D4A2C3272ACB544E00277D7D /* ConversationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3262ACB544E00277D7D /* ConversationRequest.swift */; };
+		D4A2C3292ACB559A00277D7D /* SaveConversationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3282ACB559A00277D7D /* SaveConversationError.swift */; };
+		D4A2C32D2ACB63AC00277D7D /* ConversationDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C32C2ACB63AC00277D7D /* ConversationDetailRequest.swift */; };
+		D4A2C32F2ACB655500277D7D /* ConverstaionBusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C32E2ACB655500277D7D /* ConverstaionBusinessError.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +232,12 @@
 		D4934E802AB11D550057466E /* MessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRequest.swift; sourceTree = "<group>"; };
 		D4934E822AB206760057466E /* FirebaseFirestoreListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreListener.swift; sourceTree = "<group>"; };
 		D4934E842AB3AA420057466E /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		D4A2C3212ACB537500277D7D /* ConversationBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationBusiness.swift; sourceTree = "<group>"; };
+		D4A2C3242ACB53AF00277D7D /* ConversationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
+		D4A2C3262ACB544E00277D7D /* ConversationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationRequest.swift; sourceTree = "<group>"; };
+		D4A2C3282ACB559A00277D7D /* SaveConversationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveConversationError.swift; sourceTree = "<group>"; };
+		D4A2C32C2ACB63AC00277D7D /* ConversationDetailRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationDetailRequest.swift; sourceTree = "<group>"; };
+		D4A2C32E2ACB655500277D7D /* ConverstaionBusinessError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverstaionBusinessError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +442,7 @@
 		D422A0AF2A8EB99500CFE3C5 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				D4A2C3202ACB536700277D7D /* Conversation */,
 				D45034AD2ABBC081007E4E55 /* Message */,
 				D47FB2252A9E8DED0034E974 /* Contacts */,
 				D47FB2072A93F8080034E974 /* Settings */,
@@ -664,6 +677,7 @@
 			isa = PBXGroup;
 			children = (
 				D422A09B2A8EA29800CFE3C5 /* Managers */,
+				D4A2C3232ACB539D00277D7D /* Conversation */,
 				D4934E7B2AB115F60057466E /* Mensage */,
 				D47FB2222A9965C20034E974 /* Contacts */,
 				D422A0E62A91720300CFE3C5 /* File */,
@@ -868,6 +882,26 @@
 			path = Mensage;
 			sourceTree = "<group>";
 		};
+		D4A2C3202ACB536700277D7D /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2C3212ACB537500277D7D /* ConversationBusiness.swift */,
+				D4A2C32C2ACB63AC00277D7D /* ConversationDetailRequest.swift */,
+				D4A2C32E2ACB655500277D7D /* ConverstaionBusinessError.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		D4A2C3232ACB539D00277D7D /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2C3262ACB544E00277D7D /* ConversationRequest.swift */,
+				D4A2C3242ACB53AF00277D7D /* ConversationService.swift */,
+				D4A2C3282ACB559A00277D7D /* SaveConversationError.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1000,6 +1034,7 @@
 				D47FB2242A9965D20034E974 /* ContactService.swift in Sources */,
 				D422A0CB2A8F009D00CFE3C5 /* Data+.swift in Sources */,
 				D46359C22A8518B4006B16A9 /* AuthClientRequest.swift in Sources */,
+				D4A2C32D2ACB63AC00277D7D /* ConversationDetailRequest.swift in Sources */,
 				D422A0D12A8F042100CFE3C5 /* DatabaseClientError.swift in Sources */,
 				D47FB2292A9E8E780034E974 /* AddNewContactError.swift in Sources */,
 				D46359CE2A85A7C0006B16A9 /* AlertView.swift in Sources */,
@@ -1023,6 +1058,7 @@
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
 				D4570AD42ABE27F700C982FF /* ConversationsPresenter.swift in Sources */,
 				D422A0C52A8EC5AB00CFE3C5 /* MainTabBarFactory.swift in Sources */,
+				D4A2C3292ACB559A00277D7D /* SaveConversationError.swift in Sources */,
 				D4934E772AAF96080057466E /* LeftMessageCell.swift in Sources */,
 				D406A3C12A82C7890044D13D /* UIColor+.swift in Sources */,
 				D422A0DA2A8FB5CA00CFE3C5 /* HeaderInfoView.swift in Sources */,
@@ -1033,6 +1069,7 @@
 				D406A3A92A82BC320044D13D /* SceneDelegate.swift in Sources */,
 				D422A0D52A8F04E200CFE3C5 /* UserServiceError.swift in Sources */,
 				D47FB2042A93E5030034E974 /* DocumentSnapshot+.swift in Sources */,
+				D4A2C3252ACB53AF00277D7D /* ConversationService.swift in Sources */,
 				D422A0C92A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift in Sources */,
 				D422A0D72A8F05CA00CFE3C5 /* Model.swift in Sources */,
 				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
@@ -1061,6 +1098,7 @@
 				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
 				D4934E812AB11D550057466E /* MessageRequest.swift in Sources */,
 				D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */,
+				D4A2C3222ACB537500277D7D /* ConversationBusiness.swift in Sources */,
 				D4934E752AAF926F0057466E /* RightMessageCell.swift in Sources */,
 				D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */,
 				D48DD5CC2AA7C1DD00698BA9 /* ConversationCoordinator.swift in Sources */,
@@ -1068,6 +1106,7 @@
 				D47FB22B2A9E8EF80034E974 /* ContactServiceError.swift in Sources */,
 				D422A0AA2A8EB01900CFE3C5 /* AuthResponse.swift in Sources */,
 				D406A3CF2A8304CC0044D13D /* TextButton.swift in Sources */,
+				D4A2C32F2ACB655500277D7D /* ConverstaionBusinessError.swift in Sources */,
 				D406A3BD2A82C2610044D13D /* LoginViewController.swift in Sources */,
 				D4934E7F2AB11D360057466E /* SendMessageError.swift in Sources */,
 				D4934E7A2AB107360057466E /* ConversationPresenter.swift in Sources */,
@@ -1090,6 +1129,7 @@
 				D4761D402AC21A410072A620 /* MessageViewModel.swift in Sources */,
 				D47FB2212A97921D0034E974 /* AddContactPresenter.swift in Sources */,
 				D46359D22A85AD5E006B16A9 /* LoginRequest.swift in Sources */,
+				D4A2C3272ACB544E00277D7D /* ConversationRequest.swift in Sources */,
 				D46359D02A85A824006B16A9 /* AlertFactory.swift in Sources */,
 				D422A0E82A91720F00CFE3C5 /* ProfilePictureService.swift in Sources */,
 				D47FB20E2A96D74C0034E974 /* AddContactViewController.swift in Sources */,
