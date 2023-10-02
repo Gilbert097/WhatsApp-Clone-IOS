@@ -22,9 +22,10 @@ class ConversationServiceImpl: ConversationService {
     }
     
     public func saveLastConversation(request: ConversationRequest, completion: @escaping (SaveConversationResult) -> Void) {
-        let messageItem = DatabaseQueryItem(path: "lastMessage", data: request.model.toData())
-        let userRecipientRoot = DatabaseQuery(path: request.userRecipientId, item: messageItem)
-        let userSenderItem = DatabaseQueryItem(query: userRecipientRoot, path: request.userSenderId)
+       
+        let userRecipientItem = DatabaseQueryItem(path: request.userRecipientId, data: request.model.toData())
+        let lastMessageRoot = DatabaseQuery(path: "lastConversations", item: userRecipientItem)
+        let userSenderItem = DatabaseQueryItem(query: lastMessageRoot, path: request.userSenderId)
         let queryRoot = DatabaseQuery(path: "conversations", item: userSenderItem)
         
         self.databaseClient.create(query: queryRoot) { result in
