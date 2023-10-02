@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-public class ConversationsViewController: UIViewController {
+public protocol ConversationsView {
+    func loadList()
+}
+
+public class ConversationsViewController: UIViewController, ConversationsView {
     
     private let tableView: UITableView = {
         let view = UITableView()
@@ -23,13 +27,22 @@ public class ConversationsViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        self.presenter.start()
         tableView.reloadData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.parent?.title = "Conversas"
+        self.presenter.start()
+    }
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.presenter.stop()
+    }
+    
+    public func loadList() {
+        self.tableView.reloadData()
     }
 }
 
@@ -78,6 +91,7 @@ extension ConversationsViewController: UITableViewDataSource {
         let viewModel = self.presenter.conversations[indexPath.row]
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.identifier, for: indexPath)
         if let conversationCell = tableViewCell as? ConversationCell {
+            conversationCell.profileImageView.sd_setImage(with: viewModel.userUrlImage)
             conversationCell.nameLabel.text = viewModel.name
             conversationCell.lastMessageLabel.text = viewModel.lastMessage
         }

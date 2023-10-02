@@ -118,6 +118,9 @@
 		D4A2C3292ACB559A00277D7D /* SaveConversationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3282ACB559A00277D7D /* SaveConversationError.swift */; };
 		D4A2C32D2ACB63AC00277D7D /* ConversationDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C32C2ACB63AC00277D7D /* ConversationDetailRequest.swift */; };
 		D4A2C32F2ACB655500277D7D /* ConverstaionBusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C32E2ACB655500277D7D /* ConverstaionBusinessError.swift */; };
+		D4A2C3312ACB7F0C00277D7D /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3302ACB7F0C00277D7D /* ConversationManager.swift */; };
+		D4A2C3332ACB839400277D7D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3322ACB839400277D7D /* String+.swift */; };
+		D4A2C3352ACB851F00277D7D /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +241,9 @@
 		D4A2C3282ACB559A00277D7D /* SaveConversationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveConversationError.swift; sourceTree = "<group>"; };
 		D4A2C32C2ACB63AC00277D7D /* ConversationDetailRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationDetailRequest.swift; sourceTree = "<group>"; };
 		D4A2C32E2ACB655500277D7D /* ConverstaionBusinessError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverstaionBusinessError.swift; sourceTree = "<group>"; };
+		D4A2C3302ACB7F0C00277D7D /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		D4A2C3322ACB839400277D7D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +382,7 @@
 				D422A0CA2A8F009D00CFE3C5 /* Data+.swift */,
 				D422A0D62A8F05CA00CFE3C5 /* Model.swift */,
 				D422A0E22A915A5A00CFE3C5 /* UserSession.swift */,
+				D4A2C3322ACB839400277D7D /* String+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -385,6 +392,7 @@
 			children = (
 				D422A08F2A8D653800CFE3C5 /* AutenticationState */,
 				D4934E842AB3AA420057466E /* MessageManager.swift */,
+				D4A2C3302ACB7F0C00277D7D /* ConversationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -653,6 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				D4570AD32ABE27F700C982FF /* ConversationsPresenter.swift */,
+				D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -1089,6 +1098,8 @@
 				D47FB2062A93F7FF0034E974 /* SettingsBusiness.swift in Sources */,
 				D46359AA2A83D811006B16A9 /* LoginCoordinator.swift in Sources */,
 				D46359CA2A85A668006B16A9 /* ScreenLoadingView.swift in Sources */,
+				D4A2C3332ACB839400277D7D /* String+.swift in Sources */,
+				D4A2C3312ACB7F0C00277D7D /* ConversationManager.swift in Sources */,
 				D406A3C82A82F4940044D13D /* View+.swift in Sources */,
 				D46359B82A843B5B006B16A9 /* NavigationController.swift in Sources */,
 				D422A0A82A8EAC9400CFE3C5 /* FirebaseAuthenticationAdapter.swift in Sources */,
@@ -1134,6 +1145,7 @@
 				D422A0E82A91720F00CFE3C5 /* ProfilePictureService.swift in Sources */,
 				D47FB20E2A96D74C0034E974 /* AddContactViewController.swift in Sources */,
 				D46359C42A8518CE006B16A9 /* AuthClientResponse.swift in Sources */,
+				D4A2C3352ACB851F00277D7D /* ConversationViewModel.swift in Sources */,
 				D46359BD2A8515EE006B16A9 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

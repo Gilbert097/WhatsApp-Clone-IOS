@@ -24,11 +24,6 @@ public struct ConversationModel: Model {
     public let userTargetUrlImage: String?
     public let text: String?
     public let urlImage: String?
-    
-    public func toURL() -> URL? {
-        if let url = urlImage {
-            return URL(string: url)
-        }
-        return nil
-    }
 }
+
+
