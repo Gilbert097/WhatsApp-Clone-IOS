@@ -121,6 +121,7 @@
 		D4A2C3312ACB7F0C00277D7D /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3302ACB7F0C00277D7D /* ConversationManager.swift */; };
 		D4A2C3332ACB839400277D7D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3322ACB839400277D7D /* String+.swift */; };
 		D4A2C3352ACB851F00277D7D /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */; };
+		D4A2C3372ACB8B1D00277D7D /* ConversationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3362ACB8B1D00277D7D /* ConversationsCoordinator.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -244,6 +245,7 @@
 		D4A2C3302ACB7F0C00277D7D /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		D4A2C3322ACB839400277D7D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		D4A2C3362ACB8B1D00277D7D /* ConversationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -670,6 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				D4570AD62ABE2A9D00C982FF /* ConversationsFactory.swift */,
+				D4A2C3362ACB8B1D00277D7D /* ConversationsCoordinator.swift */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				D422A0BF2A8EBEB100CFE3C5 /* AuthListenerHandler.swift in Sources */,
 				D422A0AC2A8EB08000CFE3C5 /* AuthenticationError.swift in Sources */,
 				D45034B52ABCD465007E4E55 /* LeftImageMessageCell.swift in Sources */,
+				D4A2C3372ACB8B1D00277D7D /* ConversationsCoordinator.swift in Sources */,
 				D46359AC2A83D8E7006B16A9 /* Coordinator.swift in Sources */,
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
 				D4570AD42ABE27F700C982FF /* ConversationsPresenter.swift in Sources */,

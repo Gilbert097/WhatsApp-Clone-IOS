@@ -11,6 +11,7 @@ public protocol ConversationsPresenter {
     var conversations: [ConversationViewModel] { get }
     func start()
     func stop()
+    func didSelectConversation(index: Int)
 }
 
 class ConversationsPresenterImpl: ConversationsPresenter {
@@ -21,10 +22,12 @@ class ConversationsPresenterImpl: ConversationsPresenter {
     
     private let view: ConversationsView
     private let manager: ConversationsManager
+    private let coordinator: ConversationsCoordinator
     
-    public init(view: ConversationsView, manager: ConversationsManager) {
+    public init(view: ConversationsView, manager: ConversationsManager, coordinator: ConversationsCoordinator) {
         self.view = view
         self.manager = manager
+        self.coordinator = coordinator
     }
     
     public func start() {
@@ -50,5 +53,11 @@ class ConversationsPresenterImpl: ConversationsPresenter {
     
     public func stop() {
         self.manager.unregisterChangeListener()
+    }
+    
+    public func didSelectConversation(index: Int) {
+        let conversationSelected = self.conversations[index]
+        let userConversation = UserModel(id: conversationSelected.userId, name: conversationSelected.name, email: .init(), urlImage: conversationSelected.userUrlImage?.absoluteString)
+        self.coordinator.showConversation(user: userConversation)
     }
 }

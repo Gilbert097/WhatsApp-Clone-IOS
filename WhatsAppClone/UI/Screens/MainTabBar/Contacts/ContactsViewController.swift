@@ -119,6 +119,11 @@ extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 80
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.presenter.didSelectContact(index: indexPath.row)
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -136,11 +141,6 @@ extension ContactsViewController: UITableViewDataSource {
         contactsCell.emailLabel.text = currentItem.email
         contactsCell.loadProfileImage(url: currentItem.urlImage)
         return contactsCell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.presenter.didSelectContact(index: indexPath.row)
     }
 }
 
