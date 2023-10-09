@@ -8,6 +8,12 @@
 import Foundation
 import FirebaseFirestore
 
+public enum DatabaseEvent {
+    case added
+    case updated
+    case removed
+}
+
 public typealias DatabaseCreateResult = Swift.Result<Void, DatabaseClientError>
 public typealias DatabaseUpdateResult = Swift.Result<Void, DatabaseClientError>
 public typealias DatabaseRetrieveResult = Swift.Result<Data, DatabaseClientError>
@@ -19,6 +25,7 @@ public protocol DatabaseClient {
     func retrieve(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveResult) -> Void)
     func retrieveValues(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveValuesResult) -> Void)
     func addChangeListener(query: DatabaseQuery, completion: @escaping (DatabaseRetrieveValuesResult) -> Void) -> DatabaseRegisterListener
+    func addChangeListener(query: DatabaseQuery, events: [DatabaseEvent], completion: @escaping (DatabaseRetrieveResult) -> Void) -> DatabaseRegisterListener
 }
 
 class FirebaseFirestoreAdapter: DatabaseClient {
@@ -50,23 +57,6 @@ class FirebaseFirestoreAdapter: DatabaseClient {
                     .map({ $0.value })
                     .compactMap { $0 }
                 
-                // TODO[GIL] - Implementação da POC.
-                let all = querySnapshot
-                    .documents
-                    .map({ $0.data() })
-                print("All documents: \(all)")
-                querySnapshot.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                        print("New document: \(diff.document.data())")
-                    }
-                    if (diff.type == .modified) {
-                        print("Modified document: \(diff.document.data())")
-                    }
-                    if (diff.type == .removed) {
-                        print("Removed document: \(diff.document.data())")
-                    }
-                }
-                
                 completion(.success(datas))
             } else {
                 completion(.failure(.valueNotFound))
@@ -80,6 +70,47 @@ class FirebaseFirestoreAdapter: DatabaseClient {
         }
         return FirestoreRegiterListener(registration: registration)
     }
+    
+    public func addChangeListener(query: DatabaseQuery, events: [DatabaseEvent], completion: @escaping (DatabaseRetrieveResult) -> Void) -> DatabaseRegisterListener {
+        let (rootReference, firebaseQuery) = findRootReferenceWithFirebaseQuery(query: query)
+        
+        let addSnapshotListener: (QuerySnapshot?, Error?) -> Void = { querySnapshot, error in
+            if let querySnapshot = querySnapshot {
+                let all = querySnapshot.documents.map({ $0.data() })
+                print("All documents: \(all)")
+                querySnapshot.documentChanges.forEach { diff in
+                    
+                    switch diff.type {
+                    case .added:
+                        if events.contains(.added) {
+                            print("New document: \(diff.document.data())")
+                            completion(.success(diff.document.value!))
+                        }
+                    case .modified:
+                        if events.contains(.updated) {
+                            print("Modified document: \(diff.document.data())")
+                            completion(.success(diff.document.value!))
+                        }
+                    case .removed:
+                        if events.contains(.removed) {
+                            print("Removed document: \(diff.document.data())")
+                            completion(.success(diff.document.value!))
+                        }
+                    }
+                }
+            } else {
+                completion(.failure(.valueNotFound))
+            }
+        }
+        var registration: ListenerRegistration!
+        if let firebaseQuery = firebaseQuery {
+            registration = firebaseQuery.addSnapshotListener(addSnapshotListener)
+        } else {
+            registration = rootReference.addSnapshotListener(addSnapshotListener)
+        }
+        return FirestoreRegiterListener(registration: registration)
+    }
+    
     
     public func update(query: DatabaseQuery, completion: @escaping (DatabaseUpdateResult) -> Void) {
         guard let (itemReference, item) = findItemReferenceWithDatabaseQuery(query: query) else { return }

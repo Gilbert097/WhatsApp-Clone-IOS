@@ -24,6 +24,10 @@ public struct ConversationModel: Model {
     public let userTargetUrlImage: String?
     public let text: String?
     public let urlImage: String?
+    
+    public func toString() -> String {
+        "id: \(self.id), userTargetId: \(self.userTargetId), userTargetName: \(self.userTargetName), text: \(self.text ?? .init()), urlImage: \(self.urlImage ?? .init())"
+    }
 }
 
 

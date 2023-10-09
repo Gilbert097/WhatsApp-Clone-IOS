@@ -122,6 +122,9 @@
 		D4A2C3332ACB839400277D7D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3322ACB839400277D7D /* String+.swift */; };
 		D4A2C3352ACB851F00277D7D /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */; };
 		D4A2C3372ACB8B1D00277D7D /* ConversationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2C3362ACB8B1D00277D7D /* ConversationsCoordinator.swift */; };
+		D4B0F04D2AD49F50007B4462 /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F04C2AD49F50007B4462 /* MainTabBarPresenter.swift */; };
+		D4B0F04F2AD4A092007B4462 /* ConversationNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F04E2AD4A092007B4462 /* ConversationNotificationService.swift */; };
+		D4B0F0512AD4A767007B4462 /* ConversationEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F0502AD4A767007B4462 /* ConversationEventManager.swift */; };
 		E15AB683C1C15CC2836766AE /* Pods_WhatsAppClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668CF919ABBE3A9E83141B9A /* Pods_WhatsAppClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -246,6 +249,9 @@
 		D4A2C3322ACB839400277D7D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		D4A2C3342ACB851F00277D7D /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		D4A2C3362ACB8B1D00277D7D /* ConversationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsCoordinator.swift; sourceTree = "<group>"; };
+		D4B0F04C2AD49F50007B4462 /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
+		D4B0F04E2AD4A092007B4462 /* ConversationNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationNotificationService.swift; sourceTree = "<group>"; };
+		D4B0F0502AD4A767007B4462 /* ConversationEventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationEventManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +401,7 @@
 				D422A08F2A8D653800CFE3C5 /* AutenticationState */,
 				D4934E842AB3AA420057466E /* MessageManager.swift */,
 				D4A2C3302ACB7F0C00277D7D /* ConversationManager.swift */,
+				D4B0F0502AD4A767007B4462 /* ConversationEventManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -688,6 +695,7 @@
 		D46359BB2A8515D3006B16A9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D4B0F04B2AD495A2007B4462 /* Notifications */,
 				D422A09B2A8EA29800CFE3C5 /* Managers */,
 				D4A2C3232ACB539D00277D7D /* Conversation */,
 				D4934E7B2AB115F60057466E /* Mensage */,
@@ -809,6 +817,7 @@
 				D4570AD22ABE27E800C982FF /* Conversations */,
 				D422A0B22A8EB9C500CFE3C5 /* Settings */,
 				D47FB20F2A96E8D70034E974 /* Contacts */,
+				D4B0F04C2AD49F50007B4462 /* MainTabBarPresenter.swift */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -912,6 +921,14 @@
 				D4A2C3282ACB559A00277D7D /* SaveConversationError.swift */,
 			);
 			path = Conversation;
+			sourceTree = "<group>";
+		};
+		D4B0F04B2AD495A2007B4462 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				D4B0F04E2AD4A092007B4462 /* ConversationNotificationService.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		FA327BB1AC7E303DB6C61EA9 /* Frameworks */ = {
@@ -1071,6 +1088,7 @@
 				D406A3A72A82BC320044D13D /* AppDelegate.swift in Sources */,
 				D4570AD42ABE27F700C982FF /* ConversationsPresenter.swift in Sources */,
 				D422A0C52A8EC5AB00CFE3C5 /* MainTabBarFactory.swift in Sources */,
+				D4B0F04D2AD49F50007B4462 /* MainTabBarPresenter.swift in Sources */,
 				D4A2C3292ACB559A00277D7D /* SaveConversationError.swift in Sources */,
 				D4934E772AAF96080057466E /* LeftMessageCell.swift in Sources */,
 				D406A3C12A82C7890044D13D /* UIColor+.swift in Sources */,
@@ -1085,6 +1103,7 @@
 				D4A2C3252ACB53AF00277D7D /* ConversationService.swift in Sources */,
 				D422A0C92A8EFDD800CFE3C5 /* FirebaseFirestoreAdapter.swift in Sources */,
 				D422A0D72A8F05CA00CFE3C5 /* Model.swift in Sources */,
+				D4B0F04F2AD4A092007B4462 /* ConversationNotificationService.swift in Sources */,
 				D46359CC2A85A720006B16A9 /* LoadingView.swift in Sources */,
 				D46359D92A85BC9F006B16A9 /* ConversationsViewController.swift in Sources */,
 				D422A0962A8E6CBB00CFE3C5 /* SettingsPresenter.swift in Sources */,
@@ -1113,6 +1132,7 @@
 				D46359DB2A85BCD8006B16A9 /* ContactsViewController.swift in Sources */,
 				D4934E812AB11D550057466E /* MessageRequest.swift in Sources */,
 				D422A0942A8D66BC00CFE3C5 /* LogUtils.swift in Sources */,
+				D4B0F0512AD4A767007B4462 /* ConversationEventManager.swift in Sources */,
 				D4A2C3222ACB537500277D7D /* ConversationBusiness.swift in Sources */,
 				D4934E752AAF926F0057466E /* RightMessageCell.swift in Sources */,
 				D47FB2092A93F88A0034E974 /* UploadPictureError.swift in Sources */,

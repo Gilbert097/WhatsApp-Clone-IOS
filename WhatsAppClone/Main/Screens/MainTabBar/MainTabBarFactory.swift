@@ -12,6 +12,13 @@ public final class MainTabBarFactory {
     
     public static func build(navigation: NavigationController) -> MainTabBarView {
         let tabBarViewController = MainTabBarController()
+        let firebase = FirebaseFirestoreAdapter()
+        let manager = ConversationEventManagerImpl(databaseClient: firebase)
+        let service = ConversationNotificationServiceImpl(manager: manager)
+        let presenter = MainTabBarPresenterImpl(view: tabBarViewController, notificationService: service)
+        
+        tabBarViewController.presenter = presenter
+        
         let conversations = makeConversationsViewController(navigation: navigation)
         let contacts = makeContactsViewController(navigation: navigation)
         let settings = makeSettingsViewController(navigation: navigation)
