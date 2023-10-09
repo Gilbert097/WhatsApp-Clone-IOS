@@ -49,6 +49,24 @@ class FirebaseFirestoreAdapter: DatabaseClient {
                     .documents
                     .map({ $0.value })
                     .compactMap { $0 }
+                
+                // TODO[GIL] - Implementação da POC.
+                let all = querySnapshot
+                    .documents
+                    .map({ $0.data() })
+                print("All documents: \(all)")
+                querySnapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        print("New document: \(diff.document.data())")
+                    }
+                    if (diff.type == .modified) {
+                        print("Modified document: \(diff.document.data())")
+                    }
+                    if (diff.type == .removed) {
+                        print("Removed document: \(diff.document.data())")
+                    }
+                }
+                
                 completion(.success(datas))
             } else {
                 completion(.failure(.valueNotFound))
