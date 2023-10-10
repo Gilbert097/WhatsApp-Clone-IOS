@@ -19,14 +19,15 @@ public struct ConversationRequest {
 
 public struct ConversationModel: Model {
     public let id: String
-    public let userTargetId: String
-    public let userTargetName: String
-    public let userTargetUrlImage: String?
+    public let userRecipientId: String
+    public let userRecipientName: String
+    public let userRecipientUrlImage: String?
+    public let userSenderId: String
     public let text: String?
     public let urlImage: String?
     
     public func toString() -> String {
-        "id: \(self.id), userTargetId: \(self.userTargetId), userTargetName: \(self.userTargetName), text: \(self.text ?? .init()), urlImage: \(self.urlImage ?? .init())"
+        "id: \(self.id), userRecipientId: \(self.userRecipientId), userRecipientName: \(self.userRecipientName), text: \(self.text ?? .init()), urlImage: \(self.urlImage ?? .init())"
     }
 }
 

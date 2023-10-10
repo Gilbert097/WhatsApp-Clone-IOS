@@ -30,18 +30,21 @@ class ConversationNotificationServiceImpl: ConversationNotificationService {
             switch result {
                 
             case .success(let model):
-                let content = UNMutableNotificationContent()
-                content.title = model.userTargetName
-                content.body = model.text ?? .init()
-                content.sound = UNNotificationSound.default
-                
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-                
-                let resquest = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(resquest) { error in
-                    if let error = error {
-                        print("NotificationRequest: \(error.localizedDescription)")
+                if userApp.id != model.userSenderId {
+                    let content = UNMutableNotificationContent()
+                    content.title = model.userRecipientName
+                    content.body = model.text ?? .init()
+                    content.sound = UNNotificationSound.default
+                    
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+                    
+                    let resquest = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(resquest) { error in
+                        if let error = error {
+                            print("NotificationRequest: \(error.localizedDescription)")
+                        }
                     }
+                    
                 }
             case .failure:
                 break

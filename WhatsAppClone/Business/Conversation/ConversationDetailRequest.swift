@@ -31,9 +31,10 @@ extension ConversationDetailRequest {
     private func makeSenderConversationModel(id: String) -> ConversationModel {
         ConversationModel(
             id: id,
-            userTargetId: userRecipient.id,
-            userTargetName: userRecipient.name,
-            userTargetUrlImage: userRecipient.urlImage,
+            userRecipientId: userRecipient.id,
+            userRecipientName: userRecipient.name,
+            userRecipientUrlImage: userRecipient.urlImage,
+            userSenderId:  userSender.id,
             text: text,
             urlImage: urlImage
         )
@@ -42,9 +43,10 @@ extension ConversationDetailRequest {
     private func makeRecipientConversationModel(id: String) -> ConversationModel {
         ConversationModel(
             id: UUID().uuidString.lowercased(),
-            userTargetId: userSender.id,
-            userTargetName: userSender.name,
-            userTargetUrlImage: userSender.urlImage,
+            userRecipientId: userSender.id,
+            userRecipientName: userSender.name,
+            userRecipientUrlImage: userSender.urlImage,
+            userSenderId: userSender.id,
             text: text,
             urlImage: urlImage
         )

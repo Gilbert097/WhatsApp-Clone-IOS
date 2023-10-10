@@ -16,9 +16,9 @@ public struct ConversationViewModel {
 
 extension ConversationViewModel {
     public init(model: ConversationModel) {
-        self.userId = model.userTargetId
-        self.name = model.userTargetName
-        self.userUrlImage = model.userTargetUrlImage?.toURL()
+        self.userId = model.userRecipientId
+        self.name = model.userRecipientName
+        self.userUrlImage = model.userRecipientUrlImage?.toURL()
         self.lastMessage = model.text ?? "Imagem..."
     }
 }

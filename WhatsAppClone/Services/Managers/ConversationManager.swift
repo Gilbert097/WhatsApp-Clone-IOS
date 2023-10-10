@@ -45,7 +45,7 @@ class ConversationsManagerImpl: ConversationsManager {
                 let models: [ConversationModel] = datas
                     .map({ $0.toModel()})
                     .compactMap({ $0 })
-                    .sorted(by: { $0.userTargetName.compare($1.userTargetName) == .orderedAscending })
+                    .sorted(by: { $0.userRecipientName.compare($1.userRecipientName) == .orderedAscending })
                 listener(.success(models))
             case .failure:
                 listener(.failure(.unexpected))
