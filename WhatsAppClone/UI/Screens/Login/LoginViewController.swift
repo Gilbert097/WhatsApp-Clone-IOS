@@ -63,6 +63,10 @@ class LoginViewController: UIViewController {
         self.presenter.stop()
     }
     
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     private func configure() {
         self.linkButton.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
         self.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
