@@ -8,9 +8,12 @@
 import UIKit
 import FirebaseCore
 import UserNotifications
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    public static let taskId = "whatsapp.clone.background.task.identifier"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,7 +27,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 center.removeAllPendingNotificationRequests()
             }
         }
+        
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: AppDelegate.taskId, using: nil) { task in
+            print("forTaskWithIdentifier called!")
+            guard let task = task as? BGProcessingTask else { return }
+            // your task impelementation goes here
+            self.handleBackgroundTask(task: task)
+        }
+        
         return true
+    }
+    
+    func handleBackgroundTask(task: BGProcessingTask) {
+        print("handleBackgroundTask called!")
+        // Perform background task work here (e.g., trigger local notifications)
+        scheduleNotification()
+        
+        // Mark the task as completed
+        task.setTaskCompleted(success: true)
+    }
+    
+    func scheduleNotification() {
+        print("scheduleNotification called!")
+        // Create notification content
+        let content = UNMutableNotificationContent()
+        content.title = "Local Notification"
+        content.body = "This is a local notification example."
+        content.sound = .default
+        
+        // Create a trigger for the notification (every 2 minutes)
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 120, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        
+        // Create a request with a unique identifier
+        let request = UNNotificationRequest(identifier: "localNotification", content: content, trigger: trigger)
+        
+        // Add the request to the notification center
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error.localizedDescription)")
+            }
+        }
     }
     
     // MARK: UISceneSession Lifecycle

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 public protocol LoginView: LoadingView, AlertView where Self: UIViewController {
     
@@ -51,6 +52,37 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         configure()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.submitBackgroundTask()
+        })
+    }
+    
+    private func submitBackgroundTask() {
+
+        BGTaskScheduler.shared.cancel(taskRequestWithIdentifier: AppDelegate.taskId)
+        
+        // check if there is a pending task request or not
+        BGTaskScheduler.shared.getPendingTaskRequests { request in
+            print("\(request.count) BGTask pending.")
+            guard request.isEmpty else { return }
+            // Create a new background task request
+            let request = BGProcessingTaskRequest(identifier: AppDelegate.taskId)
+            request.requiresNetworkConnectivity = false
+            request.requiresExternalPower = false
+            //request.earliestBeginDate = Date().addingTimeInterval(86400 * 3)
+            
+            do {
+                // Schedule the background task
+                try BGTaskScheduler.shared.submit(request)
+                
+                // Manual test: e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"whatsapp.clone.background.task.identifier"]
+                // Colocar break point na linha 82 e executar,  ao parar na linha, executa script acima no log.
+                print("Task scheduled")
+            } catch {
+                print("Unable to schedule background task: \(error.localizedDescription)")
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
