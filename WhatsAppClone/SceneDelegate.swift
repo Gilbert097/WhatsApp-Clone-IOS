@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -40,21 +41,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+        submitBackgroundTask()
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
+        print("sceneWillEnterForeground called!")
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        print("sceneDidEnterBackground called!")
     }
     
+    private func submitBackgroundTask() {
+
+        BGTaskScheduler.shared.cancel(taskRequestWithIdentifier: AppDelegate.taskId)
+        
+        // check if there is a pending task request or not
+        BGTaskScheduler.shared.getPendingTaskRequests { request in
+            print("\(request.count) BGTask pending.")
+            guard request.isEmpty else { return }
+            // Create a new background task request
+            let request = BGProcessingTaskRequest(identifier: AppDelegate.taskId)
+            request.requiresNetworkConnectivity = false
+            request.requiresExternalPower = false
+            //request.earliestBeginDate = Date().addingTimeInterval(86400 * 3)
+            
+            do {
+                // Schedule the background task
+                try BGTaskScheduler.shared.submit(request)
+                
+                // Manual test: e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"whatsapp.clone.background.task.identifier"]
+                // Colocar break point na linha 82 e executar,  ao parar na linha, executa script acima no log.
+                print("Task scheduled")
+            } catch {
+                print("Unable to schedule background task: \(error.localizedDescription)")
+            }
+        }
+    }
     
 }
-
